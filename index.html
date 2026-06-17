@@ -131,6 +131,7 @@
     .notify input{min-width:0;flex:1;background:var(--white);border:1px solid var(--line);border-right:0;border-radius:999px 0 0 999px;color:var(--ink);padding:.95rem 1rem;outline:none}
     .notify input::placeholder{color:var(--slate)}
     .notify button{border:1px solid var(--navy);background:var(--navy);color:var(--white);border-radius:0 999px 999px 0;padding:.95rem 1.05rem;font-family:var(--font-display);font-weight:800;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
+    .notify-status{min-height:1.3rem;margin:.75rem 0 0;color:var(--navy);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
     .contact-strip{display:flex;justify-content:center;align-items:center;gap:.65rem;flex-wrap:wrap;margin-top:1rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
     .contact-strip a{color:var(--navy);border-bottom:1px solid rgba(19,58,117,.28)}
     .contact-strip a:hover{color:var(--blue);border-color:var(--blue)}
@@ -157,6 +158,7 @@
     .modal-submit{display:flex;justify-content:flex-end;margin-top:.75rem}
     .form-status{min-height:1.4rem;margin-top:.8rem;color:var(--navy);font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em}
     .is-submitted .form-fields{display:none}
+    .hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
     footer{display:grid;justify-items:center;text-align:center;gap:.45rem;padding:34px 0 42px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:var(--slate)}
     footer strong{font-family:var(--font-display);font-size:1rem;color:var(--ink);letter-spacing:.08em}
     footer a{color:var(--navy)}
@@ -303,11 +305,26 @@
             <button type="button" class="intent-chip" data-interest="I need my content or clients organized">I need my content or clients organized</button>
             <button type="button" class="intent-chip" data-interest="I need help building a custom system">I need help building a custom system</button>
           </div>
-          <!-- Replace this Formspree endpoint before launch -->
-          <form class="notify" action="https://formspree.io/f/REPLACE_ME" method="POST" aria-label="Get notified when AK Randall Digital launches">
+          <iframe name="notify-submit-frame" id="notify-submit-frame" style="display:none;"></iframe>
+          <form class="notify" id="notify-form" action="https://script.google.com/a/macros/akrandall.com/s/AKfycbwzBowFqbgeZZ0hNlZ3RRqyBm7alnH0fCjTrF2EuwWPC3GdL_IMYu9EeIzgyqCOXdLz7w/exec" method="POST" target="notify-submit-frame" aria-label="Get notified when AK Randall Digital launches">
             <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required />
+            <input type="hidden" name="source_page" value="akrandall-coming-soon" />
+            <input type="hidden" name="lead_stage" value="launch_map_only" />
+            <input type="hidden" name="system_type" value="Launch map request" />
+            <input type="hidden" name="selected_interest" value="Launch map request" />
+            <input type="hidden" name="page_url" value="" />
+            <input type="hidden" name="user_agent" value="" />
+            <input type="hidden" name="submitted_at" value="" />
+            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_medium" value="" />
+            <input type="hidden" name="utm_campaign" value="" />
+            <div class="hp-field" aria-hidden="true">
+              <label for="notify-company-website">Company website</label>
+              <input id="notify-company-website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
             <button type="submit">Send the Map</button>
           </form>
+          <p class="notify-status" id="notify-status" aria-live="polite"></p>
           <div class="contact-strip">
             <a href="https://calendar.app.google/QcdZEk5wmUhXno9H9" target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
             <span aria-hidden="true">&middot;</span>
@@ -340,12 +357,14 @@
         </div>
         <button type="button" class="modal-close" id="close-modal" aria-label="Close lead capture form">&times;</button>
       </div>
-      <!-- Replace this Formspree endpoint before launch -->
-      <form id="lead-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <iframe name="lead-submit-frame" id="lead-submit-frame" style="display:none;"></iframe>
+      <form id="lead-form" action="https://script.google.com/a/macros/akrandall.com/s/AKfycbwzBowFqbgeZZ0hNlZ3RRqyBm7alnH0fCjTrF2EuwWPC3GdL_IMYu9EeIzgyqCOXdLz7w/exec" method="POST" target="lead-submit-frame">
         <div class="form-fields">
           <div class="field-group"><label for="lead-name">Name</label><input id="lead-name" name="name" type="text" placeholder="Your name" autocomplete="name" required /></div>
           <div class="field-group"><label for="lead-email">Email</label><input id="lead-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required /></div>
-          <div class="field-group"><label for="lead-project">What kind of system do you need?</label><select id="lead-project" name="project" required>
+          <div class="field-group"><label for="lead-phone">Phone</label><input id="lead-phone" name="phone" type="tel" placeholder="(336) 437-4484" autocomplete="tel" /></div>
+          <div class="field-group"><label for="lead-business">Business / Organization</label><input id="lead-business" name="business" type="text" placeholder="Business, team, or organization" autocomplete="organization" /></div>
+          <div class="field-group"><label for="lead-system-type">What kind of system do you need?</label><select id="lead-system-type" name="system_type" required>
             <option value="Small business system">Small business system</option>
             <option value="Creator / production system">Creator / production system</option>
             <option value="Fitness / coaching system">Fitness / coaching system</option>
@@ -359,16 +378,16 @@
           <fieldset class="checkbox-fieldset">
             <legend class="field-legend">What needs to get organized first?</legend>
             <div class="checkbox-grid">
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Website / digital presence" />Website / digital presence</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Leads / customers / clients" />Leads / customers / clients</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Content / production workflow" />Content / production workflow</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Workouts / coaching / accountability" />Workouts / coaching / accountability</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="CRM / customer tracking" />CRM / customer tracking</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Quotes / pricing / offers" />Quotes / pricing / offers</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Proposals / bids / contracts" />Proposals / bids / contracts</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="AI workflows / automation" />AI workflows / automation</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Dashboard / operating system" />Dashboard / operating system</label>
-              <label class="checkbox-item"><input type="checkbox" name="help[]" value="Full custom system" />Full custom system</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Website / digital presence" />Website / digital presence</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Leads / customers / clients" />Leads / customers / clients</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Content / production workflow" />Content / production workflow</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Workouts / coaching / accountability" />Workouts / coaching / accountability</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="CRM / customer tracking" />CRM / customer tracking</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Quotes / pricing / offers" />Quotes / pricing / offers</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Proposals / bids / contracts" />Proposals / bids / contracts</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="AI workflows / automation" />AI workflows / automation</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Dashboard / operating system" />Dashboard / operating system</label>
+              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Full custom system" />Full custom system</label>
             </div>
           </fieldset>
           <div class="field-group"><label for="lead-message">Optional message</label><textarea id="lead-message" name="message" placeholder="Tell me what you do, what feels scattered, and what you wish worked automatically."></textarea></div>
@@ -379,6 +398,12 @@
           <input type="hidden" name="utm_medium" id="utm_medium" value="" />
           <input type="hidden" name="utm_campaign" id="utm_campaign" value="" />
           <input type="hidden" name="selected_interest" id="selected-interest" value="" />
+          <input type="hidden" name="page_url" id="page-url" value="" />
+          <input type="hidden" name="user_agent" id="user-agent" value="" />
+          <div class="hp-field" aria-hidden="true">
+            <label for="company-website">Company website</label>
+            <input id="company-website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="modal-submit"><button class="btn primary" type="submit">Request My Starting Point</button></div>
         </div>
         <p class="form-status" id="form-status" aria-live="polite"></p>
@@ -393,14 +418,19 @@
     const openButton=document.getElementById('open-modal');
     const closeButton=document.getElementById('close-modal');
     const modalForm=document.getElementById('lead-form');
-    const projectSelect=document.getElementById('lead-project');
+    const notifyForm=document.getElementById('notify-form');
+    const projectSelect=document.getElementById('lead-system-type');
     const selectedInterestField=document.getElementById('selected-interest');
     const submittedAtField=document.getElementById('submitted-at');
     const utmSourceField=document.getElementById('utm_source');
     const utmMediumField=document.getElementById('utm_medium');
     const utmCampaignField=document.getElementById('utm_campaign');
+    const pageUrlField=document.getElementById('page-url');
+    const userAgentField=document.getElementById('user-agent');
     const chips=document.querySelectorAll('.intent-chip');
     const focusableSelectors='button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const backupMessage='Form is not connected yet. Please email hello@akrandall.com, call (336) 437-4484, or book a strategy call.';
+    const successMessage='Received. I\u2019ll review what you\u2019re trying to organize and follow up soon.';
     let lastFocused=null;
     const interestMap={
       'I need my business organized':{project:'Small business system',helps:['Leads / customers / clients','Dashboard / operating system']},
@@ -434,11 +464,26 @@
       utmCampaignField.value=params.get('utm_campaign')||'';
     };
 
+    const isPlaceholderEndpoint=form=>{
+      const action=form?.getAttribute('action')||'';
+      return !action.trim()||action.includes('REPLACE_ME')||action.includes('formspree.io/f/REPLACE_ME');
+    };
+
+    const setTrackingFields=form=>{
+      const params=new URLSearchParams(window.location.search);
+      form.querySelectorAll('input[name="submitted_at"]').forEach(input=>{input.value=new Date().toISOString();});
+      form.querySelectorAll('input[name="page_url"]').forEach(input=>{input.value=window.location.href;});
+      form.querySelectorAll('input[name="user_agent"]').forEach(input=>{input.value=navigator.userAgent;});
+      form.querySelectorAll('input[name="utm_source"]').forEach(input=>{input.value=params.get('utm_source')||'';});
+      form.querySelectorAll('input[name="utm_medium"]').forEach(input=>{input.value=params.get('utm_medium')||'';});
+      form.querySelectorAll('input[name="utm_campaign"]').forEach(input=>{input.value=params.get('utm_campaign')||'';});
+    };
+
     const applyInterest=(interest)=>{
       const settings=interestMap[interest];
       if(!settings)return;
       projectSelect.value=settings.project;
-      modal.querySelectorAll('input[name="help[]"]').forEach(input=>{
+      modal.querySelectorAll('input[name="needs_organized[]"]').forEach(input=>{
         input.checked=settings.helps.includes(input.value);
       });
     };
@@ -450,31 +495,35 @@
 
     chips.forEach(chip=>{chip.addEventListener('click',()=>openModal(chip.dataset.interest));});
 
-    modalForm.addEventListener('submit',async e=>{
-      submittedAtField.value=new Date().toISOString();
-      const status=document.getElementById('form-status');
-      if(!window.fetch)return;
-      e.preventDefault();
-      const submitButton=modalForm.querySelector('button[type="submit"]');
-      submitButton.disabled=true;
-      if(status){status.textContent='Sending...';}
-      try{
-        if(modalForm.action.includes('REPLACE_ME')){
-          modalForm.classList.add('is-submitted');
-          if(status){status.textContent='Received. I\u2019ll review what you\u2019re trying to organize and follow up soon.';}
-          return;
-        }
-        const response=await fetch(modalForm.action,{method:'POST',body:new FormData(modalForm),headers:{Accept:'application/json'}});
-        if(!response.ok)throw new Error('Form submission failed');
-        modalForm.reset();
-        modalForm.classList.add('is-submitted');
-        if(status){status.textContent='Received. I\u2019ll review what you\u2019re trying to organize and follow up soon.';}
-      }catch(error){
-        modalForm.submit();
-      }finally{
-        submitButton.disabled=false;
+    notifyForm.addEventListener('submit',e=>{
+      const status=document.getElementById('notify-status');
+      if(isPlaceholderEndpoint(notifyForm)){
+        e.preventDefault();
+        if(status){status.textContent=backupMessage;}
+        return;
       }
-      return;
+      setTrackingFields(notifyForm);
+      if(status){status.textContent='Sending...';}
+      setTimeout(()=>{if(status){status.textContent=successMessage;}},900);
+    });
+
+    modalForm.addEventListener('submit',e=>{
+      const status=document.getElementById('form-status');
+      if(isPlaceholderEndpoint(modalForm)){
+        e.preventDefault();
+        if(status){status.textContent=backupMessage;}
+        return;
+      }
+      submittedAtField.value=new Date().toISOString();
+      pageUrlField.value=window.location.href;
+      userAgentField.value=navigator.userAgent;
+      populateUtm();
+      setTrackingFields(modalForm);
+      if(status){status.textContent='Sending...';}
+      setTimeout(()=>{
+        modalForm.classList.add('is-submitted');
+        if(status){status.textContent=successMessage;}
+      },900);
     });
 
     modal.addEventListener('keydown',e=>{
