@@ -1,539 +1,317 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AK Randall Digital | Custom Digital Systems</title>
-  <meta name="description" content="AK Randall Digital builds custom systems for people and businesses that need to organize clients, customers, content, workouts, sales, operations, AI workflows, dashboards, and growth." />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <link rel="canonical" href="https://akrandall.com/" />
-  <meta name="theme-color" content="#E8E8E0" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://akrandall.com/" />
-  <meta property="og:title" content="AK Randall Digital &mdash; Websites are easy now. Systems still win." />
-  <meta property="og:description" content="Custom websites, dashboards, workflows, and operating systems for people and businesses ready to organize the work before everyone else sees the shift." />
-  <meta property="og:image" content="https://akrandall.com/akrandall_logo_pack_transparent/og-image-1200x630.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AK Randall Digital &mdash; Websites are easy now. Systems still win." />
-  <meta name="twitter:description" content="Custom websites, dashboards, workflows, and operating systems for people and businesses ready to organize the work before everyone else sees the shift." />
-  <meta name="twitter:image" content="https://akrandall.com/akrandall_logo_pack_transparent/og-image-1200x630.png" />
-  <link rel="icon" href="akrandall_logo_pack_transparent/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="akrandall_logo_pack_transparent/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="akrandall_logo_pack_transparent/favicon-16.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="akrandall_logo_pack_transparent/android-chrome-192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="akrandall_logo_pack_transparent/android-chrome-512.png" />
-  <link rel="apple-touch-icon" href="akrandall_logo_pack_transparent/apple-touch-icon-180.png" />
-  <link rel="manifest" href="akrandall_logo_pack_transparent/site.webmanifest" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ProfessionalService",
-    "name":"AK Randall Digital",
-    "url":"https://akrandall.com/",
-    "email":"hello@akrandall.com",
-    "telephone":"+13364374484",
-    "description":"AK Randall Digital builds custom digital systems for business owners, creators, coaches, trainers, sales teams, contractors, consultants, and modern operators.",
-    "areaServed":"United States",
-    "serviceType":["Custom digital systems","Website builds","Business operating systems","Creator production systems","Fitness and coaching systems","Personal productivity systems","Lead capture systems","Client tracking systems","Sales process systems","CRM and customer tracking","Pricing and quote systems","Proposal systems","AI workflow automation","Notion dashboards","Google Workspace systems","Government and contract sales support"]
-  }
-  </script>
-  <style>
-    :root{
-      --bg:#E8E8E0;
-      --bg-alt:#F4F3EC;
-      --ink:#080C12;
-      --navy:#133A75;
-      --blue:#2277D1;
-      --green:#5FC597;
-      --white:#FFFFFF;
-      --muted:#4A5468;
-      --slate:#6B7585;
-      --line:rgba(8,12,18,.10);
-      --line-strong:rgba(19,58,117,.28);
-      --shadow:0 24px 70px rgba(8,12,18,.08);
-      --font-display:'Syne',system-ui,sans-serif;
-      --font-mono:'IBM Plex Mono',ui-monospace,monospace;
-      --font-body:'Inter',system-ui,sans-serif;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{background:var(--bg);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-    body{min-height:100vh;overflow-x:hidden;background:radial-gradient(circle at 50% 8%,rgba(19,58,117,.06),transparent 32rem),linear-gradient(180deg,var(--bg),var(--bg-alt) 58%,var(--bg))}
-    a{color:inherit;text-decoration:none}
-    button,input,select,textarea{font:inherit}
-    .page-shell{position:relative;width:min(calc(100% - clamp(24px,6vw,96px)),1180px);margin-inline:auto;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
-    .section{padding-block:clamp(64px,10vw,128px)}
-    .section-slim{padding-block:clamp(40px,7vw,82px)}
-    .center-stack{display:grid;justify-items:center;text-align:center}
-    .hero-content{width:100%;max-width:920px;min-width:0;margin-inline:auto}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(16px,2vw,28px)}
-    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:clamp(22px,4vw,34px) 0}
-    .wordmark{display:inline-flex;align-items:center;line-height:1;padding:.35rem .55rem;border-radius:999px;background:rgba(8,12,18,.92);box-shadow:0 12px 32px rgba(8,12,18,.08)}
-    .wordmark img{display:block;width:clamp(108px,11vw,132px);height:auto}
-    .status{font-family:var(--font-mono);font-size:clamp(.5rem,1.5vw,.7rem);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line-strong);padding:.56rem .75rem;border-radius:999px;background:rgba(255,255,255,.36);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
-    main{flex:1}
-    .hero{position:relative;padding-block:clamp(42px,7vw,92px)}
-    .hero-logo-wrap{position:relative;display:grid;place-items:center;margin-bottom:clamp(24px,4vw,38px)}
-    .hero-logo-wrap::before{content:"";position:absolute;width:min(46vw,360px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(19,58,117,.10),rgba(95,197,151,.07) 38%,transparent 70%);filter:blur(18px);z-index:-1}
-    .hero-logo-card{display:inline-grid;place-items:center;padding:clamp(1.25rem,3vw,2rem);border-radius:28px;background:#080C12;box-shadow:0 24px 70px rgba(8,12,18,.12)}
-    .hero-logo{width:clamp(160px,25vw,260px);height:auto;display:block}
-    .eyebrow{font-family:var(--font-mono);font-size:clamp(.68rem,1.2vw,.78rem);letter-spacing:.18em;text-transform:uppercase;color:var(--navy);margin-bottom:1.2rem}
-    h1,.hero h1{width:100%;margin-inline:auto;font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,9vw,7.5rem);line-height:.95;letter-spacing:-.045em;color:var(--ink);text-wrap:balance;max-width:100%;overflow-wrap:normal;word-break:normal;hyphens:none}
-    .line{display:block;width:100%;max-width:100%;white-space:normal;overflow-wrap:normal;word-break:normal;hyphens:none;opacity:0;transform:translateY(18px);animation:rise .72s cubic-bezier(.16,1,.3,1) forwards}
-    .line:nth-child(2){animation-delay:.12s}
-    .line span:not(.no-break):not(.win-highlight){background:linear-gradient(90deg,var(--navy),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .no-break{white-space:nowrap}
-    .win-highlight{position:relative;display:inline-block;color:var(--navy);background:none;-webkit-background-clip:initial;background-clip:initial;isolation:isolate}
-    .win-highlight::before{content:"";position:absolute;inset:-.08em -.16em -.02em;border-radius:.18em;background:linear-gradient(90deg,rgba(95,197,151,.20),rgba(34,119,209,.16));border:1px solid rgba(19,58,117,.24);z-index:-1;transform:scaleX(.94);opacity:0;animation:winGlow 2.8s ease-in-out .9s infinite}
-    .win-highlight::after{content:"";position:absolute;left:-.12em;right:-.12em;bottom:.02em;height:.12em;border-radius:999px;background:var(--green);opacity:.85;transform-origin:left;transform:scaleX(0);animation:winUnderline 1.1s cubic-bezier(.16,1,.3,1) .75s forwards;z-index:-1}
-    .lead{margin:clamp(1.2rem,3vw,1.8rem) auto 0;color:var(--ink);font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.65;max-width:760px;font-weight:600;text-wrap:balance}
-    .supporting-line{margin:1rem auto 0;max-width:760px;color:var(--muted);font-size:clamp(.98rem,1.5vw,1.12rem);line-height:1.75;font-weight:500}
-    .actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:clamp(1.7rem,4vw,2.3rem)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:1rem 1.25rem;font-family:var(--font-display);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.78rem;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
-    .btn.primary{background:var(--navy);color:var(--white);box-shadow:0 16px 42px rgba(19,58,117,.16)}
-    .btn.primary:hover{background:var(--blue)}
-    .btn.secondary{background:transparent;color:var(--navy);border:1px solid var(--line-strong)}
-    .btn.secondary:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
-    .text-link{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid rgba(19,58,117,.38);padding-bottom:.18rem;transition:color .2s ease,border-color .2s ease}
-    .text-link:hover{color:var(--blue);border-color:var(--blue)}
-    .what-if{padding-top:0}
-    .systems-principle{width:min(100%,920px);margin-inline:auto;text-align:center;border-block:1px solid rgba(8,12,18,.10)}
-    .principle-kicker{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem}
-    .systems-principle blockquote{font-family:var(--font-display);font-size:clamp(1.65rem,4vw,3.5rem);line-height:1.08;letter-spacing:-.035em;color:var(--ink);max-width:880px;margin-inline:auto;text-wrap:balance}
-    .systems-principle blockquote span{display:block;color:var(--navy);margin-top:.35rem}
-    .section-head{width:100%;max-width:760px;min-width:0;margin-inline:auto;margin-bottom:clamp(1.5rem,4vw,2.2rem);text-align:center}
-    .section-head h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.6rem);line-height:1.02;letter-spacing:-.03em;color:var(--ink)}
-    .section-head p{margin-top:.8rem;color:var(--muted);font-size:clamp(1rem,1.6vw,1.14rem);line-height:1.7}
-    .what-if-list{display:grid;gap:.85rem;width:100%;max-width:900px;min-width:0;margin-inline:auto}
-    .diagnostic-row,.card{background:rgba(244,243,236,.84);border:1px solid var(--line);border-radius:8px}
-    .operator-grid .card{min-height:210px;padding:clamp(1.15rem,2.2vw,1.5rem);background:rgba(255,255,255,.34)}
-    .operator-grid .card h3{font-size:clamp(1.05rem,1.6vw,1.28rem)}
-    .operator-grid .card p{font-size:.94rem}
-    .diagnostic-row{padding:clamp(1rem,2.2vw,1.35rem);color:var(--ink);font-weight:650;line-height:1.55;text-align:left}
-    .services .card{padding:clamp(1.25rem,2.5vw,1.7rem);min-height:230px;transition:border-color .2s ease,box-shadow .2s ease;background:var(--bg-alt)}
-    .services .card:hover{border-color:var(--line-strong);box-shadow:var(--shadow)}
-    .card .num{display:block;margin-bottom:1.1rem;font-family:var(--font-mono);font-size:.68rem;color:var(--navy);letter-spacing:.14em}
-    .card h3{font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.55rem);line-height:1.12;color:var(--ink);letter-spacing:-.015em}
-    .card p{margin-top:.8rem;color:var(--muted);font-size:.98rem;line-height:1.7}
-    .credibility{max-width:860px;margin:clamp(3rem,7vw,5.5rem) auto 0;text-align:center;color:var(--muted);font-size:clamp(1rem,1.7vw,1.18rem);line-height:1.8;font-weight:500}
-    .final-cta{margin-top:clamp(2.5rem,6vw,4.5rem);display:grid;gap:1rem;border-top:1px solid var(--line);padding-top:clamp(2rem,5vw,3rem)}
-    .final-cta-copy{font-family:var(--font-display);font-weight:800;font-size:clamp(1.25rem,2.4vw,1.8rem);line-height:1.25;color:var(--ink);text-align:center}
-    .final-cta-copy span{font-family:var(--font-mono);font-size:.76rem;color:var(--muted);letter-spacing:.06em;display:block;margin-top:.5rem;font-weight:500;text-transform:uppercase}
-    .lead-magnet{padding:1rem 1.15rem;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.38)}
-    .magnet-title{font-family:var(--font-display);font-size:1rem;color:var(--ink);font-weight:800;line-height:1.4;margin-bottom:.35rem}
-    .magnet-copy{color:var(--muted);font-size:.92rem;line-height:1.6}
-    .intent-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:.4rem}
-    .intent-chip{border:1px solid var(--line-strong);background:transparent;color:var(--navy);padding:.8rem .95rem;border-radius:999px;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
-    .intent-chip:hover{background:var(--navy);border-color:var(--navy);color:var(--white)}
-    .notify{display:flex;justify-content:center;gap:0;max-width:520px;margin-inline:auto;width:100%}
-    .notify input{min-width:0;flex:1;background:var(--white);border:1px solid var(--line);border-right:0;border-radius:999px 0 0 999px;color:var(--ink);padding:.95rem 1rem;outline:none}
-    .notify input::placeholder{color:var(--slate)}
-    .notify button{border:1px solid var(--navy);background:var(--navy);color:var(--white);border-radius:0 999px 999px 0;padding:.95rem 1.05rem;font-family:var(--font-display);font-weight:800;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
-    .notify-status{min-height:1.3rem;margin:.75rem 0 0;color:var(--navy);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
-    .contact-strip{display:flex;justify-content:center;align-items:center;gap:.65rem;flex-wrap:wrap;margin-top:1rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
-    .contact-strip a{color:var(--navy);border-bottom:1px solid rgba(19,58,117,.28)}
-    .contact-strip a:hover{color:var(--blue);border-color:var(--blue)}
-    .modal-backdrop{position:fixed;inset:0;display:grid;place-items:center;z-index:100;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .24s ease,visibility .24s ease;background:rgba(8,12,18,.28);padding:max(16px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));overflow:hidden}
-    .modal-backdrop:not([hidden]){pointer-events:auto;opacity:1;visibility:visible}
-    .modal{width:min(100%,640px);max-width:640px;max-height:calc(100dvh - 32px);overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--bg-alt);border:1px solid var(--line-strong);box-shadow:var(--shadow);border-radius:18px;padding:clamp(1.2rem,4vw,2rem);transform:translateY(16px);opacity:0;transition:opacity .24s ease,transform .24s ease}
-    .modal-backdrop:not([hidden]) .modal{transform:translateY(0);opacity:1}
-    .modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}
-    .modal-title{font-family:var(--font-display);font-size:clamp(1.55rem,3vw,2.2rem);color:var(--ink);line-height:1.05;max-width:88%;letter-spacing:-.025em}
-    .modal-copy{color:var(--muted);font-size:.98rem;line-height:1.75;max-width:44rem;margin-top:.55rem}
-    .modal-close{background:var(--white);border:1px solid var(--line);color:var(--ink);border-radius:999px;width:2.4rem;height:2.4rem;display:grid;place-items:center;cursor:pointer;transition:border-color .2s ease,color .2s ease}
-    .modal-close:hover{border-color:var(--navy);color:var(--navy)}
-    .field-group{display:grid;gap:.45rem;margin-bottom:1rem}
-    .field-group label,.field-legend{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
-    .field-group input,.field-group select,.field-group textarea{width:100%;min-height:3rem;padding:.95rem 1rem;border:1px solid var(--line);background:var(--white);border-radius:10px;color:var(--ink);font-family:var(--font-body);font-size:.95rem}
-    .field-group select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--navy) 50%),linear-gradient(135deg,var(--navy) 50%,transparent 50%);background-position:calc(100% - 1rem) center,calc(100% - .65rem) center;background-size:.65rem .65rem,.65rem .65rem;background-repeat:no-repeat,no-repeat;padding-right:2.6rem}
-    .field-group option{background:var(--white);color:var(--ink)}
-    .field-group textarea{min-height:108px;resize:vertical}
-    .checkbox-fieldset{border:0;margin:0 0 1rem;padding:0}
-    .checkbox-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:.55rem}
-    .checkbox-item{display:flex;align-items:flex-start;gap:.75rem;padding:.9rem;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.54);cursor:pointer;transition:border-color .2s ease,background .2s ease;color:var(--ink);line-height:1.35}
-    .checkbox-item:hover{border-color:var(--line-strong);background:var(--white)}
-    .checkbox-item input{margin-top:.15rem;accent-color:var(--green)}
-    .modal-submit{display:flex;justify-content:flex-end;margin-top:.75rem}
-    .form-status{min-height:1.4rem;margin-top:.8rem;color:var(--navy);font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em}
-    .is-submitted .form-fields{display:none}
-    .hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
-    footer{display:grid;justify-items:center;text-align:center;gap:.45rem;padding:34px 0 42px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:var(--slate)}
-    footer strong{font-family:var(--font-display);font-size:1rem;color:var(--ink);letter-spacing:.08em}
-    footer a{color:var(--navy)}
-    .footer-contact{display:flex;align-items:center;justify-content:center;gap:.55rem;flex-wrap:wrap}
-    .btn:focus-visible,.text-link:focus-visible,.intent-chip:focus-visible,.modal-close:focus-visible,.notify input:focus-visible,.notify button:focus-visible,.field-group input:focus-visible,.field-group select:focus-visible,.field-group textarea:focus-visible,.checkbox-item:focus-within{outline:2px solid var(--green);outline-offset:3px;box-shadow:0 0 0 5px rgba(95,197,151,.16)}
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    body.modal-open{overflow:hidden}
-    @keyframes rise{to{opacity:1;transform:translateY(0)}}
-    @keyframes winUnderline{to{transform:scaleX(1)}}
-    @keyframes winGlow{0%,100%{opacity:.18;transform:scaleX(.96)}50%{opacity:.62;transform:scaleX(1.02)}}
-    @media (max-width:700px){
-      .page-shell{width:min(calc(100% - 24px),430px);margin-inline:auto;padding-inline:0}
-      header{flex-direction:column;justify-content:center;text-align:center}
-      .status{text-align:center}
-      .hero{padding-block:40px 64px}
-      .hero-logo{width:clamp(142px,48vw,182px)}
-      .eyebrow{max-width:100%;font-size:clamp(.58rem,1.8vw,.68rem);letter-spacing:.14em;overflow-wrap:anywhere}
-      h1,.hero h1{max-width:11ch;font-size:clamp(1.5rem,7vw,1.85rem);line-height:1;letter-spacing:-.035em;overflow-wrap:normal;word-break:normal;hyphens:none}
-      .line{overflow-wrap:normal;word-break:normal;hyphens:none}
-      .notify{flex-direction:column}
-      .notify input{border-right:1px solid var(--line);border-radius:999px 999px 0 0;text-align:center}
-      .notify button{border-radius:0 0 999px 999px}
-      .checkbox-grid{grid-template-columns:1fr}
-      .modal-title{max-width:100%}
-      .modal-header{gap:.75rem}
-    }
-    @media (max-width:430px){
-      .actions{align-items:stretch}
-      .btn.primary,.text-link{width:100%}
-      .text-link{display:inline-flex;justify-content:center}
-      h1,.hero h1{font-size:clamp(1.5rem,7vw,1.65rem)}
-    }
-    @media (max-width:375px){
-      h1,.hero h1{font-size:clamp(1.42rem,6.8vw,1.55rem);max-width:11ch}
-    }
-    @media (prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation:none!important;transition:none!important}
-      .line,.reveal{opacity:1;transform:none}
-      .win-highlight::before,.win-highlight::after{animation:none!important;opacity:.5;transform:scaleX(1)}
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Transformation, Business Strategy &amp; B2G Consulting | AK Randall Digital</title>
+  <meta name="description" content="Turn scattered growth activity into a connected system for stronger operations, clearer strategy, and more competitive public-sector pursuits.">
+  <meta name="theme-color" content="#050B14">
+  <meta property="og:title" content="AK Randall Digital &mdash; Build the system that helps capability win.">
+  <meta property="og:description" content="Digital transformation, business strategy, and B2G consulting for capable businesses ready to pursue and deliver with more confidence.">
+  <meta property="og:image" content="assets/brand/og-image.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/brand/favicon.ico">
+  <link rel="canonical" href="https://akrandall.com/">
+  <link rel="stylesheet" href="styles.css?v=20260722f">
+  <script src="lead-config.js?v=20260721d"></script>
+  <script src="analytics.js?v=20260721b" defer></script>
+  <script src="script.js?v=20260722c" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"AK Randall Digital","url":"https://akrandall.com/","email":"andrew@akrandall.com","telephone":"+1-336-437-4484","areaServed":"United States","founder":{"@type":"Person","name":"Andrew Randall"},"description":"Digital operating systems, business strategy, and business-to-government consulting for capable small and mid-size organizations."}</script>
 </head>
-<body>
-  <div class="page-shell">
-    <header>
-      <a class="wordmark" href="/" aria-label="AK Randall Digital home">
-        <img
-          src="akrandall_logo_pack_transparent/logo-header-320x120.webp"
-          srcset="akrandall_logo_pack_transparent/logo-header-320x120.webp 1x, akrandall_logo_pack_transparent/logo-header-640x240.webp 2x"
-          alt="AK Randall Digital"
-          width="160"
-          height="60"
-          loading="eager"
-          decoding="async"
-        />
-      </a>
-      <div class="status">Private Intake Opening Soon</div>
-    </header>
-    <main>
-      <section class="hero center-stack" aria-labelledby="headline">
-        <div class="hero-content">
-          <div class="hero-logo-wrap" aria-hidden="true">
-            <div class="hero-logo-card">
-              <picture>
-                <source media="(max-width: 700px)" srcset="akrandall_logo_pack_transparent/logo-mobile-420.webp" type="image/webp" />
-                <source srcset="akrandall_logo_pack_transparent/logo-hero-800.webp" type="image/webp" />
-                <img class="hero-logo" src="akrandall_logo_pack_transparent/logo-hero-800.png" alt="" width="800" height="800" loading="eager" decoding="async" />
-              </picture>
-            </div>
-          </div>
-          <p class="eyebrow">AK Randall Digital / Custom Digital Systems</p>
-          <h1 id="headline">
-            <span class="line"><span class="no-break">Websites</span> are easy now.</span>
-            <span class="line">Systems still <span class="win-highlight">WIN.</span></span>
-          </h1>
-          <p class="lead">Your website may be the front door. But whether your work starts with a client, customer, class, call, content idea, workout plan, quote request, order, appointment, or bid opportunity, the system behind it determines what happens next.</p>
-          <p class="supporting-line">AK Randall Digital builds custom systems for people and businesses that need to capture opportunity, organize the work, follow up faster, use AI intelligently, and get ahead before everyone else sees the shift.</p>
-          <div class="actions">
-            <button class="btn primary" type="button" id="open-modal">Request Your Starting Point</button>
-            <a class="btn secondary" href="https://calendar.app.google/QcdZEk5wmUhXno9H9" target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
-            <a class="text-link" href="#preview">See What Can Be Organized</a>
-          </div>
-        </div>
-      </section>
-      <section class="systems-principle section-slim reveal" aria-label="Systems principle">
-        <p class="principle-kicker">Systems Principle</p>
-        <blockquote>
-          You don&rsquo;t rise to the level of your goals, dreams, or ambitions.
-          <span>You fall to the level of your consistent systems.</span>
-        </blockquote>
-      </section>
-      <section class="section reveal" aria-labelledby="operator-headline">
-        <div class="section-head">
-          <p class="eyebrow">Systems for every kind of operator.</p>
-          <h2 id="operator-headline">Built around the way you actually work.</h2>
-          <p>Some people sell from a showroom. Some sell from the street. Some train clients from home. Some create content at night. Some chase contracts, appointments, orders, or donors. The system should match the work.</p>
-        </div>
-        <div class="operator-grid grid-3">
-          <article class="card"><h3>Small Business Systems</h3><p>Lead capture, customer tracking, pricing, follow-up, intake forms, dashboards, and daily execution.</p></article>
-          <article class="card"><h3>Creator &amp; Production Systems</h3><p>Content calendars, video ideas, music releases, project pipelines, brand assets, publishing checklists, and production workflows.</p></article>
-          <article class="card"><h3>Fitness &amp; Coaching Systems</h3><p>Workout trackers, client plans, progress dashboards, habit systems, onboarding forms, check-ins, and accountability workflows.</p></article>
-          <article class="card"><h3>Retail &amp; Local Sales Systems</h3><p>Walk-ins, repeat customers, referrals, inventory notes, follow-up reminders, offers, and customer history.</p></article>
-          <article class="card"><h3>Sales &amp; Field Systems</h3><p>Cold calls, door-to-door routes, territories, scripts, callbacks, objections, quotes, appointments, and next steps.</p></article>
-          <article class="card"><h3>High-Ticket &amp; Service Systems</h3><p>Discovery calls, proposals, pricing logic, client notes, decision tracking, follow-up sequences, and delivery handoff.</p></article>
-          <article class="card"><h3>Government &amp; Contract Systems</h3><p>Bid tracking, vendor portals, deadlines, documents, contacts, proposal workflows, and compliance organization.</p></article>
-          <article class="card"><h3>Personal Productivity Systems</h3><p>Budget dashboards, life reset systems, habit trackers, health plans, home systems, task hubs, and weekly planning.</p></article>
-          <article class="card"><h3>Modern Operations Systems</h3><p>Notion, Google Workspace, CRM cleanup, AI workflows, dashboards, automations, APIs, and internal operating systems.</p></article>
-        </div>
-      </section>
-      <section class="section what-if reveal" aria-labelledby="what-if-headline">
-        <div class="section-head">
-          <p class="eyebrow" id="what-if-headline">The friction is usually hiding in the handoff.</p>
-          <p>Before you add another tool, find where the work slows down, disappears, or depends on memory.</p>
-        </div>
-        <div class="what-if-list">
-          <p class="diagnostic-row">What if every lead, client, order, workout, project, or idea had a clear next step?</p>
-          <p class="diagnostic-row">What if your business, brand, training, content, and follow-up did not depend on memory?</p>
-          <p class="diagnostic-row">What if your quotes, workouts, client plans, content ideas, and projects all lived in one organized system?</p>
-          <p class="diagnostic-row">What if AI did not replace your work &mdash; it helped you move faster, stay consistent, and stop rebuilding the same thing from scratch?</p>
-          <p class="diagnostic-row">What if your daily work could become a dashboard instead of a pile of notes, texts, screenshots, and unfinished apps?</p>
-          <p class="diagnostic-row">What if your next stage of growth is not about working harder &mdash; it is about finally organizing the way you already work?</p>
-          <p class="diagnostic-row">What if you could get organized before your competition, clients, or audience even sensed the shift?</p>
-        </div>
-      </section>
-      <section id="preview" class="section reveal">
-        <div class="section-head">
-          <h2>Three ways to build what comes next.</h2>
-        </div>
-        <div class="services grid-3">
-          <article class="card"><span class="num">01</span><h3>Launch the Brand</h3><p>For people and businesses that need a digital front door &mdash; website, copy, offer structure, lead capture, and a clean way for people to understand what you do.</p></article>
-          <article class="card"><span class="num">02</span><h3>Build the System</h3><p>For operators ready to organize clients, customers, workouts, content, projects, quotes, tasks, AI workflows, and daily execution into one working system.</p></article>
-          <article class="card"><span class="num">03</span><h3>Win the Work</h3><p>For businesses and creators pursuing bigger opportunities &mdash; contracts, clients, partnerships, campaigns, launches, high-ticket offers, government work, or repeatable revenue.</p></article>
-        </div>
-        <p class="credibility">Built from 17+ years across the revenue chain and real-world execution &mdash; retail floors, call centers, cold calls, door-to-door sales, automotive, high-ticket conversations, CRM systems, proposal workflows, digital tools, production systems, personal dashboards, and government-contracting infrastructure.<br><br>Most people do not need more random tools. They need the right system built around how they actually sell, create, train, follow up, deliver, and grow.</p>
-        <div class="final-cta">
-          <p class="final-cta-copy">Not ready to talk yet? Just want the launch update &mdash; no form, just your email.<br><span>Pick what you&rsquo;re building above, or drop your email below for the update only.</span></p>
-          <div class="lead-magnet">
-            <p class="magnet-title">Get the Systems Launch Map.</p>
-            <p class="magnet-copy">A practical starting map for people and businesses that need more than a website &mdash; lead capture, content planning, client tracking, workout systems, pricing, proposals, dashboards, AI workflows, and organized execution.</p>
-          </div>
-          <div class="intent-chips" aria-label="Quick lead intent options">
-            <button type="button" class="intent-chip" data-interest="I need my business organized">I need my business organized</button>
-            <button type="button" class="intent-chip" data-interest="I need my content or clients organized">I need my content or clients organized</button>
-            <button type="button" class="intent-chip" data-interest="I need help building a custom system">I need help building a custom system</button>
-          </div>
-          <iframe name="notify-submit-frame" id="notify-submit-frame" style="display:none;"></iframe>
-          <form class="notify" id="notify-form" action="https://script.google.com/a/macros/akrandall.com/s/AKfycbwzBowFqbgeZZ0hNlZ3RRqyBm7alnH0fCjTrF2EuwWPC3GdL_IMYu9EeIzgyqCOXdLz7w/exec" method="POST" target="notify-submit-frame" aria-label="Get notified when AK Randall Digital launches">
-            <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required />
-            <input type="hidden" name="source_page" value="akrandall-coming-soon" />
-            <input type="hidden" name="lead_stage" value="launch_map_only" />
-            <input type="hidden" name="system_type" value="Launch map request" />
-            <input type="hidden" name="selected_interest" value="Launch map request" />
-            <input type="hidden" name="page_url" value="" />
-            <input type="hidden" name="user_agent" value="" />
-            <input type="hidden" name="submitted_at" value="" />
-            <input type="hidden" name="utm_source" value="" />
-            <input type="hidden" name="utm_medium" value="" />
-            <input type="hidden" name="utm_campaign" value="" />
-            <div class="hp-field" aria-hidden="true">
-              <label for="notify-company-website">Company website</label>
-              <input id="notify-company-website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
-            </div>
-            <button type="submit">Send the Map</button>
-          </form>
-          <p class="notify-status" id="notify-status" aria-live="polite"></p>
-          <div class="contact-strip">
-            <a href="https://calendar.app.google/QcdZEk5wmUhXno9H9" target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
-            <span aria-hidden="true">&middot;</span>
-            <a href="tel:+13364374484">(336) 437-4484</a>
-            <span aria-hidden="true">&middot;</span>
-            <a href="mailto:hello@akrandall.com">hello@akrandall.com</a>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <strong>AK Randall Digital</strong>
-      <div>Revenue Systems Architecture</div>
-      <div class="footer-contact">
-        <a href="mailto:hello@akrandall.com">hello@akrandall.com</a>
-        <span aria-hidden="true">&middot;</span>
-        <a href="tel:+13364374484">(336) 437-4484</a>
-      </div>
-      <a href="https://calendar.app.google/QcdZEk5wmUhXno9H9" target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
-      <div>Custom website by AK Randall Digital.</div>
-      <div>&copy; 2026 AK Randall Digital LLC</div>
-    </footer>
-  </div>
-  <div class="modal-backdrop" id="lead-modal" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-headline" aria-describedby="modal-copy">
-      <div class="modal-header">
-        <div>
-          <h2 id="modal-headline" class="modal-title">Tell me what you&rsquo;re trying to organize.</h2>
-          <p id="modal-copy" class="modal-copy">Share what you do, how the work comes in, where things get messy, and what you want to build before your next stage of growth.</p>
-        </div>
-        <button type="button" class="modal-close" id="close-modal" aria-label="Close lead capture form">&times;</button>
-      </div>
-      <iframe name="lead-submit-frame" id="lead-submit-frame" style="display:none;"></iframe>
-      <form id="lead-form" action="https://script.google.com/a/macros/akrandall.com/s/AKfycbwzBowFqbgeZZ0hNlZ3RRqyBm7alnH0fCjTrF2EuwWPC3GdL_IMYu9EeIzgyqCOXdLz7w/exec" method="POST" target="lead-submit-frame">
-        <div class="form-fields">
-          <div class="field-group"><label for="lead-name">Name</label><input id="lead-name" name="name" type="text" placeholder="Your name" autocomplete="name" required /></div>
-          <div class="field-group"><label for="lead-email">Email</label><input id="lead-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required /></div>
-          <div class="field-group"><label for="lead-phone">Phone</label><input id="lead-phone" name="phone" type="tel" placeholder="(336) 437-4484" autocomplete="tel" /></div>
-          <div class="field-group"><label for="lead-business">Business / Organization</label><input id="lead-business" name="business" type="text" placeholder="Business, team, or organization" autocomplete="organization" /></div>
-          <div class="field-group"><label for="lead-system-type">What kind of system do you need?</label><select id="lead-system-type" name="system_type" required>
-            <option value="Small business system">Small business system</option>
-            <option value="Creator / production system">Creator / production system</option>
-            <option value="Fitness / coaching system">Fitness / coaching system</option>
-            <option value="Retail / local sales system">Retail / local sales system</option>
-            <option value="Sales / field system">Sales / field system</option>
-            <option value="High-ticket / service system">High-ticket / service system</option>
-            <option value="Government / contract system">Government / contract system</option>
-            <option value="Personal productivity system">Personal productivity system</option>
-            <option value="Not sure yet">Not sure yet</option>
-          </select></div>
-          <fieldset class="checkbox-fieldset">
-            <legend class="field-legend">What needs to get organized first?</legend>
-            <div class="checkbox-grid">
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Website / digital presence" />Website / digital presence</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Leads / customers / clients" />Leads / customers / clients</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Content / production workflow" />Content / production workflow</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Workouts / coaching / accountability" />Workouts / coaching / accountability</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="CRM / customer tracking" />CRM / customer tracking</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Quotes / pricing / offers" />Quotes / pricing / offers</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Proposals / bids / contracts" />Proposals / bids / contracts</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="AI workflows / automation" />AI workflows / automation</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Dashboard / operating system" />Dashboard / operating system</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs_organized[]" value="Full custom system" />Full custom system</label>
-            </div>
-          </fieldset>
-          <div class="field-group"><label for="lead-message">Optional message</label><textarea id="lead-message" name="message" placeholder="Tell me what you do, what feels scattered, and what you wish worked automatically."></textarea></div>
-          <input type="hidden" name="source_page" value="akrandall-coming-soon" />
-          <input type="hidden" name="lead_stage" value="early_access" />
-          <input type="hidden" name="submitted_at" id="submitted-at" value="" />
-          <input type="hidden" name="utm_source" id="utm_source" value="" />
-          <input type="hidden" name="utm_medium" id="utm_medium" value="" />
-          <input type="hidden" name="utm_campaign" id="utm_campaign" value="" />
-          <input type="hidden" name="selected_interest" id="selected-interest" value="" />
-          <input type="hidden" name="page_url" id="page-url" value="" />
-          <input type="hidden" name="user_agent" id="user-agent" value="" />
-          <div class="hp-field" aria-hidden="true">
-            <label for="company-website">Company website</label>
-            <input id="company-website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
-          </div>
-          <div class="modal-submit"><button class="btn primary" type="submit">Request My Starting Point</button></div>
-        </div>
-        <p class="form-status" id="form-status" aria-live="polite"></p>
-      </form>
+<body class="home-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="index.html" aria-label="AK Randall Digital home"><span class="brand-mark" aria-hidden="true"><img src="akrandall_logo_pack_transparent/logo-mark-512.png" alt="" width="512" height="512"></span><span class="brand-wordmark"><strong>AK Randall</strong><small>Digital</small></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation"><span></span></button>
+      <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
+        <a href="services.html">Services</a>
+        <a href="work.html">Proof</a>
+        <a href="about.html">About</a>
+        <a class="nav-assessment" href="assessment.html" data-assessment-cta="header-nav">Free assessment</a>
+        <a href="connect.html">Connect</a>
+        <a class="nav-cta" href="connect.html#schedule">Book a free intro call</a>
+      </nav>
     </div>
-  </div>
-  <script>
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.18});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </header>
 
-    const modal=document.getElementById('lead-modal');
-    const openButton=document.getElementById('open-modal');
-    const closeButton=document.getElementById('close-modal');
-    const modalForm=document.getElementById('lead-form');
-    const notifyForm=document.getElementById('notify-form');
-    const projectSelect=document.getElementById('lead-system-type');
-    const selectedInterestField=document.getElementById('selected-interest');
-    const submittedAtField=document.getElementById('submitted-at');
-    const utmSourceField=document.getElementById('utm_source');
-    const utmMediumField=document.getElementById('utm_medium');
-    const utmCampaignField=document.getElementById('utm_campaign');
-    const pageUrlField=document.getElementById('page-url');
-    const userAgentField=document.getElementById('user-agent');
-    const chips=document.querySelectorAll('.intent-chip');
-    const focusableSelectors='button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const backupMessage='Form is not connected yet. Please email hello@akrandall.com, call (336) 437-4484, or book a strategy call.';
-    const successMessage='Received. I\u2019ll review what you\u2019re trying to organize and follow up soon.';
-    let lastFocused=null;
-    const interestMap={
-      'I need my business organized':{project:'Small business system',helps:['Leads / customers / clients','Dashboard / operating system']},
-      'I need my content or clients organized':{project:'Creator / production system',helps:['Content / production workflow','Leads / customers / clients']},
-      'I need help building a custom system':{project:'Not sure yet',helps:['Full custom system','AI workflows / automation']}
-    };
+  <main id="main">
+    <section class="home-scroll-hero" data-scroll-video-section aria-labelledby="home-hero-title">
+      <div class="home-scroll-stage">
+        <video class="home-scroll-film" data-scroll-video muted playsinline preload="auto" poster="assets/images/home-growth-poster.jpg" tabindex="-1" aria-hidden="true"><source src="assets/video/home-growth.mp4" type="video/mp4"></video>
+        <div class="home-scroll-shade" aria-hidden="true"></div>
+        <div class="wrap home-scroll-content">
+          <div class="home-scroll-copy">
+            <p class="eyebrow">Digital transformation / Business strategy / B2G consulting</p>
+            <h1 id="home-hero-title">Make your capability <span>easier to buy.</span></h1>
+            <p>Connect the way your business is found, understood, pursued, and delivered&mdash;so good opportunities do not disappear into scattered information or inconsistent follow-through.</p>
+            <div class="hero-actions">
+              <a class="button button--sage" href="connect.html#schedule">Book your free 30-minute intro call</a>
+              <a class="button home-button-ghost" href="assessment.html" data-assessment-cta="home-hero">Take the free growth assessment</a>
+            </div>
+            <p class="home-hero-trust">Free &middot; Directly with Andrew &middot; Confidential &middot; Leave with a recommended next move</p>
+          </div>
 
-    const openModal=(interest)=>{
-      lastFocused=document.activeElement;
-      if(interest){
-        selectedInterestField.value=interest;
-        applyInterest(interest);
-      }
-      modal.hidden=false;
-      document.body.classList.add('modal-open');
-      const firstInput=modal.querySelector('input, select, textarea');
-      firstInput?.focus();
-      populateUtm();
-    };
+          <div class="home-scroll-sequence" aria-label="A connected growth system">
+            <article data-scroll-chapter="0" class="is-active"><span>01</span><div><strong>See the market</strong><p>Find the signals, buyers, and opportunities worth acting on.</p></div></article>
+            <article data-scroll-chapter="1"><span>02</span><div><strong>Build the system</strong><p>Give information, ownership, and follow-through one connected path.</p></div></article>
+            <article data-scroll-chapter="2"><span>03</span><div><strong>Win with proof</strong><p>Turn credible capability and finished work into the next reason to choose you.</p></div></article>
+          </div>
+        </div>
 
-    const closeModal=()=>{
-      modal.hidden=true;
-      document.body.classList.remove('modal-open');
-      lastFocused?.focus();
-    };
+        <div class="wrap home-scroll-footer" aria-hidden="true">
+          <span data-scroll-progress-label>01 / See the market</span>
+          <div><i data-scroll-progress></i></div>
+          <p>Scroll to move through the city</p>
+        </div>
+      </div>
+    </section>
 
-    const populateUtm=()=>{
-      const params=new URLSearchParams(window.location.search);
-      utmSourceField.value=params.get('utm_source')||'';
-      utmMediumField.value=params.get('utm_medium')||'';
-      utmCampaignField.value=params.get('utm_campaign')||'';
-    };
+    <section class="home-proof-bar" aria-label="Selected experience and confirmed outcomes">
+      <div class="wrap home-proof-grid">
+        <div><strong>17 years</strong><span>Sales, growth, strategy, and delivery experience</span></div>
+        <div><strong>Under 5</strong><span>Years to build the public-sector record shown here</span></div>
+        <div><strong>37 + DC</strong><span>Public-sector markets reached</span></div>
+        <div><strong>$7.5M+</strong><span>Confirmed customer project value</span></div>
+      </div>
+    </section>
 
-    const isPlaceholderEndpoint=form=>{
-      const action=form?.getAttribute('action')||'';
-      return !action.trim()||action.includes('REPLACE_ME')||action.includes('formspree.io/f/REPLACE_ME');
-    };
+    <section class="home-assessment-invite" aria-labelledby="home-assessment-title">
+      <div class="wrap home-assessment-invite-grid" data-reveal>
+        <p class="eyebrow">A useful place to begin</p>
+        <div><h2 id="home-assessment-title">Not ready to book? Get a tailored starting point first.</h2><p>Take the free, three-minute assessment. The questions adapt to your industry and whether you need to strengthen your market presence, operating system, or path into public-sector work.</p></div>
+        <a class="button button--blue" href="assessment.html" data-assessment-cta="home-invite">Start my free assessment</a>
+      </div>
+    </section>
 
-    const setTrackingFields=form=>{
-      const params=new URLSearchParams(window.location.search);
-      form.querySelectorAll('input[name="submitted_at"]').forEach(input=>{input.value=new Date().toISOString();});
-      form.querySelectorAll('input[name="page_url"]').forEach(input=>{input.value=window.location.href;});
-      form.querySelectorAll('input[name="user_agent"]').forEach(input=>{input.value=navigator.userAgent;});
-      form.querySelectorAll('input[name="utm_source"]').forEach(input=>{input.value=params.get('utm_source')||'';});
-      form.querySelectorAll('input[name="utm_medium"]').forEach(input=>{input.value=params.get('utm_medium')||'';});
-      form.querySelectorAll('input[name="utm_campaign"]').forEach(input=>{input.value=params.get('utm_campaign')||'';});
-    };
+    <section class="home-diagnostic" id="diagnostic" aria-labelledby="diagnostic-title">
+      <div class="wrap">
+        <div class="home-section-heading" data-reveal>
+          <p class="eyebrow">Problem &rarr; service &rarr; benefit</p>
+          <div><h2 id="diagnostic-title">Start with what keeps happening. Follow it to the business change.</h2><p>Choose the situation you recognize. Each path connects the problem to the service designed to address it, the practical improvement to work toward, and independent evidence explaining why it matters now.</p></div>
+        </div>
 
-    const applyInterest=(interest)=>{
-      const settings=interestMap[interest];
-      if(!settings)return;
-      projectSelect.value=settings.project;
-      modal.querySelectorAll('input[name="needs_organized[]"]').forEach(input=>{
-        input.checked=settings.helps.includes(input.value);
-      });
-    };
+        <div class="home-decision-grid">
+          <article class="home-decision-card" data-reveal>
+            <div class="home-decision-problem">
+              <span>01 / BUYER CLARITY</span>
+              <h3>Buyers see what you do, but not why you are the stronger choice.</h3>
+              <p>Your website and sales material describe services without making the value, evidence, and next step easy to understand.</p>
+            </div>
+            <div class="home-decision-solution">
+              <div><span>Service designed for it</span><strong>Business strategy + strategic website</strong></div>
+              <div><span>What better looks like</span><ul><li>Sharper differentiation</li><li>A clearer buyer decision path</li><li>Proof placed where questions arise</li></ul></div>
+            </div>
+            <aside class="home-decision-fact">
+              <strong>75%</strong>
+              <div><p>of surveyed decision-makers said a piece of thought leadership led them to research an offering they had not previously considered.</p><a href="https://www.linkedin.com/business/marketing/blog/research-and-insights/b2b-thought-leadership-research-impact-linkedin-edelman" target="_blank" rel="noopener">LinkedIn + Edelman, 2024 <b aria-hidden="true">&nearr;</b></a></div>
+            </aside>
+            <div class="home-decision-actions"><a href="services.html#launch">See the service</a><a href="assessment.html?path=brand&amp;source=buyer-clarity" data-assessment-cta="decision-buyer-clarity">Assess this problem <b aria-hidden="true">&nearr;</b></a></div>
+          </article>
 
-    openButton.addEventListener('click',()=>openModal(''));
-    closeButton.addEventListener('click',closeModal);
-    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden){closeModal();}});
+          <article class="home-decision-card" data-reveal>
+            <div class="home-decision-problem">
+              <span>02 / CONNECTED OPERATIONS</span>
+              <h3>Important work still depends on memory, inboxes, and workarounds.</h3>
+              <p>Leads, tasks, approvals, documents, and customer context move between tools without one reliable owner or source of truth.</p>
+            </div>
+            <div class="home-decision-solution">
+              <div><span>Service designed for it</span><strong>Digital transformation + workflow automation</strong></div>
+              <div><span>What better looks like</span><ul><li>Clear ownership and handoffs</li><li>Less repetitive follow-up</li><li>Information available when work moves</li></ul></div>
+            </div>
+            <aside class="home-decision-fact">
+              <strong>83%</strong>
+              <div><p>of surveyed U.S. small businesses said technology platforms helped them compete with larger companies.</p><a href="https://www.uschamber.com/assets/documents/20251621-CTEC-Empowering-Small-Business-Report-2025-v1-r10-Digital-FINAL.pdf" target="_blank" rel="noopener">U.S. Chamber, 2025 <b aria-hidden="true">&nearr;</b></a></div>
+            </aside>
+            <div class="home-decision-actions"><a href="services.html#build">See the service</a><a href="assessment.html?path=system&amp;source=connected-operations" data-assessment-cta="decision-operations">Assess this problem <b aria-hidden="true">&nearr;</b></a></div>
+          </article>
 
-    chips.forEach(chip=>{chip.addEventListener('click',()=>openModal(chip.dataset.interest));});
+          <article class="home-decision-card" data-reveal>
+            <div class="home-decision-problem">
+              <span>03 / GOVERNMENT GROWTH</span>
+              <h3>You want public-sector growth, but the foundation and pursuit work are disconnected.</h3>
+              <p>Registrations, vendor portals, buyer research, marketing material, events, proposals, and follow-up need one practical path.</p>
+            </div>
+            <div class="home-decision-solution">
+              <div><span>Service designed for it</span><strong>Government market entry + pursuit system</strong></div>
+              <div><span>What better looks like</span><ul><li>Registration and portal readiness</li><li>Buyer-ready capability material</li><li>A focused event, capture, and proposal plan</li></ul></div>
+            </div>
+            <aside class="home-decision-fact">
+              <strong>Nearly 28%</strong>
+              <div><p>of federal prime contracting dollars went to small businesses in FY2025&mdash;approximately $179 billion.</p><a href="https://www.sba.gov/article/2026/06/25/sba-releases-fy25-scorecard-small-business-contracting" target="_blank" rel="noopener">U.S. SBA, FY2025 <b aria-hidden="true">&nearr;</b></a></div>
+            </aside>
+            <div class="home-decision-actions"><a href="services.html#win">See the service</a><a href="assessment.html?path=work&amp;source=government-growth" data-assessment-cta="decision-b2g">Assess this problem <b aria-hidden="true">&nearr;</b></a></div>
+          </article>
 
-    notifyForm.addEventListener('submit',e=>{
-      const status=document.getElementById('notify-status');
-      if(isPlaceholderEndpoint(notifyForm)){
-        e.preventDefault();
-        if(status){status.textContent=backupMessage;}
-        return;
-      }
-      setTrackingFields(notifyForm);
-      if(status){status.textContent='Sending...';}
-      setTimeout(()=>{if(status){status.textContent=successMessage;}},900);
-    });
+          <article class="home-decision-card" data-reveal>
+            <div class="home-decision-problem">
+              <span>04 / PROOF THAT TRAVELS</span>
+              <h3>You have completed strong work, but the evidence is scattered.</h3>
+              <p>Photos, results, customer context, reports, and team knowledge exist without a clear story buyers can inspect or reuse internally.</p>
+            </div>
+            <div class="home-decision-solution">
+              <div><span>Service designed for it</span><strong>Proof strategy + case-story system</strong></div>
+              <div><span>What better looks like</span><ul><li>Lower perceived buyer risk</li><li>Evidence ready for proposals and sales</li><li>A stronger case for internal approval</li></ul></div>
+            </div>
+            <aside class="home-decision-fact">
+              <strong>40%+</strong>
+              <div><p>of B2B deals stall because members of the buying group cannot reach alignment, according to LinkedIn and Edelman.</p><a href="https://www.linkedin.com/business/marketing/blog/research-and-insights/b2b-thought-leadership-influence-hidden-buyers" target="_blank" rel="noopener">LinkedIn + Edelman, 2025 <b aria-hidden="true">&nearr;</b></a></div>
+            </aside>
+            <div class="home-decision-actions"><a href="work.html#transferability">See how proof transfers</a><a href="assessment.html?path=brand&amp;source=proof-system" data-assessment-cta="decision-proof">Assess this problem <b aria-hidden="true">&nearr;</b></a></div>
+          </article>
+        </div>
 
-    modalForm.addEventListener('submit',e=>{
-      const status=document.getElementById('form-status');
-      if(isPlaceholderEndpoint(modalForm)){
-        e.preventDefault();
-        if(status){status.textContent=backupMessage;}
-        return;
-      }
-      submittedAtField.value=new Date().toISOString();
-      pageUrlField.value=window.location.href;
-      userAgentField.value=navigator.userAgent;
-      populateUtm();
-      setTrackingFields(modalForm);
-      if(status){status.textContent='Sending...';}
-      setTimeout(()=>{
-        modalForm.classList.add('is-submitted');
-        if(status){status.textContent=successMessage;}
-      },900);
-    });
+        <p class="home-research-note" data-reveal><strong>How to read the evidence:</strong> These figures describe broader market conditions, not a promised client result. Every engagement starts by defining your baseline, the operating change you need, and the evidence that will show whether the work improved it.</p>
 
-    modal.addEventListener('keydown',e=>{
-      if(e.key!=='Tab')return;
-      const focusable=Array.from(modal.querySelectorAll(focusableSelectors)).filter(el=>!el.hasAttribute('disabled'));
-      if(!focusable.length)return;
-      const index=focusable.indexOf(document.activeElement);
-      if(e.shiftKey&&index===0){focusable[focusable.length-1].focus();e.preventDefault();}
-      if(!e.shiftKey&&index===focusable.length-1){focusable[0].focus();e.preventDefault();}
-    });
-  </script>
+        <div class="assessment-prompt" data-reveal>
+          <div><p class="micro">Free / About 3 minutes</p><h3>Recognize the problem but not the right service?</h3><p>Answer a short set of questions and get a tailored recommendation for the growth system to strengthen first.</p></div>
+          <a class="button button--sage" href="assessment.html" data-assessment-cta="home-diagnostic">Find my starting point</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-paths" aria-labelledby="paths-title">
+      <div class="wrap">
+        <div class="home-paths-heading" data-reveal>
+          <p class="eyebrow">Choose the outcome</p>
+          <h2 id="paths-title">Three ways to remove friction between capability and growth.</h2>
+        </div>
+
+        <div class="home-paths-grid">
+          <article data-reveal>
+            <span class="home-path-number">01</span>
+            <p class="eyebrow">B2G consulting</p>
+            <h3>Build a repeatable path into government markets.</h3>
+            <p>Build the foundation, market presence, and pursuit discipline needed to move from “we can do the work” to “we are ready to be considered.”</p>
+            <ul><li>Guided SAM.gov and vendor-portal setup</li><li>Capability statements, marketing material, and trade-show strategy</li><li>Opportunity qualification, proposals, and follow-through</li></ul>
+            <a class="button button--sage" href="services.html#win">Strengthen your B2G pursuit</a>
+          </article>
+          <article data-reveal>
+            <span class="home-path-number">02</span>
+            <p class="eyebrow">Digital transformation</p>
+            <h3>Turn scattered work into an operating system.</h3>
+            <p>Connect the tools, information, workflows, and responsible automation your team needs to move work without unnecessary handoffs or guesswork.</p>
+            <ul><li>CRM and pipeline design</li><li>Workflow and document systems</li><li>Practical automation around real work</li></ul>
+            <a class="button home-path-button" href="services.html#build">Connect your operations</a>
+          </article>
+          <article data-reveal>
+            <span class="home-path-number">03</span>
+            <p class="eyebrow">Business strategy</p>
+            <h3>Make the next growth move with sharper priorities.</h3>
+            <p>Clarify the market, offer, buyer, constraints, and sequence before investing more time or money into disconnected activity.</p>
+            <ul><li>Growth and market positioning</li><li>Offer and buyer alignment</li><li>Implementation roadmaps</li></ul>
+            <a class="button home-path-button" href="services.html">Clarify your next move</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-industry-lens" aria-labelledby="industry-lens-title">
+      <div class="wrap">
+        <header class="home-industry-heading" data-reveal>
+          <p class="eyebrow">Built to translate across industries</p>
+          <div>
+            <h2 id="industry-lens-title">The industry changes.<br><span>The growth friction repeats.</span></h2>
+            <p>AKRD is useful wherever a capable team has complex value, scattered operations, or a buying process that demands more proof than a list of services.</p>
+          </div>
+        </header>
+
+        <div class="home-industry-grid">
+          <article class="industry-card" data-reveal>
+            <svg class="system-glyph" viewBox="0 0 96 96" aria-hidden="true">
+              <rect x="35" y="35" width="26" height="26" rx="5"></rect>
+              <circle cx="16" cy="48" r="5"></circle><circle cx="80" cy="48" r="5"></circle><circle cx="48" cy="16" r="5"></circle><circle cx="48" cy="80" r="5"></circle>
+              <path pathLength="1" d="M21 48h14m26 0h14M48 21v14m0 26v14"></path>
+            </svg>
+            <span class="home-industry-index">01 / COMPLEX VALUE</span>
+            <h3>Buyers need expertise translated into a decision.</h3>
+            <p>Clarify the problem, business value, evidence, and next step without flattening the technical depth that makes the company credible.</p>
+          </article>
+          <article class="industry-card" data-reveal>
+            <svg class="system-glyph" viewBox="0 0 96 96" aria-hidden="true">
+              <rect x="10" y="18" width="28" height="20" rx="4"></rect><rect x="58" y="18" width="28" height="20" rx="4"></rect><rect x="34" y="60" width="28" height="20" rx="4"></rect>
+              <path pathLength="1" d="M38 28h20M24 38v12c0 6 5 11 11 11h3m34-23v12c0 6-5 11-11 11h-3"></path>
+            </svg>
+            <span class="home-industry-index">02 / COMPLEX WORK</span>
+            <h3>Teams need one reliable path through the work.</h3>
+            <p>Connect information, owners, tools, approvals, and handoffs so capability does not depend on memory or heroic follow-through.</p>
+          </article>
+          <article class="industry-card" data-reveal>
+            <svg class="system-glyph" viewBox="0 0 96 96" aria-hidden="true">
+              <circle cx="48" cy="48" r="34"></circle><circle cx="48" cy="48" r="23"></circle>
+              <path pathLength="1" d="m34 49 9 9 20-23M48 14V7m34 41h7M48 82v7M14 48H7"></path>
+            </svg>
+            <span class="home-industry-index">03 / COMPLEX BUYING</span>
+            <h3>Decision-makers need proof they can trust and reuse.</h3>
+            <p>Turn finished work, data, customer context, and delivery evidence into a business case that survives scrutiny and supports the next opportunity.</p>
+          </article>
+        </div>
+
+        <div class="home-industry-sectors" data-reveal>
+          <div><p class="micro">Where these patterns often appear</p><ul aria-label="Example industries"><li>Professional services</li><li>Construction</li><li>Technology</li><li>Manufacturing</li><li>Government contractors</li><li>Mission-driven organizations</li></ul></div>
+          <a class="button button--blue" href="assessment.html" data-assessment-cta="home-industry">See where my friction starts</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-proof-story" aria-labelledby="proof-story-title">
+      <div class="wrap home-proof-story-grid">
+        <div class="home-proof-story-copy" data-reveal>
+          <p class="eyebrow">Proof of connected execution</p>
+          <h2 id="proof-story-title">Strategy should show up somewhere you can count.</h2>
+          <p>The projects happen to be solar and civic infrastructure. The transferable proof is the operating discipline behind them: market intelligence, buying-path strategy, technical translation, coordinated delivery, and evidence captured well enough to strengthen the next opportunity. Andrew built this public-sector record in under five years by applying the sales discipline developed across a 17-year career.</p>
+          <a class="button button--light" href="work.html">See the method behind the proof</a>
+        </div>
+        <div class="home-proof-story-metrics">
+          <article data-reveal><strong>$7.5M<sup>+</sup></strong><span>Confirmed customer projects supported by awards, agreements, and issued orders</span></article>
+          <article data-reveal><strong>41</strong><span>Field projects mapped across public environments</span></article>
+          <article data-reveal><strong><small>Under</small> 5 years</strong><span>From public-market entry to the confirmed record shown here</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-method" aria-labelledby="method-title">
+      <div class="wrap">
+        <div class="home-section-heading" data-reveal>
+          <p class="eyebrow">From diagnosis to implementation</p>
+          <div><h2 id="method-title">Do not stop at a recommendation deck.</h2><p>The work stays connected from the first business question through the system, pursuit, or market change your team can actually use.</p></div>
+        </div>
+        <ol class="home-method-grid">
+          <li data-reveal><span>01</span><h3>Diagnose</h3><p>Find the recurring point where time, clarity, or opportunity is being lost.</p></li>
+          <li data-reveal><span>02</span><h3>Design</h3><p>Choose the smallest connected system that can change the result.</p></li>
+          <li data-reveal><span>03</span><h3>Deploy</h3><p>Build around the people, tools, and buying process already in the work.</p></li>
+          <li data-reveal><span>04</span><h3>Prove</h3><p>Measure what changed and turn the outcome into the next advantage.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="home-conversion" id="start" aria-labelledby="home-conversion-title">
+      <div class="wrap home-conversion-grid">
+        <div class="home-conversion-copy" data-reveal>
+          <p class="eyebrow">Start with one honest problem</p>
+          <h2 id="home-conversion-title">What keeps happening that should not?</h2>
+          <p>You do not need to diagnose the whole business before reaching out. Describe the missed opportunity, repeated delay, disconnected workflow, or growth decision in plain language.</p>
+          <div class="home-conversion-choice"><span>Prefer a guided starting point?</span><a href="assessment.html" data-assessment-cta="home-final">Take the free three-minute assessment <b aria-hidden="true">&nearr;</b></a></div>
+          <div class="home-conversion-choice"><span>Prefer a conversation?</span><a href="connect.html#schedule">Book a free 30-minute intro call <b aria-hidden="true">&nearr;</b></a></div>
+        </div>
+
+        <form class="inquiry-form home-inquiry-form" data-inquiry-form data-reveal accept-charset="UTF-8">
+          <div class="field"><label for="home-name">Your name</label><input id="home-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+          <div class="field"><label for="home-email">Work email</label><input id="home-email" name="email" type="email" autocomplete="email" maxlength="180" required></div>
+          <div class="field field--full"><label for="home-company">Company or organization</label><input id="home-company" name="company" type="text" autocomplete="organization" maxlength="180"></div>
+          <div class="field field--full"><label for="home-focus">Where do you need traction?</label><select id="home-focus" name="focus"><option>Government market entry / B2G pursuit</option><option>SAM.gov or vendor-account setup</option><option>Capability material, proposals, or trade shows</option><option>Digital operations and workflows</option><option>Business strategy</option><option>Strategic website</option><option>AI workflow automation</option><option>Not sure yet</option></select></div>
+          <div class="field field--full"><label for="home-message">What keeps happening that should not?</label><textarea id="home-message" name="message" maxlength="4000" required placeholder="A few clear sentences are enough."></textarea></div>
+          <div class="form-honeypot" aria-hidden="true"><label for="home-website">Leave this field empty</label><input id="home-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <input type="hidden" name="sourcePage"><input type="hidden" name="referrer"><input type="hidden" name="utmSource"><input type="hidden" name="utmMedium"><input type="hidden" name="utmCampaign"><input type="hidden" name="utmContent"><input type="hidden" name="utmTerm"><input type="hidden" name="submittedAt">
+          <p class="form-note">Your information is used only to review and respond to your message. See the <a href="privacy.html">privacy notice</a>.</p>
+          <div class="field field--full"><button class="button button--sage" type="submit">Send my growth challenge &nearr;</button></div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <div class="lead-success" data-lead-success hidden><strong>Message received.</strong><p>Andrew will review the context and respond directly.</p><a class="button button--sage" href="connect.html#schedule">Choose a call time</a></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><img src="assets/brand/logo-header.webp" alt="AK Randall Digital" width="640" height="240"><p>Helping capable businesses connect their market presence, operations, and public-sector growth strategy.</p></div><nav class="footer-links" aria-label="Footer"><strong>Explore</strong><a href="services.html">Services</a><a href="work.html">Proof</a><a href="about.html">About</a><a href="assessment.html">Free assessment</a><a href="connect.html">Connect</a></nav><div class="footer-links"><strong>Start a conversation</strong><a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a><a href="tel:+13364374484">336 437 4484</a><a href="connect.html#schedule">Book a free intro call &nearr;</a></div></div><div class="footer-bottom"><span>&copy; <span data-year></span> AK Randall Digital LLC</span><span>North Carolina &middot; Working nationally</span></div></div></footer>
 </body>
 </html>

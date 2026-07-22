@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Growth Assessment | AK Randall Digital</title>
+<meta name="description" content="A free, tailored growth assessment from AK Randall Digital.">
+<meta name="theme-color" content="#071526">
+<style>
+  :root{
+    --navy:#133A75; --cyan:#2277D1; --sage:#5FC597; --warm:#F5F1E8; --ink:#080C12;
+    --white:#ffffff; --line:#E4DFD2; --coral:#F4A261; --sage-deep:#3E9C74;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(180deg,#F5F1E8 0%,#EDE7D8 100%);color:var(--ink);min-height:100vh;}
+  .shell{max-width:640px;margin:0 auto;padding:44px 20px 80px;}
+  .brand{text-align:center;margin-bottom:20px;display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .brand .mark{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;box-shadow:0 4px 14px rgba(19,58,117,.25);}
+  .brand b{color:var(--navy);font-size:14px;letter-spacing:.03em;}
+  .phase-label{text-align:center;font-size:11px;color:#8a8370;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:700;}
+  .progress-track{background:#e2dccb;border-radius:20px;height:7px;overflow:hidden;margin-bottom:30px;box-shadow:inset 0 1px 2px rgba(0,0,0,.06);}
+  .progress-fill{background:linear-gradient(90deg,var(--sage),var(--sage-deep));height:100%;transition:width .4s ease;border-radius:20px;}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 28px;box-shadow:0 10px 30px rgba(19,58,117,.06);animation:panelIn .35s ease;}
+  @keyframes panelIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  h1{font-size:22px;color:var(--navy);margin:0 0 10px;line-height:1.3;}
+  h2{font-size:19px;color:var(--navy);margin:0 0 6px;line-height:1.35;}
+  p.sub{color:#7a7566;font-size:13.5px;margin:0 0 22px;line-height:1.5;}
+  .options{display:flex;flex-direction:column;gap:10px;}
+  .opt{border:2px solid var(--line);border-radius:14px;padding:15px 16px;cursor:pointer;font-size:14px;transition:all .15s ease;display:flex;align-items:flex-start;gap:12px;background:#fffdf9;}
+  .opt:hover{border-color:var(--cyan);transform:translateY(-1px);box-shadow:0 4px 12px rgba(34,119,209,.1);}
+  .opt.sel{border-color:var(--sage-deep);background:#f0faf4;box-shadow:0 4px 12px rgba(95,197,151,.15);}
+  .opt .emoji{font-size:20px;line-height:1.3;flex:0 0 auto;}
+  .opt .txt{flex:1;}
+  .opt b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:2px;}
+  .opt span.d{font-size:12.5px;color:#8a8577;}
+  .opt .check{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;transition:all .15s;}
+  .opt.sel .check{background:var(--sage-deep);border-color:var(--sage-deep);}
+  label.field{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#8a8577;margin:16px 0 5px;}
+  label.field:first-child{margin-top:0;}
+  input[type=text],input[type=email],input[type=tel]{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:14.5px;font-family:inherit;transition:border-color .15s;}
+  input:focus{outline:none;border-color:var(--cyan);}
+  .nav-row{display:flex;justify-content:space-between;margin-top:28px;align-items:center;}
+  .btn{padding:13px 24px;border-radius:10px;border:none;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:.02em;transition:transform .1s ease;}
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:linear-gradient(135deg,var(--sage),var(--sage-deep));color:#fff;box-shadow:0 4px 14px rgba(62,156,116,.3);}
+  .btn-primary:disabled{opacity:.35;cursor:not-allowed;box-shadow:none;}
+  .btn-outline{background:none;border:1.5px solid var(--line);color:#8a8577;}
+  .btn-outline:hover{border-color:var(--navy);color:var(--navy);}
+  .chat-card{display:flex;gap:12px;margin-bottom:20px;}
+  .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;flex:0 0 auto;box-shadow:0 4px 12px rgba(19,58,117,.25);}
+  .bubble{background:var(--navy);color:#fff;border-radius:4px 18px 18px 18px;padding:20px 22px;position:relative;flex:1;box-shadow:0 8px 24px rgba(19,58,117,.2);}
+  .bubble .tag{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;opacity:.65;margin-bottom:6px;}
+  .bubble h2{color:#fff;margin:0 0 10px;font-size:17px;}
+  .bubble p{font-size:14px;line-height:1.6;margin:0;opacity:.94;}
+  .bubble a{color:#b7e33f;text-underline-offset:3px;}
+  .rec-card{background:linear-gradient(135deg,var(--navy),#1a4a94);color:#fff;border-radius:18px;padding:26px 24px;margin-bottom:18px;box-shadow:0 12px 32px rgba(19,58,117,.25);}
+  .rec-card .tag{font-size:11px;text-transform:uppercase;letter-spacing:.05em;opacity:.7;}
+  .rec-card h2{color:#fff;margin:8px 0 12px;font-size:21px;}
+  .rec-card p{font-size:14.5px;line-height:1.6;margin:0;opacity:.94;}
+  .summary-list{font-size:13px;color:#6b6656;background:#f6f2e6;border-radius:12px;padding:16px 18px;margin-top:18px;}
+  .summary-list div{padding:5px 0;}
+  .foot{text-align:center;font-size:11.5px;color:#a39d8a;margin-top:26px;line-height:1.6;}
+  .reassure{font-size:12px;color:#8a8577;background:#faf7ef;border-radius:10px;padding:10px 14px;margin-top:16px;text-align:center;}
+</style>
+<link rel="stylesheet" href="assessment-tool.css?v=20260721a">
+<script src="lead-config.js?v=20260721d"></script>
+</head>
+
+<body>
+<div class="shell">
+  <div class="brand"><div class="mark">AK</div><b>Your free AKRD growth diagnostic</b></div>
+  <div class="phase-label" id="phaseLabel">Getting to know you</div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:5%;"></div></div>
+  <div class="panel" id="panel"></div>
+  <div class="foot">Your information is used only to provide and discuss this assessment — never added to an unrelated sales list.</div>
+</div>
+
+<script>
+const MAIN_TOOL_URL = '';
+
+/* ======= Paste the Web app URL from your deployed Apps Script here.
+   Leave blank and the tool falls back to the manual "Send this to Andrew"
+   Gmail button — nothing breaks, it just won't auto-email the customer. ======= */
+const APPS_SCRIPT_URL = String((window.AKRD_LEAD_CONFIG || window.parent?.AKRD_LEAD_CONFIG || {}).appsScriptUrl || '').trim();
+
+function escapeHTML(value){
+  return String(value || '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'})[char]);
+}
+function cleanInput(value, maxLength){
+  return String(value || '').replace(/[<>]/g, '').trim().slice(0, maxLength || 180);
+}
+function trackAssessment(eventName, detail){
+  try {
+    window.parent?.postMessage({type:'akrd-assessment-event', eventName, detail:detail || {}}, '*');
+  } catch(error) {}
+}
+function reportAssessmentHeight(){
+  try {
+    window.parent?.postMessage({type:'akrd-assessment-height', height:document.documentElement.scrollHeight}, '*');
+  } catch(error) {}
+}
+
+const INDUSTRIES = [
+  {value:'home_services', label:'Home Services & Contracting', desc:'HVAC, plumbing, electrical, landscaping, roofing', emoji:'🏠'},
+  {value:'solar', label:'Solar / Renewable Energy', emoji:'☀️'},
+  {value:'govvendor', label:'Government / Public-Sector Vendor', desc:'Registration, vendor portals, agency buyers, proposals', emoji:'🏛️'},
+  {value:'infra', label:'Transit / Mobility / Smart Infrastructure', emoji:'🚆'},
+  {value:'professional', label:'Professional Services', desc:'Legal, accounting, consulting', emoji:'💼'},
+  {value:'nonprofit', label:'Nonprofit / Community Organization', emoji:'❤️'},
+  {value:'retail', label:'Retail / E-commerce', emoji:'🛍️'},
+  {value:'other', label:'Something else', emoji:'✨'},
+];
+
+const PATH_COPY = {
+  home_services: { sub:"We'll ask about how home-service businesses actually get hired.",
+    descs:{ brand:'Get a site that turns lookers into booked jobs.', system:'Stop losing leads between the phone, texts, and a notebook.', work:'Pursue commercial or government facility contracts.' } },
+  solar: { sub:"We'll ask how you're actually selling — residential, commercial, or government.",
+    descs:{ brand:'A site built to convert homeowner or commercial leads.', system:'Connect leads, installs, and follow-up into one pipeline.', work:'Break into government, utility, or cooperative-vehicle sales.' } },
+  govvendor: { sub:"We'll ask where you are between registration, market entry, and active pursuit.",
+    descs:{ brand:'Build buyer-ready positioning, capability material, and proof.', system:'Organize vendor profiles, capture, proposals, and follow-through.', work:'Build the market-entry and pursuit infrastructure to compete.' } },
+  infra: { sub:"We'll ask whether this is one relationship or a broader market push.",
+    descs:{ brand:'A site that positions you for agency and operator buyers.', system:'Connect field data, ops, and reporting into one system.', work:'Build capture infrastructure for transit, EV, or smart-city pursuits.' } },
+  professional: { sub:"We'll ask whether this is about new clients or serving current ones better.",
+    descs:{ brand:'A site that signals credibility to the clients you want.', system:'Connect intake, scheduling, and client communication.', work:'Pursue government or institutional contracts.' } },
+  nonprofit: { sub:"We'll ask whether this is donor-facing or program-facing.",
+    descs:{ brand:'A site that builds donor and community trust.', system:'Connect donor, volunteer, and program data.', work:'Pursue government or foundation funding relationships.' } },
+  retail: { sub:"We'll ask how your customers actually buy from you today.",
+    descs:{ brand:'A site built to convert browsers into buyers.', system:'Connect inventory, orders, and customer data.', work:'Pursue institutional or bulk/government purchasing.' } },
+  other: { sub:"Pick whichever one is closest — we'll dig into specifics next.",
+    descs:{ brand:'Make the capability legible — site, positioning, first impression.', system:'Organize the messy middle — tools, workflows, automation.', work:'Build pursuit infrastructure for public-sector or infrastructure sales.' } },
+};
+
+const INDUSTRY_SIGNAL = {
+  home_services: { question:'How do most of your jobs come in today?',
+    options:[{value:'referral',label:'Word of mouth / referrals'},{value:'ads',label:'Paid ads or online search'},{value:'repeat',label:'Repeat customers'},{value:'mixed',label:"It's a mix, nothing dominant"}] },
+  solar: { question:'Who are you actually selling to?',
+    options:[{value:'residential',label:'Homeowners (residential)'},{value:'commercial',label:'Businesses (commercial)'},{value:'government',label:'Government / utility / institutional'},{value:'mixed',label:'A mix of these'}] },
+  govvendor: { question:'How established is your public-sector market position today?',
+    options:[{value:'several',label:'Active vehicles, agency relationships, or contracts'},{value:'one',label:'Registered with some targets or pursuits identified'},{value:'none',label:'Starting with registration and market selection'}] },
+  infra: { question:'Is this for a specific transit or infrastructure relationship already in motion, or broader market positioning?',
+    options:[{value:'specific',label:'A specific relationship already in motion'},{value:'broad',label:'Broader market positioning'},{value:'both',label:'Both'}] },
+  professional: { question:'Is this mainly about attracting new clients, or better supporting the ones you have?',
+    options:[{value:'new',label:'Attracting new clients'},{value:'existing',label:'Supporting existing clients'},{value:'both',label:'Both equally'}] },
+  nonprofit: { question:'Is this primarily donor-facing, or for program and service delivery?',
+    options:[{value:'donor',label:'Donor-facing (fundraising, awareness)'},{value:'program',label:'Program / service delivery'},{value:'both',label:'Both'}] },
+  retail: { question:'Do you sell primarily online, in-person, or both?',
+    options:[{value:'online',label:'Online'},{value:'inperson',label:'In-person'},{value:'both',label:'Both'}] },
+  other: { question:"What's the main way people currently find and choose you?",
+    options:[{value:'referral',label:'Referrals / word of mouth'},{value:'search',label:'Online search or ads'},{value:'network',label:'Professional network / outreach'},{value:'unsure',label:"Honestly, it's inconsistent"}] },
+};
+
+function industryLabel(val){ return (INDUSTRIES.find(i=>i.value===val)||{}).label || 'your industry'; }
+
+/* ============ SUB-INDUSTRY GRANULARITY ============
+   A landscaper isn't a general contractor isn't an HVAC company — even though
+   the site nav groups them. This layer keeps the broad question menu
+   maintainable while every generated sentence still names the real business. */
+const SUBINDUSTRY = {
+  home_services: [
+    {value:'landscaping', label:'Landscaping', emoji:'🌳', noun:'landscaping business'},
+    {value:'hvac', label:'HVAC', emoji:'❄️', noun:'HVAC company'},
+    {value:'plumbing', label:'Plumbing', emoji:'🔧', noun:'plumbing company'},
+    {value:'electrical', label:'Electrical', emoji:'💡', noun:'electrical contracting business'},
+    {value:'roofing', label:'Roofing', emoji:'🏚️', noun:'roofing company'},
+    {value:'general', label:'General Contracting', emoji:'🔨', noun:'general contracting business'},
+    {value:'other_hs', label:'Something else', emoji:'✨', noun:'home services business'},
+  ],
+  solar: [
+    {value:'residential_solar', label:'Residential installer', emoji:'🏡', noun:'residential solar installer'},
+    {value:'commercial_solar', label:'Commercial / utility-scale', emoji:'🏢', noun:'commercial solar company'},
+    {value:'solar_mfg', label:'Manufacturer / distributor', emoji:'🏭', noun:'solar manufacturer'},
+    {value:'other_solar', label:'Something else', emoji:'✨', noun:'solar company'},
+  ],
+  govvendor: [
+    {value:'construction_gov', label:'Construction / infrastructure', emoji:'🏗️', noun:'government construction contractor'},
+    {value:'it_gov', label:'IT / technology', emoji:'💻', noun:'government IT vendor'},
+    {value:'prof_gov', label:'Professional services', emoji:'📋', noun:'government professional-services firm'},
+    {value:'goods_gov', label:'Equipment / goods supplier', emoji:'📦', noun:'government equipment supplier'},
+    {value:'other_gov', label:'Something else', emoji:'✨', noun:'government vendor'},
+  ],
+  infra: [
+    {value:'transit', label:'Transit', emoji:'🚌', noun:'transit-focused company'},
+    {value:'ev', label:'EV charging', emoji:'🔌', noun:'EV infrastructure company'},
+    {value:'smartcity', label:'Smart-city technology', emoji:'🌆', noun:'smart-city technology company'},
+    {value:'other_infra', label:'Something else', emoji:'✨', noun:'infrastructure company'},
+  ],
+  professional: [
+    {value:'legal', label:'Legal', emoji:'⚖️', noun:'law firm'},
+    {value:'accounting', label:'Accounting', emoji:'📊', noun:'accounting firm'},
+    {value:'consulting', label:'Consulting', emoji:'🧭', noun:'consulting firm'},
+    {value:'other_prof', label:'Something else', emoji:'✨', noun:'professional-services firm'},
+  ],
+  nonprofit: [
+    {value:'social', label:'Social services', emoji:'🤝', noun:'social-services organization'},
+    {value:'environmental', label:'Environmental', emoji:'🌱', noun:'environmental nonprofit'},
+    {value:'education', label:'Education', emoji:'📚', noun:'education nonprofit'},
+    {value:'arts', label:'Arts & culture', emoji:'🎭', noun:'arts organization'},
+    {value:'other_np', label:'Something else', emoji:'✨', noun:'nonprofit organization'},
+  ],
+  retail: [
+    {value:'physical', label:'Physical store', emoji:'🏬', noun:'retail store'},
+    {value:'ecommerce_only', label:'E-commerce only', emoji:'📱', noun:'e-commerce brand'},
+    {value:'both_retail', label:'Both', emoji:'🔀', noun:'retail business'},
+  ],
+};
+function subIndustryNoun(a){
+  const list = SUBINDUSTRY[a.industry];
+  if(list && a.subindustry){
+    const found = list.find(s=>s.value===a.subindustry);
+    if(found) return found.noun;
+  }
+  return industryLabel(a.industry).toLowerCase();
+}
+function combinedLabel(a){
+  const list = SUBINDUSTRY[a.industry];
+  if(list && a.subindustry){
+    const found = list.find(s=>s.value===a.subindustry);
+    if(found) return found.label;
+  }
+  return industryLabel(a.industry);
+}
+
+/* ============ CUSTOMER CONTEXT ============
+   These interstitials explain what is forming, why it matters, and the
+   independent market evidence behind the recommendation. */
+const STAKES_HOOK = {
+  home_services: "For a home-services business, the digital experience should make service fit, coverage, proof, and the next step easy to verify.",
+  solar: "For a solar business, technical capability needs to become a clear business case for the buyer, site, and buying path in front of it.",
+  govvendor: "For a government vendor, capability must be supported by clear positioning, relevant proof, and procurement readiness.",
+  infra: "For an infrastructure company, technical value has to survive review by operators, procurement teams, partners, and public stakeholders.",
+  professional: "For a professional-services firm, expertise is easier to choose when buyers can understand the problem, method, evidence, and next step.",
+  nonprofit: "For a nonprofit, the digital experience should help donors, partners, and communities understand the mission, evidence, and way to participate.",
+  retail: "For a retail business, customers need a clear path from interest to trust to purchase without unnecessary friction.",
+  other: "For any capable organization, the value becomes easier to buy when the problem, evidence, and next step are clear.",
+};
+const PATH_SELL = {
+  brand: (ind,hook)=> `${hook} In LinkedIn and Edelman's 2024 research, 75% of surveyed decision-makers said thought leadership led them to research an offering they had not previously considered. That does not guarantee conversion; it explains why clear buyer education, usable proof, and a specific next step should be treated as business infrastructure, not decoration. <a href="https://www.linkedin.com/business/marketing/blog/research-and-insights/b2b-thought-leadership-research-impact-linkedin-edelman" target="_blank" rel="noopener">View the research</a>.`,
+  system: (ind,hook)=> `${hook} In the U.S. Chamber's 2025 survey, 83% of small businesses said technology platforms helped them compete with larger companies. The useful goal is not more software. It is a connected way for ownership, information, and repeatable steps to move with the work. <a href="https://www.uschamber.com/assets/documents/20251621-CTEC-Empowering-Small-Business-Report-2025-v1-r10-Digital-FINAL.pdf" target="_blank" rel="noopener">View the research</a>.`,
+  work: (ind,hook)=> `${hook} The U.S. Small Business Administration reports that small businesses received nearly 28% of federal prime contracting dollars in FY2025—approximately $179 billion. That is market context, not a promised award. The practical improvement is a disciplined way to qualify opportunities, prepare proof and compliance, and decide where pursuit effort is justified. <a href="https://www.sba.gov/article/2026/06/25/sba-releases-fy25-scorecard-small-business-contracting" target="_blank" rel="noopener">View the scorecard</a>.`,
+};
+
+/* Looks up the human-readable label for whatever a person picked on an earlier
+   question, so later insight copy can reference their actual answers by name. */
+function answerLabel(stepKey, a){
+  const stepEntry = Object.values(STEPS).find(s=>s.key===stepKey);
+  if(!stepEntry) return '';
+  const content = resolveContent(stepEntry, a);
+  const val = a[stepKey];
+  if(val===undefined) return '';
+  if(Array.isArray(val)) return val.map(v=>(content.options.find(o=>o.value===v)||{}).label||v).join(', ');
+  return (content.options.find(o=>o.value===val)||{}).label || val;
+}
+
+function buildDeepInsight(a){
+  const ind = subIndustryNoun(a);
+  const sigLabel = answerLabel('industry_signal', a);
+  let body;
+  if(a.path==='brand'){
+    const issuePhrase = (a.brand_whatswrong && a.brand_whatswrong.length)
+      ? `what's not working today — ${answerLabel('brand_whatswrong', a)}`
+      : `the timeline you're on — ${answerLabel('brand_urgency', a)} to launch`;
+    const assets = a.current_assets_brand || [];
+    const hasLeverage = assets.length && !(assets.length===1 && assets[0]==='none');
+    const assetPhrase = hasLeverage
+      ? ` You've already got ${answerLabel('current_assets_brand', a).toLowerCase()} working — that's real leverage most ${ind}s starting from zero don't have, and it's exactly what shouldn't get wasted by a disconnected new site.`
+      : ` Starting without any of that in place isn't a disadvantage, though — it means there's no inconsistent old branding to untangle first.`;
+    body = `Here's what's forming: ${issuePhrase}, combined with ${sigLabel} as how people actually find you — that combination means the fix isn't cosmetic. A site that doesn't account for how a ${ind}'s clients actually arrive and decide will keep losing the same deals a redesign alone won't catch.${assetPhrase}`;
+  } else if(a.path==='system'){
+    const focus = answerLabel('system_focus', a);
+    const docState = a.current_assets_system;
+    const docPhrase = docState==='none'
+      ? " And since none of it is written down anywhere, the real risk isn't the tooling — it's that the process only exists in your head right now."
+      : docState==='documented'
+      ? " The good news: it's already documented, just disconnected from the tools — that's a much faster fix than building the process from scratch."
+      : " With some of it already in notes, this is more about organizing what exists than inventing a process from nothing.";
+    body = `Here's what's forming: ${focus} is the real bottleneck for a ${ind} like yours, and "${sigLabel}" is exactly the kind of detail that decides whether this needs a lightweight fix or a real rebuild.${docPhrase} The businesses that guess wrong here end up paying for the fix twice.`;
+  } else {
+    const pipeline = answerLabel('work_pipeline', a);
+    const capAssets = a.current_assets_work || [];
+    const hasCapture = capAssets.length && !(capAssets.length===1 && capAssets[0]==='none');
+    const capPhrase = hasCapture
+      ? ` Having ${answerLabel('current_assets_work', a).toLowerCase()} already in place means you're not starting cold on compliance — the gap is turning that groundwork into active pursuits.`
+      : ` None of the compliance groundwork being in place yet just means that's where this actually needs to start — chasing pursuits before that's ready usually means losing winnable ones on paperwork, not price.`;
+    body = `Here's what's forming: ${pipeline}, and your position on cooperative vehicles — "${sigLabel}" — tells us exactly how much foundation-building versus capture support a ${ind} like yours actually needs right now.${capPhrase}`;
+  }
+  const name = a.firstName ? `, ${a.firstName}` : '';
+  return { headline:`What I'm seeing${name}`, body };
+}
+
+const STEPS = {
+  intro: { type:'intro', next:()=>'name' },
+
+  name: { type:'nameform', next:()=>'industry' },
+
+  industry: {
+    type:'single', dynamic:true, key:'industry',
+    build:(a)=>({
+      question: a.firstName ? `Nice to meet you, ${a.firstName} — what industry are you in?` : 'What industry are you in?',
+      sub:'No wrong answers — this just means I ask you smarter questions instead of generic ones.',
+      options: INDUSTRIES
+    }),
+    next: a=> SUBINDUSTRY[a.industry] ? 'subindustry' : 'path'
+  },
+
+  subindustry: {
+    type:'single', dynamic:true, key:'subindustry',
+    build:(a)=>({
+      question: `And more specifically?`,
+      sub: `${industryLabel(a.industry)} covers a lot of ground — this is what actually shapes the recommendation.`,
+      options: SUBINDUSTRY[a.industry] || []
+    }),
+    next:()=>'path'
+  },
+
+  path: {
+    type:'single', dynamic:true, key:'path',
+    build:(a)=>{
+      const copy = PATH_COPY[a.industry] || PATH_COPY.other;
+      return {
+        question:"What's the most immediate problem you're trying to solve?",
+        sub: copy.sub,
+        options:[
+          {value:'brand', label:'Launch the brand', desc: copy.descs.brand, emoji:'🎯'},
+          {value:'system', label:'Build the system', desc: copy.descs.system, emoji:'⚙️'},
+          {value:'work', label:'Win the work', desc: copy.descs.work, emoji:'🏆'},
+        ]
+      };
+    },
+    next: a=> 'insight_path'
+  },
+
+  insight_path: {
+    type:'insight', dynamic:true,
+    build:(a)=>{
+      const ind = subIndustryNoun(a);
+      const hook = STAKES_HOOK[a.industry] || STAKES_HOOK.other;
+      const name = a.firstName ? `, ${a.firstName}` : '';
+      return { headline:`Why this matters${name}`, body: PATH_SELL[a.path](ind, hook) };
+    },
+    next: a=> a.path==='brand' ? 'brand_live' : a.path==='system' ? 'system_focus' : 'work_focus'
+  },
+
+  brand_live: {
+    type:'single', key:'brand_live', question:'Do you have a live website today?',
+    options:[{value:'yes',label:'Yes',emoji:'✅'},{value:'no',label:'No',emoji:'🚫'}],
+    next: a=> 'current_assets_brand'
+  },
+  current_assets_brand: {
+    type:'multi', dynamic:true, key:'current_assets_brand',
+    build:(a)=>({
+      question: a.brand_live==='no' ? "No site yet — but what do you already have?" : "Beyond the site, what else are you actively using?",
+      sub: 'Select all that apply — this tells me what to build on instead of starting from a blank page.',
+      options:[
+        {value:'social', label:'Active social media', desc:'Instagram, Facebook, LinkedIn, etc.', emoji:'📱'},
+        {value:'gbp', label:'Google Business Profile', desc:'Or another local listing', emoji:'📍'},
+        {value:'reviews', label:'Online reviews', desc:'Google, Yelp, industry-specific sites', emoji:'⭐'},
+        {value:'branding', label:'A logo or basic branding', emoji:'🎨'},
+        {value:'none', label:'Honestly, none of this yet', emoji:'🌱'},
+      ]
+    }),
+    next: a=> a.brand_live==='yes' ? 'brand_whatswrong' : 'brand_urgency'
+  },
+  brand_whatswrong: {
+    type:'multi', key:'brand_whatswrong', question:"What's not working about it?",
+    sub:'Select all that apply.',
+    options:[
+      {value:'outdated',label:'Looks outdated'},
+      {value:'noleads',label:"Doesn't generate leads"},
+      {value:'hardupdate',label:'Hard to update myself'},
+      {value:'missing',label:'Missing key information'},
+      {value:'mobile',label:'Not mobile-friendly'},
+    ],
+    next:()=>'brand_size'
+  },
+  brand_urgency: {
+    type:'single', key:'brand_urgency', question:'How urgent is getting live?',
+    options:[
+      {value:'asap',label:'ASAP'},
+      {value:'quarter',label:'Within the next quarter'},
+      {value:'exploring',label:'Just exploring for now'},
+    ],
+    next:()=>'brand_size'
+  },
+  brand_size: {
+    type:'single', key:'brand_size', question:'Roughly how many pages or sections do you need?',
+    options:[
+      {value:'small',label:'Just a few',desc:'5 or fewer'},
+      {value:'medium',label:'A moderate site',desc:'Around 6-10'},
+      {value:'large',label:'A larger site',desc:'10+, or with data/tools built in'},
+    ],
+    next:()=>'brand_features'
+  },
+  brand_features: {
+    type:'multi', key:'brand_features', question:'Do you need any special functionality?',
+    sub:'Select all that apply — leave blank if none.',
+    options:[
+      {value:'ecommerce',label:'E-commerce / online sales'},
+      {value:'accounts',label:'User accounts or login'},
+      {value:'customdata',label:'Custom data (maps, filters, dashboards)'},
+      {value:'none',label:'None of these'},
+    ],
+    next:()=>'industry_signal'
+  },
+
+  system_focus: {
+    type:'single', key:'system_focus', question:"What's more broken right now?",
+    options:[
+      {value:'tools',label:'The tools & organization',desc:'CRM, docs, dashboards — the structure itself'},
+      {value:'automation',label:'The automation & workflows',desc:'Manual steps that should connect automatically'},
+      {value:'both',label:'Honestly, both'},
+    ],
+    next: a=> a.system_focus==='automation' ? 'system_workflows' : 'system_team'
+  },
+  system_team: {
+    type:'single', key:'system_team', question:'How many people need to use this system?',
+    options:[
+      {value:'solo',label:'Just me'},
+      {value:'small',label:'A small team'},
+      {value:'multi',label:'Multiple teams or locations'},
+    ],
+    next: a=> a.system_focus==='both' ? 'system_workflows' : 'system_tools_used'
+  },
+  system_workflows: {
+    type:'single', key:'system_workflows', question:'How many manual workflows are eating your time?',
+    options:[
+      {value:'one',label:'One big one'},
+      {value:'few',label:'A few connected ones'},
+      {value:'tangled',label:'A whole tangled mess'},
+    ],
+    next:()=>'system_tools_used'
+  },
+  system_tools_used: {
+    type:'multi', key:'system_tools_used', question:'What are you using today?',
+    sub:'Select all that apply.',
+    options:[
+      {value:'spreadsheets',label:'Spreadsheets', emoji:'📊'},
+      {value:'notion',label:'Notion or similar', emoji:'🗂️'},
+      {value:'crm',label:'A CRM already', emoji:'🧩'},
+      {value:'nothing',label:'Nothing formal', emoji:'🌱'},
+    ],
+    next:()=>'current_assets_system'
+  },
+  current_assets_system: {
+    type:'single', key:'current_assets_system', question:'How much of your current process is actually written down anywhere?',
+    sub:"Not judging — just need to know if I'm documenting from scratch or organizing what's already there.",
+    options:[
+      {value:'documented', label:'Fully documented', desc:"It's written down, just disconnected from the tools", emoji:'📘'},
+      {value:'some', label:'Some notes', desc:'Mostly lives in memory or old emails', emoji:'📝'},
+      {value:'none', label:'Nothing written', desc:"It's all in someone's head — probably mine", emoji:'🧠'},
+    ],
+    next:()=>'industry_signal'
+  },
+
+  work_focus: {
+    type:'single', key:'work_focus', question:'Where is your focus?',
+    options:[
+      {value:'gov',label:'Government contracts',desc:'Registration, vendor portals, agency buyers, proposals'},
+      {value:'infra',label:'Infrastructure & smart-city market',desc:'Positioning for transit, solar, EV, public works'},
+      {value:'both',label:'Both'},
+    ],
+    next:()=>'work_vehicles'
+  },
+  work_vehicles: {
+    type:'single', key:'work_vehicles', question:'How far have you built the foundation for public-sector selling?',
+    options:[
+      {value:'several',label:'Active registrations, portals, and contract pathways'},
+      {value:'one',label:'Some accounts or vendor profiles are in place'},
+      {value:'none',label:'Not yet — I need help starting'},
+    ],
+    next:()=>'current_assets_work'
+  },
+  current_assets_work: {
+    type:'multi', key:'current_assets_work', question:'What do you already have on the compliance and capture side?',
+    sub:'Select all that apply — this is the difference between starting cold and having real leverage.',
+    options:[
+      {value:'sam', label:'Active SAM.gov registration', emoji:'📋'},
+      {value:'portals', label:'Agency or state/local vendor accounts', emoji:'🏛️'},
+      {value:'capability', label:'Capability statement or buyer-ready service material', emoji:'📄'},
+      {value:'past_perf', label:'Documented past performance', desc:'References, case studies, completed contracts', emoji:'📁'},
+      {value:'certs', label:'Socioeconomic certifications', desc:'8(a), WOSB, HUBZone, SDVOSB, etc.', emoji:'🏅'},
+      {value:'none', label:'None of this yet', emoji:'🌱'},
+    ],
+    next:()=>'work_pipeline'
+  },
+  work_pipeline: {
+    type:'single', key:'work_pipeline', question:'How would you describe your current pipeline?',
+    options:[
+      {value:'empty',label:'Empty — starting from zero'},
+      {value:'some',label:'Some opportunities, no real process'},
+      {value:'steady',label:'Steady pipeline, just needs more capacity'},
+    ],
+    next:()=>'industry_signal'
+  },
+
+  industry_signal: {
+    type:'single', dynamic:true, key:'industry_signal',
+    build:(a)=>{
+      const sig = INDUSTRY_SIGNAL[a.industry] || INDUSTRY_SIGNAL.other;
+      return { question: sig.question, sub:`Specific to ${industryLabel(a.industry)} — this is the detail that actually changes the recommendation.`, options: sig.options };
+    },
+    next:()=>'insight_deep'
+  },
+
+  insight_deep: {
+    type:'insight', dynamic:true,
+    build:(a)=> buildDeepInsight(a),
+    next:()=>'budget'
+  },
+
+  budget: {
+    type:'single', key:'budget', question:"What's your comfort range for this investment?",
+    options:[
+      {value:'low',label:'Under $2,500'},
+      {value:'mid',label:'$2,500 – $6,000'},
+      {value:'high',label:'$6,000+'},
+      {value:'unsure',label:'Not sure yet'},
+    ],
+    next:()=>'timeline'
+  },
+  timeline: {
+    type:'single', key:'timeline', question:'How soon do you want to get moving?',
+    options:[
+      {value:'now',label:'This month'},
+      {value:'quarter',label:'Next quarter'},
+      {value:'researching',label:'Just researching for now'},
+    ],
+    next:()=>'authority'
+  },
+  authority: {
+    type:'single', key:'authority', question:'Are you the one who makes the final call on this?',
+    options:[
+      {value:'decide',label:'Yes, I decide'},
+      {value:'influence',label:'I influence it, someone else signs off'},
+      {value:'unsure',label:'Not sure yet'},
+    ],
+    next:()=>'contact'
+  },
+
+  contact: { type:'form', next:()=>'summary' },
+  summary: { type:'summary' },
+};
+
+function resolveContent(step, a){ return step.dynamic ? Object.assign({key:step.key}, step.build(a)) : step; }
+
+let current = 'intro';
+let history_ = [];
+function getRequestedPath(){
+  try {
+    const ownPath = new URLSearchParams(window.location.search).get('path');
+    const parentPath = window.parent && window.parent !== window
+      ? new URLSearchParams(window.parent.location.search).get('path')
+      : '';
+    const candidate = ownPath || parentPath || '';
+    return ['brand','system','work'].includes(candidate) ? candidate : '';
+  } catch(error) {
+    return '';
+  }
+}
+const requestedPath = getRequestedPath();
+let answers = requestedPath ? {path:requestedPath} : {};
+
+function estimateProgress(){
+  return Math.min(100, Math.round((history_.length/10)*100));
+}
+function phaseLabel(){
+  const pct = estimateProgress();
+  if(pct < 15) return 'Getting to know you';
+  if(pct < 60) return 'Digging into the details';
+  if(pct < 90) return 'Almost there';
+  return 'Last step';
+}
+
+function render(){
+  document.getElementById('progressFill').style.width = estimateProgress()+'%';
+  document.getElementById('phaseLabel').textContent = phaseLabel();
+  const step = STEPS[current];
+  const panel = document.getElementById('panel');
+  panel.style.animation = 'none';
+  void panel.offsetWidth;
+  panel.style.animation = '';
+
+  if(step.type==='intro'){
+    panel.innerHTML = `
+      <h1>Find the growth system your business needs next.</h1>
+      <p class="sub">A few focused questions, about three minutes. Your answers shape the path, so the result reflects your industry and the problem you are actually trying to solve.</p>
+      <div class="nav-row" style="justify-content:flex-end;">
+        <button class="btn btn-primary" onclick="goNext(); trackAssessment('assessment_start')">Start my free assessment</button>
+      </div>`;
+    requestAnimationFrame(reportAssessmentHeight);
+    return;
+  }
+
+  if(step.type==='nameform'){
+    panel.innerHTML = `
+      <h2>First, what should I call you?</h2>
+      <p class="sub">Just your first name — makes this feel less like a form.</p>
+      <input type="text" id="fFirstName" value="${escapeHTML(answers.firstName||'')}" placeholder="Your first name" autocomplete="given-name" maxlength="60" autofocus>
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="goBack()" ${history_.length===0?'style="visibility:hidden;"':''}>Back</button>
+        <button class="btn btn-primary" onclick="submitNameForm()">Continue</button>
+      </div>`;
+    document.getElementById('fFirstName').addEventListener('keydown', e=>{ if(e.key==='Enter') submitNameForm(); });
+    requestAnimationFrame(reportAssessmentHeight);
+    return;
+  }
+
+  if(step.type==='single' || step.type==='multi'){
+    const content = resolveContent(step, answers);
+    const selected = answers[content.key] || (step.type==='multi' ? [] : null);
+    panel.innerHTML = `
+      <h2>${content.question}</h2>
+      ${content.sub ? `<p class="sub">${content.sub}</p>` : '<p class="sub">&nbsp;</p>'}
+      <div class="options" id="optWrap">
+        ${content.options.map(o=>`<div class="opt ${((step.type==='single' && selected===o.value) || (step.type==='multi' && selected.includes(o.value))) ? 'sel':''}" data-val="${o.value}">
+          ${o.emoji?`<span class="emoji">${o.emoji}</span>`:''}
+          <span class="txt"><b>${o.label}</b>${o.desc?`<span class="d">${o.desc}</span>`:''}</span>
+          <span class="check">✓</span>
+        </div>`).join('')}
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="goBack()" ${history_.length===0?'style="visibility:hidden;"':''}>Back</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="goNext()" ${!hasAnswer(content, step)?'disabled':''}>Continue</button>
+      </div>`;
+    panel.querySelectorAll('.opt').forEach(el=>{
+      el.onclick = ()=>{
+        const val = el.dataset.val;
+        if(step.type==='single'){
+          answers[content.key] = val;
+          panel.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+          el.classList.add('sel');
+        } else {
+          if(!answers[content.key]) answers[content.key] = [];
+          const arr = answers[content.key];
+          const i = arr.indexOf(val);
+          if(i>=0){ arr.splice(i,1); el.classList.remove('sel'); }
+          else { arr.push(val); el.classList.add('sel'); }
+        }
+        document.getElementById('nextBtn').disabled = !hasAnswer(content, step);
+      };
+    });
+    requestAnimationFrame(reportAssessmentHeight);
+    return;
+  }
+
+  if(step.type==='insight'){
+    const content = resolveContent(step, answers);
+    panel.innerHTML = `
+      <div class="chat-card">
+        <div class="avatar">AR</div>
+        <div class="bubble">
+          <div class="tag">${content.headline}</div>
+          <h2>Quick thought before we go further</h2>
+          <p>${content.body}</p>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="goBack()">Back</button>
+        <button class="btn btn-primary" onclick="goNext()">Makes sense, keep going</button>
+      </div>`;
+    requestAnimationFrame(reportAssessmentHeight);
+    return;
+  }
+
+  if(step.type==='form'){
+    const c = answers.contact || {};
+    panel.innerHTML = `
+      <h2>Last thing, ${escapeHTML(answers.firstName||'there')} — where should I send your next-step context?</h2>
+      <p class="sub">${APPS_SCRIPT_URL ? 'Your recommendation appears immediately, and a copy is saved for Andrew so any follow-up starts with useful context.' : 'Your recommendation appears immediately. You can then choose whether to email the results to Andrew or book a free intro call.'}</p>
+      <label class="field" for="fName">Full name</label><input type="text" id="fName" value="${escapeHTML(c.name||answers.firstName||'')}" autocomplete="name" maxlength="120">
+      <label class="field" for="fCompany">Company</label><input type="text" id="fCompany" value="${escapeHTML(c.company||'')}" autocomplete="organization" maxlength="180">
+      <label class="field" for="fEmail">Work email</label><input type="email" id="fEmail" value="${escapeHTML(c.email||'')}" autocomplete="email" maxlength="180">
+      <label class="field" for="fPhone">Phone <span style="text-transform:none;letter-spacing:0;font-weight:500;">(optional)</span></label><input type="tel" id="fPhone" value="${escapeHTML(c.phone||'')}" autocomplete="tel" maxlength="40">
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="goBack()">Back</button>
+        <button class="btn btn-primary" onclick="submitForm()">Get my recommendation</button>
+      </div>
+      <div class="reassure">No newsletter or automated sales sequence. Your information is used only to provide and discuss this assessment. <a href="privacy.html" target="_top">Privacy notice</a>.</div>`;
+    requestAnimationFrame(reportAssessmentHeight);
+    return;
+  }
+
+  if(step.type==='summary'){
+    const rec = computeRecommendation();
+    panel.innerHTML = `
+      <p class="sub" style="margin-bottom:16px;font-size:14px;">Thanks, ${escapeHTML(answers.firstName||(answers.contact.name||'').split(' ')[0]||'there')} — here is the clearest starting point based on what you shared:</p>
+      <div class="rec-card">
+        <div class="tag">Suggested starting point — ${combinedLabel(answers)}</div>
+        <h2>${rec.capability} — ${rec.tier}</h2>
+        <p>${rec.explanation}</p>
+        <p style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);">${rec.closing}</p>
+      </div>
+      <div id="sendStatus" class="reassure" style="text-align:left;">${APPS_SCRIPT_URL ? 'Saving your assessment for Andrew to review…' : 'Your recommendation is ready. If you want Andrew to review the context, email the results or book a free intro call.'}</div>
+      <div class="summary-actions">
+        <a class="btn btn-primary" href="connect.html#schedule" target="_top" onclick="trackAssessment('assessment_booking_click')">Book a free intro call</a>
+        ${APPS_SCRIPT_URL ? '' : `<button class="btn btn-outline" onclick="emailResults()">Email results to Andrew</button>`}
+        ${MAIN_TOOL_URL ? `<button class="btn btn-outline" onclick="copyIntakeLink()">Copy CRM link</button>` : ''}
+      </div>
+      <div class="summary-list" id="summaryList"></div>`;
+    document.getElementById('summaryList').innerHTML = buildSummaryLines().map(l=>`<div>${l}</div>`).join('');
+    if(APPS_SCRIPT_URL) autoSendReport(rec);
+    trackAssessment('assessment_complete', {path:answers.path, industry:answers.industry, recommendation:rec.capability, tier:rec.tier});
+    requestAnimationFrame(reportAssessmentHeight);
+    return;
+  }
+}
+
+function hasAnswer(content, step){
+  const v = answers[content.key];
+  if(step.type==='multi') return true;
+  return v!==undefined && v!==null;
+}
+
+function goNext(){
+  const step = STEPS[current];
+  const nextId = step.next(answers);
+  history_.push(current);
+  current = nextId;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+  requestAnimationFrame(reportAssessmentHeight);
+}
+function goBack(){
+  if(history_.length===0) return;
+  current = history_.pop();
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function submitNameForm(){
+  const name = document.getElementById('fFirstName').value.trim();
+  if(!name){ alert('Just a first name is fine — go ahead and enter it.'); return; }
+  answers.firstName = cleanInput(name, 60);
+  goNext();
+}
+
+function submitForm(){
+  const name = document.getElementById('fName').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
+  if(!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ alert('Please enter your name and a valid email address.'); return; }
+  answers.contact = {
+    name:cleanInput(name,120), company:cleanInput(document.getElementById('fCompany').value,180),
+    email:cleanInput(email,180), phone:cleanInput(document.getElementById('fPhone').value,40)
+  };
+  goNext();
+}
+
+function closingLine(a){
+  if(a.timeline==='now') return "You said you want to move this month — that's a realistic timeline for this scope, and the sooner it starts, the sooner it's not costing you deals anymore.";
+  if(a.timeline==='quarter') return "Next quarter gives room to do this right instead of rushed — worth locking in a start date now so it doesn't slip to 'someday.'";
+  if(a.timeline==='researching') return "No pressure to move today — but this is exactly the kind of gap that gets more expensive to fix the longer it sits, since every week is a week of the current version still costing you something.";
+  return "Whenever you're ready to move, the next step is a short call to confirm scope and get a real number.";
+}
+
+function computeRecommendation(){
+  const a = answers;
+  const ind = subIndustryNoun(a);
+  if(a.path==='brand'){
+    const feat = a.brand_features||[];
+    const hasCustom = feat.includes('customdata') || feat.includes('ecommerce') || feat.includes('accounts');
+    const isLarge = a.brand_size==='large';
+    let tier = 'Starter';
+    if(hasCustom || isLarge) tier = 'Custom';
+    else if(a.brand_size==='medium' || (a.brand_whatswrong||[]).length>=3) tier = 'Growth';
+    return {
+      capability:'Strategic Website Builds', tier,
+      explanation:`For a ${ind}, a ${tier}-tier website build looks like the right fit — ${tier==='Custom' ? 'the custom functionality and scope you described need real engineering, not just design.' : tier==='Growth' ? 'enough scope and complexity to warrant a fuller build than a bare-bones starter.' : 'a focused, fast build to get a credible presence live.'}`,
+      closing: closingLine(a)
+    };
+  }
+  if(a.path==='system'){
+    const isAutomation = a.system_focus==='automation';
+    const capability = isAutomation ? 'AI + Workflow Automation' : 'Digital Systems & Operations';
+    let tier = 'Starter';
+    if(a.system_team==='multi' || a.system_workflows==='tangled') tier='Custom';
+    else if(a.system_team==='small' || a.system_workflows==='few') tier='Growth';
+    return {
+      capability, tier,
+      explanation:`${isAutomation ? 'The workflow tangle you described' : 'The team size and structure you described'} points to a ${tier}-tier ${capability} engagement for a ${ind} like yours. ${a.system_focus==='both' ? "Worth noting — you flagged both broken tools and broken automation, so this will likely touch both." : ''}`,
+      closing: closingLine(a)
+    };
+  }
+  if(a.path==='work'){
+    const capability = a.work_focus==='infra' ? 'Smart Infrastructure Consulting' : 'Government Market Systems';
+    let tier = 'Starter';
+    if(a.work_pipeline==='steady') tier='Growth';
+    if(a.work_vehicles==='none' && a.work_pipeline==='empty') tier='Starter';
+    return {
+      capability, tier,
+      explanation:`Given where your pipeline and cooperative-vehicle position stand today as a ${ind}, a ${tier}-tier engagement is the realistic starting point — building the foundation before scaling into ongoing capture support.`,
+      closing: closingLine(a)
+    };
+  }
+  return {capability:'AK Randall Digital', tier:'Starter', explanation:'Andrew will follow up to figure out the best fit.', closing: closingLine(answers)};
+}
+
+function buildSummaryLines(){
+  const a = answers;
+  const lines = [];
+  if(a.firstName) lines.push(`Name: ${a.firstName}`);
+  lines.push(`Industry: ${combinedLabel(a)}`);
+  lines.push(`Path: ${({brand:'Launch the brand', system:'Build the system', work:'Win the work'})[a.path]}`);
+  Object.keys(a).forEach(k=>{
+    if(k==='path' || k==='contact' || k==='industry' || k==='firstName') return;
+    const stepEntry = Object.values(STEPS).find(s=>s.key===k);
+    if(!stepEntry) return;
+    const content = resolveContent(stepEntry, a);
+    const val = a[k];
+    const label = Array.isArray(val)
+      ? val.map(v=> (content.options.find(o=>o.value===v)||{}).label || v).join(', ')
+      : (content.options.find(o=>o.value===val)||{}).label || val;
+    lines.push(`${content.question} — ${label || '(none selected)'}`);
+  });
+  return lines;
+}
+
+function autoSendReport(rec){
+  const status = document.getElementById('sendStatus');
+  const c = answers.contact;
+  const message = [
+    `Assessment recommendation: ${rec.capability} — ${rec.tier}`,
+    rec.explanation,
+    '',
+    `Phone: ${c.phone || 'Not provided'}`,
+    'Assessment answers:',
+    ...buildSummaryLines()
+  ].join('\n').slice(0, 4000);
+  let queryString = window.location.search;
+  try { queryString = window.parent.location.search || queryString; } catch(error) {}
+  const query = new URLSearchParams(queryString);
+  const payload = new URLSearchParams({
+    name:c.name,
+    email:c.email,
+    company:c.company,
+    focus:`Free assessment — ${rec.capability}`,
+    message,
+    sourcePage:'assessment.html',
+    referrer:document.referrer,
+    utmSource:query.get('utm_source') || '',
+    utmMedium:query.get('utm_medium') || '',
+    utmCampaign:query.get('utm_campaign') || '',
+    utmContent:query.get('utm_content') || '',
+    utmTerm:query.get('utm_term') || '',
+    submittedAt:new Date().toISOString(),
+    website:''
+  });
+  fetch(APPS_SCRIPT_URL, {
+    method:'POST',
+    mode:'no-cors',
+    body:payload
+  }).then(()=>{
+    status.textContent = 'Assessment saved. Andrew can review the context before you speak.';
+  }).catch(()=>{
+    status.textContent = 'The assessment could not be saved automatically. Use the email option below or book a free intro call.';
+    status.insertAdjacentHTML('afterend', `<div class="summary-actions"><button class="btn btn-outline" onclick="emailResults()">Email results to Andrew</button></div>`);
+  });
+}
+
+function emailResults(){
+  const c = answers.contact;
+  const rec = computeRecommendation();
+  const lines = [
+    `New free growth assessment response`, '',
+    `Name: ${c.name}`, `Company: ${c.company}`, `Email: ${c.email}`, `Phone: ${c.phone}`, '',
+    `Suggested starting point: ${rec.capability} — ${rec.tier}`, '',
+    'Answers:', ...buildSummaryLines()
+  ];
+  const url = 'mailto:andrew@akrandall.com'
+    + '?subject=' + encodeURIComponent('Free growth assessment — '+c.name)
+    + '&body=' + encodeURIComponent(lines.join('\n'));
+  window.open(url, '_top');
+}
+function copyIntakeLink(){
+  const c = answers.contact;
+  const rec = computeRecommendation();
+  const payload = { name:c.name, company:c.company, email:c.email, phone:c.phone,
+    summary: `Suggested: ${rec.capability} — ${rec.tier}. ` + buildSummaryLines().join(' | ') };
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+  const link = MAIN_TOOL_URL + '#intake=' + encoded;
+  navigator.clipboard.writeText(link).then(()=> alert('Link copied — open it in your AKRD tool to import this as a new lead.'));
+}
+
+render();
+</script>
+</body>
+</html>
