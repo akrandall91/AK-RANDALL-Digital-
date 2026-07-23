@@ -6,6 +6,12 @@
   const isConnectPage = window.location.pathname.toLowerCase().endsWith('connect.html');
   const isPrivacyPage = window.location.pathname.toLowerCase().endsWith('privacy.html');
   const isAssessmentPage = window.location.pathname.toLowerCase().endsWith('assessment.html');
+  const siteMetrics = window.AKRD_SITE_METRICS || {};
+
+  document.querySelectorAll('[data-proof-metric]').forEach(node => {
+    const metric = siteMetrics[node.dataset.proofMetric];
+    if (metric?.display) node.textContent = metric.display;
+  });
 
   const trackConversion = (eventName, detail = {}) => {
     window.dataLayer = window.dataLayer || [];
@@ -313,6 +319,78 @@
       }
       trackConversion('form_fallback', { sourcePage: window.location.pathname, focus: String(focus) });
       window.location.href = `mailto:andrew@akrandall.com?subject=${subject}&body=${body}`;
+    }
+  });
+
+  const emailCapture = document.querySelector('[data-email-capture]');
+  emailCapture?.querySelectorAll('input').forEach(field => {
+    field.addEventListener('focus', () => {
+      if (emailCapture.dataset.started) return;
+      emailCapture.dataset.started = 'true';
+      trackConversion('form_start', { sourcePage: window.location.pathname, formType: 'email-only' });
+    }, { once: true });
+  });
+
+  emailCapture?.addEventListener('submit', async event => {
+    event.preventDefault();
+    const data = new FormData(emailCapture);
+    const email = String(data.get('email') || '').trim();
+    const endpoint = String(leadConfig.appsScriptUrl || '').trim();
+    const status = emailCapture.querySelector('.form-status');
+    const submitButton = emailCapture.querySelector('[type="submit"]');
+    const originalLabel = submitButton?.textContent;
+    if (!email || !emailCapture.reportValidity()) return;
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.setAttribute('aria-busy', 'true');
+      submitButton.textContent = 'Sending…';
+    }
+    if (status) {
+      status.dataset.state = 'working';
+      status.textContent = 'Sending securely…';
+    }
+    trackConversion('form_submit', { sourcePage: window.location.pathname, formType: 'email-only' });
+
+    try {
+      if (!endpoint) throw new Error('Lead endpoint is not configured.');
+      const payload = new URLSearchParams({
+        email,
+        website: String(data.get('website') || ''),
+        source: 'home-email-capture',
+        captureSource: 'home-email-capture',
+        focus: 'Growth starting point',
+        message: 'Requested a low-friction follow-up from the home page.',
+        sourcePage: window.location.href,
+        referrer: document.referrer,
+        submittedAt: new Date().toISOString(),
+        utmSource: attribution.utm_source || '',
+        utmMedium: attribution.utm_medium || '',
+        utmCampaign: attribution.utm_campaign || '',
+        utmContent: attribution.utm_content || '',
+        utmTerm: attribution.utm_term || ''
+      });
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: payload.toString()
+      });
+      emailCapture.classList.add('is-complete');
+      const success = emailCapture.querySelector('[data-lead-success]');
+      if (success) success.hidden = false;
+      trackConversion('form_success', { sourcePage: window.location.pathname, formType: 'email-only' });
+    } catch (error) {
+      if (status) {
+        status.dataset.state = 'fallback';
+        status.textContent = 'The form is temporarily unavailable. Email Andrew directly at andrew@akrandall.com.';
+      }
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.removeAttribute('aria-busy');
+        submitButton.textContent = originalLabel || 'Send my starting point';
+      }
+      trackConversion('form_fallback', { sourcePage: window.location.pathname, formType: 'email-only' });
     }
   });
 

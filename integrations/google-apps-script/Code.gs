@@ -16,7 +16,11 @@ const LEAD_HEADERS = [
   'Status',
   'Appointment Date',
   'Calendar Event ID',
-  'Last Updated'
+  'Last Updated',
+  'Capture Source',
+  'Assessment Industry',
+  'Assessment Variant',
+  'Assessment Completion'
 ];
 
 const ANALYTICS_HEADERS = [
@@ -37,7 +41,9 @@ const ANALYTICS_HEADERS = [
   'Industry',
   'Recommendation',
   'Tier',
-  'Lead Source'
+  'Lead Source',
+  'Assessment Variant',
+  'Step Reached'
 ];
 
 const ALLOWED_ANALYTICS_EVENTS = [
@@ -50,8 +56,10 @@ const ALLOWED_ANALYTICS_EVENTS = [
   'form_fallback',
   'assessment_open',
   'assessment_start',
+  'assessment_step',
   'assessment_complete',
   'assessment_booking_click',
+  'guide_download',
   'generate_lead'
 ];
 
@@ -79,8 +87,13 @@ function doPost(event) {
     const company = cleanText_(payload.company, 180);
     const focus = cleanText_(payload.focus, 180);
     const message = cleanText_(payload.message, 4000);
+    const captureSource = cleanText_(payload.captureSource || payload.source, 80);
+    const emailOnlyCapture = captureSource === 'home-email-capture';
+    const assessmentIndustry = cleanText_(payload.assessmentIndustry, 120);
+    const assessmentVariant = cleanText_(payload.assessmentVariant, 40);
+    const assessmentCompletion = cleanText_(payload.assessmentCompletion, 40);
 
-    if (!name || !isEmail_(email) || !message) {
+    if (!isEmail_(email) || !message || (!emailOnlyCapture && !name)) {
       return jsonResponse_({ ok: false, error: 'invalid_submission' });
     }
 
@@ -118,7 +131,11 @@ function doPost(event) {
       'New',
       '',
       '',
-      now
+      now,
+      safeCell_(captureSource),
+      safeCell_(assessmentIndustry),
+      safeCell_(assessmentVariant),
+      safeCell_(assessmentCompletion)
     ];
     sheet.appendRow(row);
 
@@ -132,7 +149,8 @@ function doPost(event) {
         company: company,
         focus: focus,
         message: message,
-        sourcePage: cleanText_(payload.sourcePage, 500)
+        sourcePage: cleanText_(payload.sourcePage, 500),
+        captureSource: captureSource
       });
     }
 
@@ -179,7 +197,9 @@ function storeAnalyticsEvent_(payload) {
     safeCell_(cleanText_(payload.industry, 120)),
     safeCell_(cleanText_(payload.recommendation, 160)),
     safeCell_(cleanText_(payload.tier, 80)),
-    safeCell_(cleanText_(payload.leadSource, 80))
+    safeCell_(cleanText_(payload.leadSource, 80)),
+    safeCell_(cleanText_(payload.variantIndustrySignal, 40)),
+    safeCell_(cleanText_(payload.stepReached, 80))
   ]);
   rememberEvent_(eventId);
   return jsonResponse_({ ok: true });
@@ -458,11 +478,11 @@ function sendOwnerNotification_(lead) {
   const sheetUrl = 'https://docs.google.com/spreadsheets/d/' + lead.spreadsheetId + '/edit';
   const body = [
     'Lead ID: ' + lead.leadId,
-    'Name: ' + lead.name,
+    'Name: ' + (lead.name || 'Email-only inquiry'),
     'Email: ' + lead.email,
     'Company: ' + (lead.company || 'Not provided'),
     'Focus: ' + (lead.focus || 'Not selected'),
-    'Source: ' + (lead.sourcePage || 'Unknown'),
+    'Source: ' + (lead.captureSource || lead.sourcePage || 'Unknown'),
     '',
     lead.message,
     '',
@@ -470,7 +490,7 @@ function sendOwnerNotification_(lead) {
   ].join('\n');
   const htmlBody = '<div style="font-family:Arial,sans-serif;color:#06101d;max-width:680px"><p style="color:#2457ff;font-weight:700;letter-spacing:1px">NEW AKRD WEBSITE LEAD</p>' +
     '<h2 style="margin:0 0 20px">' + escapeHtml_(lead.focus || 'Strategy inquiry') + '</h2>' +
-    '<p><strong>Lead ID:</strong> ' + escapeHtml_(lead.leadId) + '<br><strong>Name:</strong> ' + escapeHtml_(lead.name) + '<br><strong>Email:</strong> <a href="mailto:' + escapeHtml_(lead.email) + '">' + escapeHtml_(lead.email) + '</a><br><strong>Company:</strong> ' + escapeHtml_(lead.company || 'Not provided') + '<br><strong>Source:</strong> ' + escapeHtml_(lead.sourcePage || 'Unknown') + '</p>' +
+    '<p><strong>Lead ID:</strong> ' + escapeHtml_(lead.leadId) + '<br><strong>Name:</strong> ' + escapeHtml_(lead.name || 'Email-only inquiry') + '<br><strong>Email:</strong> <a href="mailto:' + escapeHtml_(lead.email) + '">' + escapeHtml_(lead.email) + '</a><br><strong>Company:</strong> ' + escapeHtml_(lead.company || 'Not provided') + '<br><strong>Source:</strong> ' + escapeHtml_(lead.captureSource || lead.sourcePage || 'Unknown') + '</p>' +
     '<div style="padding:18px;background:#eef2f6;white-space:pre-wrap;line-height:1.5">' + escapeHtml_(lead.message) + '</div>' +
     '<p><a href="' + escapeHtml_(sheetUrl) + '">Open the lead sheet</a></p></div>';
   MailApp.sendEmail({
@@ -534,9 +554,13 @@ function isRateLimited_(email) {
     .join('')
     .slice(0, 24);
   const cache = CacheService.getScriptCache();
-  const key = 'lead-' + digest;
-  if (cache.get(key)) return true;
-  cache.put(key, '1', 60);
+  const burstKey = 'lead-burst-' + digest;
+  const hourKey = 'lead-hour-' + digest;
+  if (cache.get(burstKey)) return true;
+  const hourlyCount = Number(cache.get(hourKey) || 0);
+  if (hourlyCount >= 4) return true;
+  cache.put(burstKey, '1', 60);
+  cache.put(hourKey, String(hourlyCount + 1), 3600);
   return false;
 }
 

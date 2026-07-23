@@ -1,0 +1,12 @@
+{
+  "name": "ak-randall-digital-site",
+  "private": true,
+  "scripts": {
+    "build:css": "csso styles.css --output styles.min.css",
+    "check:deploy": "node scripts/check-deploy.mjs",
+    "build": "npm run build:css && npm run check:deploy"
+  },
+  "devDependencies": {
+    "csso-cli": "^4.0.2"
+  }
+}

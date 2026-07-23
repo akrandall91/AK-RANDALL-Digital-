@@ -62,8 +62,8 @@
   .foot{text-align:center;font-size:11.5px;color:#a39d8a;margin-top:26px;line-height:1.6;}
   .reassure{font-size:12px;color:#8a8577;background:#faf7ef;border-radius:10px;padding:10px 14px;margin-top:16px;text-align:center;}
 </style>
-<link rel="stylesheet" href="assessment-tool.css?v=20260721a">
-<script src="lead-config.js?v=20260721d"></script>
+<link rel="stylesheet" href="assessment-tool.css?v=20260723a">
+<script src="lead-config.js?v=20260723a"></script>
 </head>
 
 <body>
@@ -89,9 +89,27 @@ function escapeHTML(value){
 function cleanInput(value, maxLength){
   return String(value || '').replace(/[<>]/g, '').trim().slice(0, maxLength || 180);
 }
+const variantMemory = {};
+function getVariant(testId){
+  const key = `akrd_variant_${String(testId || 'default')}`;
+  try {
+    const saved = localStorage.getItem(key);
+    if(saved === 'A' || saved === 'B') return saved;
+    const assigned = Math.random() < .5 ? 'A' : 'B';
+    localStorage.setItem(key, assigned);
+    return assigned;
+  } catch(error) {
+    if(!variantMemory[key]) variantMemory[key] = Math.random() < .5 ? 'A' : 'B';
+    return variantMemory[key];
+  }
+}
 function trackAssessment(eventName, detail){
   try {
-    window.parent?.postMessage({type:'akrd-assessment-event', eventName, detail:detail || {}}, '*');
+    const context = {
+      industry: answers?.industry || '',
+      variantIndustrySignal: answers?._variant_industry_signal || ''
+    };
+    window.parent?.postMessage({type:'akrd-assessment-event', eventName, detail:{...context,...(detail || {})}}, '*');
   } catch(error) {}
 }
 function reportAssessmentHeight(){
@@ -147,6 +165,25 @@ const INDUSTRY_SIGNAL = {
     options:[{value:'online',label:'Online'},{value:'inperson',label:'In-person'},{value:'both',label:'Both'}] },
   other: { question:"What's the main way people currently find and choose you?",
     options:[{value:'referral',label:'Referrals / word of mouth'},{value:'search',label:'Online search or ads'},{value:'network',label:'Professional network / outreach'},{value:'unsure',label:"Honestly, it's inconsistent"}] },
+};
+
+const INDUSTRY_SIGNAL_B = {
+  home_services: { question:'Which channel is carrying the most weight for new jobs right now?',
+    options:[{value:'referral',label:'Referrals and word of mouth'},{value:'ads',label:'Search, ads, or online discovery'},{value:'repeat',label:'Repeat customers'},{value:'mixed',label:'No single channel is consistent'}] },
+  solar: { question:'Which buyer group shapes most of your current solar opportunities?',
+    options:[{value:'residential',label:'Residential homeowners'},{value:'commercial',label:'Commercial businesses'},{value:'government',label:'Government, utility, or institutional buyers'},{value:'mixed',label:'Several buyer groups'}] },
+  govvendor: { question:'Which statement best describes your public-sector position today?',
+    options:[{value:'several',label:'Active vehicles, agency relationships, or contracts'},{value:'one',label:'Some registrations or pursuits are in place'},{value:'none',label:'Registration and market selection come first'}] },
+  infra: { question:'Where does the infrastructure growth opportunity sit today?',
+    options:[{value:'specific',label:'One active relationship or pursuit'},{value:'broad',label:'A broader market-positioning effort'},{value:'both',label:'Both an active pursuit and wider market growth'}] },
+  professional: { question:'Where would a stronger system create the most value?',
+    options:[{value:'new',label:'Winning more of the right clients'},{value:'existing',label:'Serving current clients more consistently'},{value:'both',label:'Both acquisition and service delivery'}] },
+  nonprofit: { question:'Which audience most needs a clearer path from you?',
+    options:[{value:'donor',label:'Donors and supporters'},{value:'program',label:'Program participants and service partners'},{value:'both',label:'Both audiences'}] },
+  retail: { question:'Where does most of the buying experience happen?',
+    options:[{value:'online',label:'Online'},{value:'inperson',label:'In person'},{value:'both',label:'Across both channels'}] },
+  other: { question:'Which channel most often starts a serious buyer conversation?',
+    options:[{value:'referral',label:'Referrals and word of mouth'},{value:'search',label:'Search, ads, or online discovery'},{value:'network',label:'Professional relationships or outreach'},{value:'unsure',label:'No channel is consistent yet'}] },
 };
 
 function industryLabel(val){ return (INDUSTRIES.find(i=>i.value===val)||{}).label || 'your industry'; }
@@ -495,7 +532,10 @@ const STEPS = {
   industry_signal: {
     type:'single', dynamic:true, key:'industry_signal',
     build:(a)=>{
-      const sig = INDUSTRY_SIGNAL[a.industry] || INDUSTRY_SIGNAL.other;
+      const variant = getVariant('industry_signal');
+      a._variant_industry_signal = variant;
+      const signalSet = variant === 'B' ? INDUSTRY_SIGNAL_B : INDUSTRY_SIGNAL;
+      const sig = signalSet[a.industry] || signalSet.other;
       return { question: sig.question, sub:`Specific to ${industryLabel(a.industry)} — this is the detail that actually changes the recommendation.`, options: sig.options };
     },
     next:()=>'insight_deep'
@@ -698,7 +738,7 @@ function render(){
       <div class="summary-list" id="summaryList"></div>`;
     document.getElementById('summaryList').innerHTML = buildSummaryLines().map(l=>`<div>${l}</div>`).join('');
     if(APPS_SCRIPT_URL) autoSendReport(rec);
-    trackAssessment('assessment_complete', {path:answers.path, industry:answers.industry, recommendation:rec.capability, tier:rec.tier});
+    trackAssessment('assessment_complete', {path:answers.path, industry:answers.industry, variantIndustrySignal:answers._variant_industry_signal || '', recommendation:rec.capability, tier:rec.tier});
     requestAnimationFrame(reportAssessmentHeight);
     return;
   }
@@ -713,6 +753,11 @@ function hasAnswer(content, step){
 function goNext(){
   const step = STEPS[current];
   const nextId = step.next(answers);
+  trackAssessment('assessment_step', {
+    stepReached: nextId,
+    industry: answers.industry || '',
+    variantIndustrySignal: answers._variant_industry_signal || ''
+  });
   history_.push(current);
   current = nextId;
   render();
@@ -840,6 +885,10 @@ function autoSendReport(rec){
     utmContent:query.get('utm_content') || '',
     utmTerm:query.get('utm_term') || '',
     submittedAt:new Date().toISOString(),
+    captureSource:'growth-assessment',
+    assessmentIndustry:answers.industry || '',
+    assessmentVariant:answers._variant_industry_signal || '',
+    assessmentCompletion:'complete',
     website:''
   });
   fetch(APPS_SCRIPT_URL, {

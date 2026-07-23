@@ -12,10 +12,11 @@
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/brand/favicon.ico">
   <link rel="canonical" href="https://akrandall.com/">
-  <link rel="stylesheet" href="styles.css?v=20260722f">
-  <script src="lead-config.js?v=20260721d"></script>
-  <script src="analytics.js?v=20260721b" defer></script>
-  <script src="script.js?v=20260722c" defer></script>
+  <link rel="stylesheet" href="styles.min.css?v=20260723a">
+  <script src="lead-config.js?v=20260723a"></script>
+  <script src="assets/data/site-metrics.js?v=20260723a"></script>
+  <script src="analytics.js?v=20260723a" defer></script>
+  <script src="script.js?v=20260723a" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"AK Randall Digital","url":"https://akrandall.com/","email":"andrew@akrandall.com","telephone":"+1-336-437-4484","areaServed":"United States","founder":{"@type":"Person","name":"Andrew Randall"},"description":"Digital operating systems, business strategy, and business-to-government consulting for capable small and mid-size organizations."}</script>
 </head>
 <body class="home-page">
@@ -27,6 +28,7 @@
       <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
         <a href="services.html">Services</a>
         <a href="work.html">Proof</a>
+        <a href="resources.html">Resources</a>
         <a href="about.html">About</a>
         <a class="nav-assessment" href="assessment.html" data-assessment-cta="header-nav">Free assessment</a>
         <a href="connect.html">Connect</a>
@@ -45,6 +47,12 @@
             <p class="eyebrow">Digital transformation / Business strategy / B2G consulting</p>
             <h1 id="home-hero-title">Make your capability <span>easier to buy.</span></h1>
             <p>Connect the way your business is found, understood, pursued, and delivered&mdash;so good opportunities do not disappear into scattered information or inconsistent follow-through.</p>
+            <div class="home-hero-proof" aria-label="Selected experience and confirmed outcomes">
+              <div><strong>17 years</strong><span>Sales, growth, strategy, and delivery</span></div>
+              <div><strong>Under 5</strong><span>Years to build the public-sector record</span></div>
+              <div><strong>37 + DC</strong><span>Public-sector markets reached</span></div>
+              <div><strong data-proof-metric="confirmedCustomerProjectValue">$7.5M+</strong><span>Total confirmed customer project value</span></div>
+            </div>
             <div class="hero-actions">
               <a class="button button--sage" href="connect.html#schedule">Book your free 30-minute intro call</a>
               <a class="button home-button-ghost" href="assessment.html" data-assessment-cta="home-hero">Take the free growth assessment</a>
@@ -64,15 +72,6 @@
           <div><i data-scroll-progress></i></div>
           <p>Scroll to move through the city</p>
         </div>
-      </div>
-    </section>
-
-    <section class="home-proof-bar" aria-label="Selected experience and confirmed outcomes">
-      <div class="wrap home-proof-grid">
-        <div><strong>17 years</strong><span>Sales, growth, strategy, and delivery experience</span></div>
-        <div><strong>Under 5</strong><span>Years to build the public-sector record shown here</span></div>
-        <div><strong>37 + DC</strong><span>Public-sector markets reached</span></div>
-        <div><strong>$7.5M+</strong><span>Confirmed customer project value</span></div>
       </div>
     </section>
 
@@ -223,7 +222,7 @@
               <circle cx="16" cy="48" r="5"></circle><circle cx="80" cy="48" r="5"></circle><circle cx="48" cy="16" r="5"></circle><circle cx="48" cy="80" r="5"></circle>
               <path pathLength="1" d="M21 48h14m26 0h14M48 21v14m0 26v14"></path>
             </svg>
-            <span class="home-industry-index">01 / COMPLEX VALUE</span>
+            <span class="home-industry-index">01 / SPECIALIZED VALUE</span>
             <h3>Buyers need expertise translated into a decision.</h3>
             <p>Clarify the problem, business value, evidence, and next step without flattening the technical depth that makes the company credible.</p>
           </article>
@@ -232,7 +231,7 @@
               <rect x="10" y="18" width="28" height="20" rx="4"></rect><rect x="58" y="18" width="28" height="20" rx="4"></rect><rect x="34" y="60" width="28" height="20" rx="4"></rect>
               <path pathLength="1" d="M38 28h20M24 38v12c0 6 5 11 11 11h3m34-23v12c0 6-5 11-11 11h-3"></path>
             </svg>
-            <span class="home-industry-index">02 / COMPLEX WORK</span>
+            <span class="home-industry-index">02 / CONNECTED OPERATIONS</span>
             <h3>Teams need one reliable path through the work.</h3>
             <p>Connect information, owners, tools, approvals, and handoffs so capability does not depend on memory or heroic follow-through.</p>
           </article>
@@ -263,7 +262,7 @@
           <a class="button button--light" href="work.html">See the method behind the proof</a>
         </div>
         <div class="home-proof-story-metrics">
-          <article data-reveal><strong>$7.5M<sup>+</sup></strong><span>Confirmed customer projects supported by awards, agreements, and issued orders</span></article>
+          <article data-reveal><strong data-proof-metric="confirmedCustomerProjectValue">$7.5M+</strong><span>Total confirmed customer project value supported by accepted or fulfilled work</span></article>
           <article data-reveal><strong>41</strong><span>Field projects mapped across public environments</span></article>
           <article data-reveal><strong><small>Under</small> 5 years</strong><span>From public-market entry to the confirmed record shown here</span></article>
         </div>
@@ -295,7 +294,17 @@
           <div class="home-conversion-choice"><span>Prefer a conversation?</span><a href="connect.html#schedule">Book a free 30-minute intro call <b aria-hidden="true">&nearr;</b></a></div>
         </div>
 
-        <form class="inquiry-form home-inquiry-form" data-inquiry-form data-reveal accept-charset="UTF-8">
+        <div class="home-conversion-forms">
+          <form class="home-email-capture" data-email-capture data-reveal accept-charset="UTF-8">
+            <div><p class="eyebrow">A lighter first step</p><h3>Not ready to explain the whole problem?</h3><p>Leave your email and Andrew will send a short, practical note to help you choose the most useful starting point. No unrelated sales list.</p></div>
+            <div class="home-email-capture-row"><label class="sr-only" for="home-capture-email">Work email</label><input id="home-capture-email" name="email" type="email" autocomplete="email" maxlength="180" required placeholder="Work email"><button class="button button--sage" type="submit">Send my starting point</button></div>
+            <div class="form-honeypot" aria-hidden="true"><label for="home-capture-website">Leave this field empty</label><input id="home-capture-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <input type="hidden" name="source" value="home-email-capture">
+            <p class="form-status" role="status" aria-live="polite"></p>
+            <div class="lead-success" data-lead-success hidden><strong>Your starting-point request is in.</strong><p>Andrew will send the note directly to the email you provided.</p></div>
+          </form>
+
+          <form class="inquiry-form home-inquiry-form" data-inquiry-form data-reveal accept-charset="UTF-8">
           <div class="field"><label for="home-name">Your name</label><input id="home-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
           <div class="field"><label for="home-email">Work email</label><input id="home-email" name="email" type="email" autocomplete="email" maxlength="180" required></div>
           <div class="field field--full"><label for="home-company">Company or organization</label><input id="home-company" name="company" type="text" autocomplete="organization" maxlength="180"></div>
@@ -307,11 +316,12 @@
           <div class="field field--full"><button class="button button--sage" type="submit">Send my growth challenge &nearr;</button></div>
           <p class="form-status" role="status" aria-live="polite"></p>
           <div class="lead-success" data-lead-success hidden><strong>Message received.</strong><p>Andrew will review the context and respond directly.</p><a class="button button--sage" href="connect.html#schedule">Choose a call time</a></div>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><img src="assets/brand/logo-header.webp" alt="AK Randall Digital" width="640" height="240"><p>Helping capable businesses connect their market presence, operations, and public-sector growth strategy.</p></div><nav class="footer-links" aria-label="Footer"><strong>Explore</strong><a href="services.html">Services</a><a href="work.html">Proof</a><a href="about.html">About</a><a href="assessment.html">Free assessment</a><a href="connect.html">Connect</a></nav><div class="footer-links"><strong>Start a conversation</strong><a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a><a href="tel:+13364374484">336 437 4484</a><a href="connect.html#schedule">Book a free intro call &nearr;</a></div></div><div class="footer-bottom"><span>&copy; <span data-year></span> AK Randall Digital LLC</span><span>North Carolina &middot; Working nationally</span></div></div></footer>
+  <footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><img src="assets/brand/logo-header.webp" alt="AK Randall Digital" width="640" height="240"><p>Helping capable businesses connect their market presence, operations, and public-sector growth strategy.</p></div><nav class="footer-links" aria-label="Footer"><strong>Explore</strong><a href="services.html">Services</a><a href="work.html">Proof</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="assessment.html">Free assessment</a><a href="connect.html">Connect</a></nav><div class="footer-links"><strong>Start a conversation</strong><a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a><a href="tel:+13364374484">336 437 4484</a><a href="connect.html#schedule">Book a free intro call &nearr;</a></div></div><div class="footer-bottom"><span>&copy; <span data-year></span> AK Randall Digital LLC</span><span>North Carolina &middot; Working nationally</span></div></div></footer>
 </body>
 </html>

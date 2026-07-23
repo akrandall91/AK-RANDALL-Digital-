@@ -13,6 +13,7 @@
     'form_fallback',
     'assessment_start',
     'assessment_open',
+    'assessment_step',
     'assessment_complete',
     'assessment_booking_click',
     'guide_download',
@@ -52,7 +53,7 @@
 
     if (eventName === 'form_success') {
       const leadParameters = {
-        leadSource: 'website_form',
+        leadSource: parameters.formType === 'email-only' ? 'home_email_capture' : 'website_form',
         focus: parameters.focus || ''
       };
       sendGoogleEvent('generate_lead', leadParameters);
@@ -64,6 +65,7 @@
         leadSource: 'growth_assessment',
         path: parameters.path || '',
         industry: parameters.industry || '',
+        variantIndustrySignal: parameters.variantIndustrySignal || '',
         recommendation: parameters.recommendation || '',
         tier: parameters.tier || ''
       };
@@ -119,8 +121,11 @@
       sourcePage: cleanPath(detail.sourcePage || pagePath),
       label: cleanValue(detail.label, 120),
       focus: cleanValue(detail.focus, 120),
+      formType: cleanValue(detail.formType, 40),
       path: cleanValue(detail.path, 120),
       industry: cleanValue(detail.industry, 120),
+      variantIndustrySignal: cleanValue(detail.variantIndustrySignal, 40),
+      stepReached: cleanValue(detail.stepReached, 80),
       recommendation: cleanValue(detail.recommendation, 160),
       tier: cleanValue(detail.tier, 80),
       guide: cleanValue(detail.guide, 120),
@@ -136,8 +141,11 @@
       source_page: source.sourcePage,
       link_text: source.label,
       inquiry_focus: source.focus,
+      form_type: source.formType,
       assessment_path: source.path,
       industry: source.industry,
+      assessment_variant: source.variantIndustrySignal,
+      assessment_step: source.stepReached,
       recommendation: source.recommendation,
       assessment_tier: source.tier,
       guide_name: source.guide,
