@@ -1,0 +1,2548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Contracting Readiness Checklist — AKRD</title>
+<link rel="stylesheet" href="styles.min.css?v=20260729a">
+<style>
+  :root{
+    --navy:#0a1d3b;
+    --navy-deep:#06101c;
+    --cyan:#2457ff;
+    --sage:#b7e33f;
+    --warm-white:#f8fafc;
+    --ink:#06101c;
+    --paper:#e9edf1;
+    --line: rgba(6,16,28,0.14);
+    --line-soft: rgba(6,16,28,0.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Instrument Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--cyan);}
+
+  /* ---------- HEADER / GATE ---------- */
+  header.top{
+    background:var(--navy-deep);
+    color:var(--warm-white);
+    padding:56px 24px 40px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:4px solid var(--cyan);
+  }
+  .top-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:800;
+    font-size:clamp(30px,4vw,46px);
+    line-height:1.05;
+    margin:0 0 16px;
+    color:#fff;
+  }
+  .subtitle{
+    font-size:16px;
+    line-height:1.6;
+    color:rgba(232,232,224,0.8);
+    max-width:520px;
+    margin:0 0 22px;
+  }
+  .top-controls{display:flex; gap:10px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:10px 16px;
+    border-radius:3px;
+    border:1px solid rgba(232,232,224,0.35);
+    background:transparent;
+    color:var(--warm-white);
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .btn:hover{border-color:var(--sage); color:var(--sage);}
+  .btn.primary{background:var(--cyan); border-color:var(--cyan); color:#fff;}
+  .btn.primary:hover{background:#1a63ab; color:#fff;}
+
+  /* Gate visual */
+  .gate-wrap{
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .gate-score{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:800;
+    font-size:44px;
+    color:#fff;
+    line-height:1;
+  }
+  .gate-score span{font-size:18px; color:var(--sage); font-family:'IBM Plex Mono',monospace; font-weight:500; margin-left:2px;}
+  .gate-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(232,232,224,0.6);
+  }
+  svg#gateSvg{width:220px; height:160px; overflow:visible;}
+  .gate-door{ transform-box: fill-box; transform-origin: left center; transition: transform 1s cubic-bezier(.4,0,.2,1);}
+  .gate-door.right{ transform-origin: right center; }
+  .gate-frame{fill:none; stroke:rgba(232,232,224,0.5); stroke-width:2;}
+  .gate-glow{ transition: opacity 1s ease; }
+
+  /* ---------- LAYOUT ---------- */
+  .layout{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:40px;
+    padding:40px 24px 100px;
+  }
+  nav.sidebar{
+    position:sticky;
+    top:20px;
+    align-self:start;
+    max-height:calc(100vh - 40px);
+    overflow-y:auto;
+    padding-right:4px;
+  }
+  .nav-title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--navy);
+    opacity:0.55;
+    margin-bottom:12px;
+  }
+  .nav-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 10px;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:13px;
+    color:var(--ink);
+    text-decoration:none;
+    margin-bottom:2px;
+  }
+  .nav-item:hover{background:var(--line-soft);}
+  .nav-item.active{background:var(--navy); color:#fff;}
+  .nav-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    width:20px;
+    color:var(--cyan);
+    flex-shrink:0;
+  }
+  .nav-item.active .nav-num{color:var(--sage);}
+  .nav-dot{
+    margin-left:auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    opacity:0.6;
+  }
+
+  main{min-width:0;}
+
+  .intro-block{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--cyan);
+    border-radius:4px;
+    padding:22px 24px;
+    margin-bottom:36px;
+    font-size:14.5px;
+    line-height:1.65;
+    color:#26314a;
+  }
+  .intro-block strong{color:var(--navy);}
+
+  .phase{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:6px;
+    margin-bottom:20px;
+    scroll-margin-top:20px;
+    overflow:hidden;
+  }
+  .phase-head{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:20px 22px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .phase-num{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    color:var(--cyan);
+    width:44px;
+    flex-shrink:0;
+  }
+  .phase-headtext{flex:1; min-width:0;}
+  .phase-title{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    font-size:19px;
+    margin:0 0 4px;
+    color:var(--navy);
+  }
+  .phase-progress-track{
+    height:5px; background:var(--line-soft); border-radius:3px; overflow:hidden; max-width:260px;
+  }
+  .phase-progress-fill{
+    height:100%; background:var(--sage); width:0%; transition:width .4s ease;
+  }
+  .phase-meta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--navy);
+    opacity:0.6;
+    flex-shrink:0;
+  }
+  .chevron{
+    font-size:14px; color:var(--navy); opacity:0.5; transition:transform .2s ease; flex-shrink:0;
+  }
+  .phase.open .chevron{transform:rotate(180deg);}
+  .phase-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .phase.open .phase-body{max-height:none;}
+  .phase-body-inner{
+    padding:0 24px 26px;
+    border-top:1px solid var(--line-soft);
+  }
+  .phase-blurb{
+    font-size:14px;
+    line-height:1.6;
+    color:#3a4a63;
+    margin:18px 0 16px;
+    max-width:720px;
+  }
+  .ref-links{
+    display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;
+  }
+  .ref-link{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    padding:6px 11px;
+    background:var(--warm-white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--navy);
+    text-decoration:none;
+  }
+  .ref-link:hover{border-color:var(--cyan); color:var(--cyan);}
+  .ref-link::before{content:"↗ "; opacity:0.5;}
+
+  .group{margin-bottom:20px;}
+  .group-title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--navy);
+    opacity:0.7;
+    margin-bottom:10px;
+    padding-bottom:6px;
+    border-bottom:1px dashed var(--line);
+  }
+  .item{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:6px 0;
+    font-size:14px;
+    line-height:1.5;
+    color:#1c2436;
+  }
+  .item input[type=checkbox]{
+    appearance:none;
+    -webkit-appearance:none;
+    width:17px; height:17px;
+    border:1.5px solid var(--navy);
+    border-radius:3px;
+    margin-top:2px;
+    flex-shrink:0;
+    cursor:pointer;
+    position:relative;
+    background:#fff;
+    transition:all .15s ease;
+  }
+  .item input[type=checkbox]:checked{
+    background:var(--sage);
+    border-color:var(--sage);
+  }
+  .item input[type=checkbox]:checked::after{
+    content:"✓";
+    position:absolute;
+    top:-3px; left:2px;
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+  }
+  .item label{cursor:pointer; flex:1;}
+  .item.checked label{color:#8a93a3; text-decoration:line-through; text-decoration-color:#b9c1cc;}
+
+  .note-box{
+    background:var(--warm-white);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:14px 16px;
+    font-size:13px;
+    line-height:1.6;
+    color:#3a4a63;
+    margin:10px 0 20px;
+  }
+  .note-box strong{color:var(--navy);}
+
+  table.ref-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+    margin:8px 0 20px;
+  }
+  table.ref-table th, table.ref-table td{
+    border:1px solid var(--line);
+    padding:8px 10px;
+    text-align:left;
+  }
+  table.ref-table th{
+    background:var(--warm-white);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--navy);
+  }
+
+  /* Gate summary section */
+  .gate-summary{
+    background:var(--navy-deep);
+    color:var(--warm-white);
+    border-radius:6px;
+    padding:32px 28px;
+    margin:36px 0;
+  }
+  .gate-summary h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:24px;
+    color:#fff;
+    margin:0 0 8px;
+  }
+  .gate-summary p{font-size:14px; line-height:1.6; color:rgba(232,232,224,0.75); max-width:640px;}
+  .five-q{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:20px;
+  }
+  .five-q .q{
+    background:rgba(232,232,224,0.06);
+    border:1px solid rgba(232,232,224,0.15);
+    border-radius:4px;
+    padding:14px 16px;
+    font-size:13px;
+    line-height:1.5;
+  }
+  .five-q .q .qnum{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--sage);
+    font-size:11px;
+    display:block;
+    margin-bottom:6px;
+  }
+
+  footer{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px 60px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:#7a8497;
+    text-align:center;
+  }
+
+  @media (max-width: 860px){
+    .top-inner{grid-template-columns:1fr; gap:28px;}
+    .gate-wrap{align-items:flex-start;}
+    .layout{grid-template-columns:1fr;}
+    nav.sidebar{
+      position:static;
+      max-height:none;
+      display:flex;
+      overflow-x:auto;
+      gap:4px;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:8px;
+    }
+    .nav-title{display:none;}
+    .nav-item{white-space:nowrap; margin-bottom:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- BUSINESS PROFILE ---------- */
+  .profile-section{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:6px;
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .profile-head{
+    background:var(--navy);
+    color:#fff;
+    padding:20px 24px;
+  }
+  .profile-head h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:20px;
+    margin:0 0 6px;
+  }
+  .profile-head p{
+    font-size:13px;
+    line-height:1.55;
+    color:rgba(232,232,224,0.8);
+    margin:0;
+    max-width:640px;
+  }
+  .profile-body{padding:22px 24px 26px;}
+  .field-group{margin-bottom:22px;}
+  .field-group-title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--navy);
+    opacity:0.7;
+    margin-bottom:10px;
+    padding-bottom:6px;
+    border-bottom:1px dashed var(--line);
+  }
+  .form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+  }
+  .field{display:flex; flex-direction:column; gap:5px;}
+  .field.full{grid-column:1/-1;}
+  .field label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:var(--navy);
+    opacity:0.75;
+  }
+  .field input[type=text], .field input[type=email], .field input[type=tel], .field input[type=date], .field textarea{
+    font-family:'Instrument Sans',sans-serif;
+    font-size:13.5px;
+    padding:8px 10px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--paper);
+    color:var(--ink);
+    width:100%;
+  }
+  .field textarea{resize:vertical; min-height:56px; font-family:'Instrument Sans',sans-serif;}
+  .field input:focus, .field textarea:focus{outline:2px solid var(--cyan); outline-offset:1px; background:#fff;}
+
+  .cert-checks{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:8px 16px;
+  }
+  .cert-checks label{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; color:#1c2436; cursor:pointer;
+  }
+  .cert-checks input[type=checkbox]{width:16px; height:16px; accent-color:var(--sage); cursor:pointer;}
+
+  .repeat-table-wrap{overflow-x:auto; margin-bottom:10px;}
+  table.repeat-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12.5px;
+  }
+  table.repeat-table th{
+    background:var(--warm-white);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:var(--navy);
+    padding:7px 8px;
+    text-align:left;
+    white-space:nowrap;
+  }
+  table.repeat-table td{
+    border:1px solid var(--line);
+    padding:4px;
+    vertical-align:top;
+  }
+  table.repeat-table input, table.repeat-table select{
+    width:100%;
+    min-width:110px;
+    border:1px solid transparent;
+    background:transparent;
+    font-family:'Instrument Sans',sans-serif;
+    font-size:12.5px;
+    padding:6px 6px;
+    border-radius:2px;
+  }
+  table.repeat-table input:focus{outline:1.5px solid var(--cyan); background:#fff;}
+  table.repeat-table .rm-row{
+    background:none; border:none; color:#c0546a; cursor:pointer; font-size:15px; padding:4px 8px;
+  }
+  .add-row-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    padding:7px 12px;
+    background:var(--warm-white);
+    border:1px dashed var(--navy);
+    color:var(--navy);
+    border-radius:4px;
+    cursor:pointer;
+  }
+  .add-row-btn:hover{background:#fff; border-style:solid;}
+
+  /* ---------- DOCUMENT GENERATOR ---------- */
+  .doc-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:18px;
+    margin-top:6px;
+  }
+  .doc-card{
+    border:1px solid var(--line);
+    border-radius:5px;
+    background:var(--paper);
+    display:flex;
+    flex-direction:column;
+  }
+  .doc-card-head{
+    padding:14px 16px 10px;
+    border-bottom:1px solid var(--line);
+  }
+  .doc-card-head h3{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:15px;
+    margin:0 0 4px;
+    color:var(--navy);
+  }
+  .doc-card-head p{font-size:12px; color:#5b6879; margin:0; line-height:1.4;}
+  .doc-card-actions{
+    display:flex; gap:8px; padding:12px 16px 16px;
+  }
+  .doc-btn{
+    flex:1;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:9px 8px;
+    border-radius:3px;
+    border:1px solid var(--navy);
+    background:#fff;
+    color:var(--navy);
+    cursor:pointer;
+  }
+  .doc-btn:hover{background:var(--navy); color:#fff;}
+  .doc-btn.pdf{border-color:var(--cyan); color:var(--cyan);}
+  .doc-btn.pdf:hover{background:var(--cyan); color:#fff;}
+
+  /* hidden templates used to build exports — not shown on page */
+  .doc-source{display:none;}
+
+  /* the exported-document look, shared by preview + export */
+  .docpaper{
+    background:#fff;
+    font-family:'Instrument Sans',sans-serif;
+    color:#111;
+    padding:26px 28px;
+    font-size:12.5px;
+    line-height:1.5;
+  }
+  .docpaper h1{font-family:'Bricolage Grotesque',sans-serif; font-size:22px; margin:0 0 2px; color:var(--navy);}
+  .docpaper .doc-sub{font-family:'IBM Plex Mono',monospace; font-size:11px; color:#555; margin-bottom:14px;}
+  .docpaper h2{font-family:'Bricolage Grotesque',sans-serif; font-size:14px; color:var(--navy); border-bottom:1.5px solid var(--navy); padding-bottom:3px; margin:16px 0 8px;}
+  .docpaper table{width:100%; border-collapse:collapse; font-size:11.5px; margin-bottom:10px;}
+  .docpaper th, .docpaper td{border:1px solid #ccc; padding:5px 7px; text-align:left;}
+  .docpaper th{background:#eef1f6; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase;}
+  .docpaper .kv{display:grid; grid-template-columns:repeat(2,1fr); gap:4px 18px; font-size:12px; margin-bottom:6px;}
+  .docpaper .kv div b{color:var(--navy);}
+  .docpaper ul{margin:4px 0 0; padding-left:18px;}
+  .docpaper .empty-note{color:#999; font-style:italic;}
+
+  /* ---------- ASSESSMENT ---------- */
+  .assess-card{
+    background:var(--navy-deep);
+    color:var(--warm-white);
+    border-radius:6px;
+    padding:28px 26px 30px;
+    margin-bottom:28px;
+  }
+  .assess-card h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:22px;
+    color:#fff;
+    margin:0 0 8px;
+  }
+  .assess-card > p{
+    font-size:13.5px;
+    line-height:1.6;
+    color:rgba(232,232,224,0.78);
+    max-width:640px;
+    margin:0 0 22px;
+  }
+  .assess-group{margin-bottom:20px;}
+  .assess-group-title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--sage);
+    margin-bottom:10px;
+  }
+  .assess-q{
+    display:grid;
+    grid-template-columns:1fr 220px;
+    gap:14px;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid rgba(232,232,224,0.12);
+  }
+  .assess-q .qtext{font-size:14px; line-height:1.45;}
+  .yn-group{display:flex; gap:8px;}
+  .yn-btn{
+    flex:1;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    padding:8px 4px;
+    border-radius:3px;
+    border:1px solid rgba(232,232,224,0.35);
+    background:transparent;
+    color:var(--warm-white);
+    cursor:pointer;
+  }
+  .yn-btn.active.yes{background:var(--sage); border-color:var(--sage); color:#08331f;}
+  .yn-btn.active.no{background:rgba(232,232,224,0.2); border-color:rgba(232,232,224,0.5); color:#fff;}
+  .assess-q input[type=text]{
+    width:100%;
+    font-family:'Instrument Sans',sans-serif;
+    font-size:13px;
+    padding:9px 10px;
+    border-radius:3px;
+    border:1px solid rgba(232,232,224,0.3);
+    background:rgba(255,255,255,0.06);
+    color:#fff;
+  }
+  .assess-q input[type=text]::placeholder{color:rgba(232,232,224,0.4);}
+  .assess-q input[type=text]:focus{outline:2px solid var(--sage); background:rgba(255,255,255,0.1);}
+  .assess-actions{display:flex; align-items:center; gap:14px; margin-top:6px; flex-wrap:wrap;}
+  .assess-result{
+    display:none;
+    margin-top:20px;
+    background:rgba(95,197,151,0.12);
+    border:1px solid rgba(95,197,151,0.4);
+    border-radius:5px;
+    padding:16px 18px;
+  }
+  .assess-result.show{display:block;}
+  .assess-result .rtitle{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--sage);
+    margin-bottom:6px;
+  }
+  .assess-result h3{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:18px;
+    color:#fff;
+    margin:0 0 8px;
+  }
+  .btn.danger{border-color:rgba(214,90,90,0.6); color:#f0a8a8;}
+  .btn.danger:hover{background:#b23b3b; border-color:#b23b3b; color:#fff;}
+
+  /* ---------- SUPPORTING DOCUMENTS ---------- */
+  .phase-docs{
+    margin-top:22px;
+    padding-top:18px;
+    border-top:1px dashed var(--line);
+  }
+  .phase-docs-title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--navy);
+    opacity:0.7;
+    margin-bottom:10px;
+  }
+  .docupload-row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr auto;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .docupload-row input[type=text]{
+    font-family:'Instrument Sans',sans-serif;
+    font-size:12.5px;
+    padding:8px 9px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--paper);
+  }
+  .docupload-row input[type=file]{
+    font-family:'Instrument Sans',sans-serif;
+    font-size:11.5px;
+    padding:5px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--paper);
+    max-width:100%;
+  }
+  .doclib-add-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    padding:8px 14px;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    border-radius:3px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .doclib-add-btn:hover{background:var(--cyan);}
+  .doclib-hint{font-size:11.5px; color:#8a93a3; margin:-6px 0 12px;}
+  .doc-list{display:flex; flex-direction:column; gap:6px;}
+  .doc-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 10px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    font-size:12.5px;
+  }
+  .doc-row .doc-icon{font-size:14px; flex-shrink:0;}
+  .doc-row .doc-name{flex:1; min-width:0; color:var(--ink); text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .doc-row .doc-name:hover{color:var(--cyan);}
+  .doc-row .doc-size{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#8a93a3; flex-shrink:0;}
+  .doc-row .doc-rm{
+    background:none; border:none; color:#c0546a; cursor:pointer; font-size:14px; padding:2px 6px; flex-shrink:0;
+  }
+  .doclib-empty{font-size:12px; color:#8a93a3; font-style:italic; margin-bottom:10px;}
+  @media (max-width:700px){
+    .docupload-row{grid-template-columns:1fr; }
+  }
+
+  /* ---------- NOTICES / DISCLAIMER / TERMS ---------- */
+  .notice-block{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid #c0862f;
+    border-radius:4px;
+    padding:18px 22px;
+    font-size:13px;
+    line-height:1.6;
+    color:#3a4a63;
+  }
+  .notice-block h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:#a3671f;
+    margin:0 0 6px;
+  }
+  .notice-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px 24px; margin-bottom:24px;}
+  .privacy-note{
+    background:var(--warm-white);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:14px 16px;
+    font-size:12.5px;
+    line-height:1.6;
+    color:#3a4a63;
+    margin-bottom:20px;
+  }
+  .privacy-note strong{color:var(--navy);}
+
+  /* ---------- HOW IT WORKS / VALUE LADDER ---------- */
+  .how-it-works{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:24px 26px;
+    margin-bottom:24px;
+  }
+  .hiw-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:32px;}
+  .hiw-title{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy);
+    margin:0 0 12px;
+  }
+  .how-it-works ol{margin:0; padding-left:20px; font-size:13.5px; line-height:1.65; color:#26314a;}
+  .how-it-works ol li{margin-bottom:8px;}
+  table.ladder-table{width:100%; border-collapse:collapse; font-size:12px; margin-bottom:14px;}
+  table.ladder-table th, table.ladder-table td{border:1px solid var(--line); padding:6px 8px; text-align:left;}
+  table.ladder-table th{background:var(--warm-white); font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:var(--navy);}
+  table.ladder-table td:nth-child(2), table.ladder-table td:nth-child(3), table.ladder-table th:nth-child(2), table.ladder-table th:nth-child(3){text-align:center; width:80px;}
+  .hiw-note{font-size:11.5px; color:#5b6879; margin-top:10px; line-height:1.5;}
+  @media (max-width:820px){ .hiw-grid{grid-template-columns:1fr;} }
+
+  /* ---------- GLOSSARY ---------- */
+  .glossary{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:6px;
+    margin-bottom:24px;
+    overflow:hidden;
+  }
+  .glossary > summary{
+    padding:16px 22px;
+    cursor:pointer;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy);
+    list-style:none;
+  }
+  .glossary > summary::-webkit-details-marker{display:none;}
+  .glossary > summary::before{content:"▸ "; color:var(--cyan);}
+  .glossary[open] > summary::before{content:"▾ "; }
+  .glossary-body{padding:0 22px 20px;}
+  .glossary-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:10px 24px;}
+  .glossary-term{font-size:13px; line-height:1.5; color:#3a4a63;}
+  .glossary-term b{color:var(--navy); font-family:'IBM Plex Mono',monospace; font-size:12.5px;}
+
+  /* ---------- GROUP WHY / PHASE NEXT ---------- */
+  .group-why{font-size:12.5px; line-height:1.55; color:#5b6879; font-style:italic; margin:-4px 0 10px;}
+  .phase-next{
+    margin-top:18px;
+    background:var(--warm-white);
+    border:1px solid var(--line);
+    border-left:3px solid var(--sage);
+    border-radius:4px;
+    padding:12px 16px;
+  }
+  .phase-next-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--navy); opacity:0.65; margin-bottom:4px;}
+  .phase-next-text{font-size:13px; line-height:1.5; color:#1c2436;}
+
+  /* ---------- CITATIONS ---------- */
+  .citations{
+    font-size:12px;
+    line-height:1.55;
+    color:#5b6879;
+    background:var(--warm-white);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:10px 14px;
+    margin:12px 0 18px;
+  }
+  .citations b{color:var(--navy); font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;}
+
+  /* ---------- DOC GATING / MODAL ---------- */
+  .doc-badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    padding:2px 7px;
+    border-radius:10px;
+    margin-left:8px;
+    vertical-align:middle;
+  }
+  .doc-badge.free{background:rgba(95,197,151,0.18); color:#2f7a54;}
+  .doc-badge.paid{background:rgba(34,119,209,0.14); color:var(--cyan);}
+  .modal-overlay{
+    display:none;
+    position:fixed; inset:0;
+    background:rgba(8,12,18,0.6);
+    z-index:1000;
+    align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .modal-overlay.show{display:flex;}
+  .modal-box{
+    background:#fff;
+    border-radius:6px;
+    max-width:720px;
+    width:100%;
+    max-height:86vh;
+    overflow-y:auto;
+    position:relative;
+    padding:0;
+  }
+  .modal-close{
+    position:sticky; top:0; float:right;
+    background:var(--navy); color:#fff; border:none;
+    width:32px; height:32px; border-radius:50%;
+    font-size:16px; cursor:pointer; margin:12px 12px 0 0;
+    z-index:2;
+  }
+  .modal-watermark{
+    position:sticky; top:0;
+    background:#fdf3e2; color:#a3671f;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    text-align:center; padding:8px; border-bottom:1px solid #e8d3a3;
+  }
+  .fullreport-banner{
+    background:rgba(95,197,151,0.14);
+    border:1px solid rgba(95,197,151,0.5);
+    border-radius:5px;
+    padding:14px 16px;
+    margin-top:14px;
+    font-size:13px;
+    line-height:1.55;
+    color:#1c2436;
+    display:none;
+  }
+  .fullreport-banner.show{display:block;}
+  .sample-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    padding:8px 14px;
+    background:transparent;
+    border:1px dashed var(--sage);
+    color:#2f7a54;
+    border-radius:4px;
+    cursor:pointer;
+    margin-left:10px;
+  }
+  .sample-btn:hover{background:rgba(95,197,151,0.12);}
+</style>
+</head>
+<body>
+<div id="storageWarning" style="display:none; background:#7a2d2d; color:#fdeaea; font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-align:center; padding:10px 16px; line-height:1.5;">
+  ⚠ This browser is blocking local saving on this file, so nothing you enter will be kept when you close or reopen it. Open this file in <strong>Chrome, Firefox, or Edge</strong> instead — some browsers (Safari, or private/incognito windows) restrict saving for files opened directly from your computer.
+</div>
+<script>
+(function(){
+  try{
+    var k = "__gcrc_storage_test__";
+    localStorage.setItem(k, "1");
+    localStorage.removeItem(k);
+  }catch(e){
+    document.getElementById("storageWarning").style.display = "block";
+  }
+})();
+</script>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="eyebrow">// Government Market Systems — Reference Tool</div>
+      <h1 class="title">Government Contracting Readiness Checklist</h1>
+      <p class="subtitle">Registration does not equal readiness. This is the full path — from legal entity to first invoice — for a consulting, distribution, or systems-integration business entering government work as a prime, reseller, or subcontractor. This tool lives entirely on your computer: check items off, fill in your profile, attach documents — everything saves locally in this file's browser storage. Nothing is uploaded anywhere.</p>
+      <div class="top-controls">
+        <button class="btn primary" onclick="window.print()">Print / Save as PDF</button>
+        <button class="btn" id="resetBtn">Reset checklist only</button>
+        <button class="btn danger" id="hardResetBtn">Hard reset (erase everything)</button>
+      </div>
+    </div>
+    <div class="gate-wrap">
+      <svg id="gateSvg" viewBox="0 0 220 160">
+        <rect class="gate-frame" x="14" y="14" width="192" height="140" rx="4"/>
+        <rect class="gate-door" id="doorLeft" x="16" y="16" width="93" height="136" fill="var(--navy)"/>
+        <rect class="gate-door right" id="doorRight" x="111" y="16" width="93" height="136" fill="var(--navy)"/>
+        <circle class="gate-glow" id="gateGlow" cx="110" cy="84" r="34" fill="var(--sage)" opacity="0"/>
+      </svg>
+      <div class="gate-score" id="gateScore">0<span>%</span></div>
+      <div class="gate-label">Readiness Score</div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <a href="#assessment" class="nav-item" style="margin-bottom:6px; border:1px solid var(--line);">
+      <span class="nav-num">◎</span><span>Quick-Start Assessment</span>
+    </a>
+    <a href="#profile" class="nav-item" style="margin-bottom:10px; border:1px solid var(--line);">
+      <span class="nav-num">✎</span><span>Business Profile</span>
+    </a>
+    <div class="nav-title">Phases</div>
+  </nav>
+
+  <main>
+
+    <div class="how-it-works" id="howItWorks">
+      <div class="hiw-grid">
+        <div>
+          <div class="hiw-title">How this tool works</div>
+          <ol>
+            <li><b>Answer the Quick-Start Assessment</b> (about 2 minutes). It auto-checks the matching steps across all 10 phases and tells you which phase to actually start on — no need to read Phase 01 if you're already past it.</li>
+            <li><b>Work the phases and watch your Readiness Score climb.</b> The gate graphic at the top of the page fills in as you check off real steps. The <a href="#minGate">Minimum Readiness Gate</a> near the bottom tells you when a serious prime-contract bid is actually defensible.</li>
+            <li><b>Generate your documents.</b> Your capability statement, certification control sheet, and compliance matrix build live from the Business Profile below. Preview any of them free — unlock the polished PDF/Word export when you're ready to use it.</li>
+          </ol>
+        </div>
+        <div>
+          <div class="hiw-title">What's free vs. what's paid</div>
+          <table class="ladder-table">
+            <tr><th>Feature</th><th>Free</th><th>Full Report</th></tr>
+            <tr><td>Quick-Start Assessment &amp; Readiness Score</td><td>✓</td><td>✓</td></tr>
+            <tr><td>All 10 phase checklists, links &amp; references</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Minimum Readiness Gate</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Business Profile &amp; live document preview</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Polished capability statement, cert control sheet &amp; compliance matrix (PDF/Word export)</td><td>—</td><td>✓</td></tr>
+          </table>
+          <button class="btn primary" id="getFullReportTop" type="button">Get Full Report — <span class="fr-price"></span></button>
+          <button class="btn" id="loadSampleTop" type="button">See a sample first</button>
+          <div class="hiw-note">How it works: click "Get Full Report" → pay securely via Square in a new tab → check the email you used at checkout — we'll send your finished documents within 24 hours. No account or login required. Not satisfied? Email andrew@akrandall.com within 7 days for a refund.</div>
+          <div class="fullreport-banner" id="fullReportBannerTop"></div>
+        </div>
+      </div>
+      <div class="hiw-note" style="margin-top:14px; border-top:1px dashed var(--line); padding-top:10px;">Content last reviewed: <span id="hiwLastReviewed"></span>. Regulations, portals, and certification rules change — if anything here looks out of date, verify against the linked source before relying on it.</div>
+    </div>
+
+    <div class="notice-grid">
+      <div class="notice-block">
+        <h3>⚠ Not legal or compliance advice</h3>
+        This tool is an informational self-assessment built from publicly available guidance. It is not legal, accounting, bonding, or compliance advice, and completing it does not guarantee contract readiness or award. Before making a bid/no-bid decision or relying on any result here, verify current requirements with your contracting officer, the relevant agency, or a qualified attorney/accountant.
+      </div>
+      <div class="notice-block">
+        <h3>Terms</h3>
+        This is a self-assessment and document-drafting tool, not a certification or guarantee. Scores, gates, and generated documents reflect only what you enter — AKRD makes no representation about their accuracy, completeness, or suitability for any specific procurement, and is not liable for business decisions made based on this tool's output. <strong>Refund policy:</strong> not satisfied with your Full Report? Email <a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a> within 7 days of purchase for a refund.
+      </div>
+    </div>
+
+    <details class="glossary" id="glossary">
+      <summary>Glossary — acronyms used throughout this tool</summary>
+      <div class="glossary-body">
+        <div class="glossary-grid" id="glossaryGrid"></div>
+      </div>
+    </details>
+
+    <div class="intro-block">
+      <strong>How to use this tool.</strong> Work phase by phase — the order matters. Each phase includes a short plain-language explanation of why it exists, links to the actual public systems and agencies referenced, and the checklist itself. Fill in the <strong>Business Profile</strong> below as you go — the documents at the bottom of that section are built live from what you enter. Nothing here is legal advice; where a step touches contract law, bonding, or tax structuring, confirm specifics with an attorney or accountant. Links point to official <span class="mono">.gov</span> sources wherever one exists.
+    </div>
+
+    <section class="assess-card" id="assessment">
+      <h2>Quick-Start Assessment</h2>
+      <p>Answer what you can — skip anything you don't know yet. Your answers auto-fill the Business Profile below and check off the matching steps across the phases, so you land exactly where you actually need to start instead of at Phase 01 by default.</p>
+      <div id="assessGroups"></div>
+      <div class="assess-actions">
+        <button class="btn primary" id="runAssessBtn">Apply my answers</button>
+        <button class="btn" id="skipAssessBtn">Skip — I'll start from Phase 01</button>
+      </div>
+      <div class="assess-result" id="assessResult">
+        <div class="rtitle">Recommended starting point</div>
+        <h3 id="assessResultTitle"></h3>
+        <p id="assessResultText"></p>
+        <button class="btn primary" id="assessJumpBtn">Jump to this phase</button>
+        <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(232,232,224,0.15);">
+          <button class="btn" type="button" id="assessShareToggle">Save my results — share with Andrew</button>
+          <div id="assessShareForm" style="display:none; margin-top:12px; max-width:420px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+              <input type="text" id="shareName" placeholder="Your name" style="padding:9px 10px; border-radius:3px; border:1px solid rgba(232,232,224,0.3); background:rgba(255,255,255,0.06); color:#fff; font-family:'Instrument Sans',sans-serif; font-size:13px;">
+              <input type="email" id="shareEmail" placeholder="Email" style="padding:9px 10px; border-radius:3px; border:1px solid rgba(232,232,224,0.3); background:rgba(255,255,255,0.06); color:#fff; font-family:'Instrument Sans',sans-serif; font-size:13px;">
+            </div>
+            <button class="btn primary" type="button" id="assessShareSubmit">Send my results to Andrew</button>
+            <span id="assessShareStatus" style="font-size:12px; color:rgba(232,232,224,0.7); margin-left:10px;"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-section" id="profile">
+      <div class="profile-head">
+        <h2>Business Profile &amp; Document Generator</h2>
+        <p>Enter your company's information once. It's saved in this browser and used to auto-build the documents below — a capability statement, certification control sheet, vendor portal tracker, and proposal compliance matrix. Preview any of them free; unlocking the polished PDF/Word export requires the Full Report purchase (vendor portal tracker export is free).</p>
+      </div>
+      <div class="profile-body">
+
+        <div class="privacy-note">
+          <strong>Privacy note.</strong> This form collects business details you choose to enter — company name, EIN, UEI, CAGE code, certifications, and similar identifiers — so this tool can build documents from them. That data is stored <strong>only in this browser's local storage, tied to this file on this device</strong>. It is not uploaded to a server or database, and AKRD does not see, receive, or store it automatically. The only ways any of this information reaches AKRD are: (1) you click "Get Full Report" to purchase, which sends your Business Profile name/company/NAICS/UEI to AKRD directly (in addition to sharing your name/email with Square for payment processing) so report fulfillment has the context it needs; (2) you use the "Save my results — share with Andrew" option on the Quick-Start Assessment, which sends only your name, email, and readiness score; or (3) you email your details to us directly.
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <button class="btn" id="loadSampleBtn" type="button">Load sample data (see example output)</button>
+          <button class="btn" id="clearSampleBtn" type="button" style="display:none;">Clear sample data</button>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Company basics</div>
+          <div class="form-grid">
+            <div class="field"><label for="f_legalName">Legal business name</label><input type="text" id="f_legalName" data-field="legalName"></div>
+            <div class="field"><label for="f_dba">DBA (if different)</label><input type="text" id="f_dba" data-field="dba"></div>
+            <div class="field full"><label for="f_address">Physical address</label><input type="text" id="f_address" data-field="address"></div>
+            <div class="field full"><label for="f_mailingAddress">Mailing address (if different)</label><input type="text" id="f_mailingAddress" data-field="mailingAddress"></div>
+            <div class="field"><label for="f_phone">Phone</label><input type="tel" id="f_phone" data-field="phone"></div>
+            <div class="field"><label for="f_email">Email</label><input type="email" id="f_email" data-field="email"></div>
+            <div class="field"><label for="f_website">Website</label><input type="text" id="f_website" data-field="website"></div>
+            <div class="field"><label for="f_ownerName">Owner / key contact name</label><input type="text" id="f_ownerName" data-field="ownerName"></div>
+            <div class="field"><label for="f_ownerTitle">Title</label><input type="text" id="f_ownerTitle" data-field="ownerTitle"></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Federal identifiers &amp; classification</div>
+          <div class="form-grid">
+            <div class="field"><label for="f_ein">EIN</label><input type="text" id="f_ein" data-field="ein"></div>
+            <div class="field"><label for="f_uei">UEI</label><input type="text" id="f_uei" data-field="uei"></div>
+            <div class="field"><label for="f_cage">CAGE code</label><input type="text" id="f_cage" data-field="cage"></div>
+            <div class="field"><label for="f_naicsPrimary">Primary NAICS</label><input type="text" id="f_naicsPrimary" data-field="naicsPrimary"></div>
+            <div class="field"><label for="f_naicsSupporting">Supporting NAICS (comma-separated)</label><input type="text" id="f_naicsSupporting" data-field="naicsSupporting"></div>
+            <div class="field"><label for="f_pscCodes">PSC / NIGP codes</label><input type="text" id="f_pscCodes" data-field="pscCodes"></div>
+            <div class="field"><label for="f_geographicCoverage">Geographic coverage</label><input type="text" id="f_geographicCoverage" data-field="geographicCoverage"></div>
+            <div class="field"><label for="f_contractVehicles">Contract vehicles held</label><input type="text" id="f_contractVehicles" data-field="contractVehicles"></div>
+            <div class="field"><label for="f_bondingCapacity">Bonding capacity</label><input type="text" id="f_bondingCapacity" data-field="bondingCapacity"></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Positioning</div>
+          <div class="form-grid">
+            <div class="field full"><label for="f_coreCompetencies">Core competencies (one per line)</label><textarea id="f_coreCompetencies" data-field="coreCompetencies"></textarea></div>
+            <div class="field full"><label for="f_differentiators">Differentiators (one per line)</label><textarea id="f_differentiators" data-field="differentiators"></textarea></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Federal &amp; socioeconomic certifications</div>
+          <div class="cert-checks" id="certChecks"></div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Past performance</div>
+          <div class="repeat-table-wrap"><table class="repeat-table" id="tbl_pastPerformance"></table></div>
+          <button class="add-row-btn" data-add="pastPerformance">+ Add past performance</button>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Key personnel</div>
+          <div class="repeat-table-wrap"><table class="repeat-table" id="tbl_keyPersonnel"></table></div>
+          <button class="add-row-btn" data-add="keyPersonnel">+ Add key person</button>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Certification control sheet</div>
+          <div class="repeat-table-wrap"><table class="repeat-table" id="tbl_certControl"></table></div>
+          <button class="add-row-btn" data-add="certControl">+ Add certification</button>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Vendor portal tracker</div>
+          <div class="repeat-table-wrap"><table class="repeat-table" id="tbl_portalTracker"></table></div>
+          <button class="add-row-btn" data-add="portalTracker">+ Add portal</button>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Proposal compliance matrix</div>
+          <div class="repeat-table-wrap"><table class="repeat-table" id="tbl_complianceMatrix"></table></div>
+          <button class="add-row-btn" data-add="complianceMatrix">+ Add requirement</button>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-title">Supporting documents (company-wide)</div>
+          <div class="phase-docs" data-docsphase="general"></div>
+        </div>
+
+        <div class="field-group" style="margin-bottom:0;">
+          <div class="field-group-title">Generated documents</div>
+          <div style="margin-bottom:14px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <button class="btn primary" id="getFullReportBtn" type="button">Get Full Report — <span class="fr-price"></span> (unlocks all 3 documents)</button>
+            <span style="font-size:12px; color:#5b6879;">Vendor Portal Tracker export is free — no purchase needed. Not satisfied with your report? Email andrew@akrandall.com within 7 days for a refund.</span>
+          </div>
+          <div class="fullreport-banner" id="fullReportBannerProfile"></div>
+          <div class="doc-grid" id="docGrid"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="phaseContainer"></div>
+
+    <div class="gate-summary" id="minGate">
+      <h2>Minimum Readiness Gate</h2>
+      <p>Do not pursue a serious prime-contract bid until every item below is checked across the phases above. This is the composite gate — pulled from the categories that determine whether a bid/no-bid decision can even be made honestly.</p>
+      <div class="group" style="margin-top:18px;" id="gateItemsGroup"></div>
+    </div>
+
+    <div class="gate-summary">
+      <h2>The Real Readiness Test</h2>
+      <p>A government-ready company can answer these five questions immediately. If any answer is vague, that's the next thing to fix — not the next contract to chase.</p>
+      <div class="five-q">
+        <div class="q"><span class="qnum">01</span>What exactly do we sell to government?</div>
+        <div class="q"><span class="qnum">02</span>Which agencies already buy it?</div>
+        <div class="q"><span class="qnum">03</span>Why are we more useful than the incumbent?</div>
+        <div class="q"><span class="qnum">04</span>Can we finance and deliver the contract?</div>
+        <div class="q"><span class="qnum">05</span>Where is the proof?</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  GOVERNMENT CONTRACTING READINESS CHECKLIST — REFERENCE EDITION · BUILT BY AKRD · ALL DATA STAYS ON THIS DEVICE, TIED TO THIS FILE IN THIS BROWSER · BEST IN CHROME, FIREFOX, OR EDGE · KEEP THIS FILE IN THE SAME FOLDER WITH THE SAME NAME — MOVING OR RENAMING IT MAY RESET YOUR SAVED DATA
+  <br><br>
+  CONTENT LAST REVIEWED: <span id="footerLastReviewed"></span> · INFORMATIONAL ONLY — NOT LEGAL OR COMPLIANCE ADVICE · VERIFY REQUIREMENTS WITH YOUR CONTRACTING OFFICER OR AGENCY
+</footer>
+
+<div class="modal-overlay" id="previewModal">
+  <div class="modal-box">
+    <button class="modal-close" id="previewModalClose" type="button" aria-label="Close preview">✕</button>
+    <div class="modal-watermark">SAMPLE PREVIEW — the polished, downloadable export is part of the Full Report</div>
+    <div id="previewModalBody" style="padding:20px;"></div>
+  </div>
+</div>
+
+<script>
+/* ============ CONFIG ============ */
+// Update this one value quarterly when the checklist content is reviewed.
+const CONTENT_LAST_REVIEWED = "July 2026";
+const SQUARE_PAYMENT_LINK = "https://square.link/u/zVC4pnN7";
+const FULL_REPORT_PRICE = "$99";
+
+/* ============ LEAD CAPTURE (opt-in — reuses the site's existing Apps Script -> Sheet pipeline) ============ */
+const APPS_SCRIPT_URL = String((window.AKRD_LEAD_CONFIG || (window.parent && window.parent.AKRD_LEAD_CONFIG) || {}).appsScriptUrl || "").trim();
+
+function submitLead({name, email, company, focus, message, captureSource}){
+  let queryString = window.location.search;
+  try{ queryString = window.parent.location.search || queryString; }catch(e){}
+  const query = new URLSearchParams(queryString);
+  if(!APPS_SCRIPT_URL){
+    const lines = [`Name: ${name}`, `Email: ${email}`, company ? `Company: ${company}` : "", "", message].filter(Boolean);
+    window.open("mailto:andrew@akrandall.com?subject=" + encodeURIComponent(focus) + "&body=" + encodeURIComponent(lines.join("\n")), "_top");
+    return Promise.resolve();
+  }
+  const payload = new URLSearchParams({
+    name, email, company: company || "", focus, message: String(message || "").slice(0, 4000),
+    sourcePage: "government-contracting-readiness.html",
+    referrer: document.referrer,
+    utmSource: query.get("utm_source") || "", utmMedium: query.get("utm_medium") || "",
+    utmCampaign: query.get("utm_campaign") || "", utmContent: query.get("utm_content") || "", utmTerm: query.get("utm_term") || "",
+    submittedAt: new Date().toISOString(),
+    captureSource, assessmentIndustry: "", assessmentVariant: "", assessmentCompletion: "complete", website: ""
+  });
+  return fetch(APPS_SCRIPT_URL, {method: "POST", mode: "no-cors", body: payload});
+}
+
+/* ============ DATA ============ */
+const PHASES = [
+{
+  id:"p1", title:"Establish the Business Foundation",
+  blurb:"Before you can chase a single contract, the business itself has to look, bank, and operate like a vendor a government finance office is willing to pay. Agencies pay on their own schedule — often 30 to 60+ days after invoice — so this phase is really about proving the company can survive the gap between delivering work and getting paid for it.",
+  links:[
+    {l:"Apply for an EIN — IRS", u:"https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online"},
+    {l:"SBA: Choose a business structure", u:"https://www.sba.gov/business-guide/launch-your-business/choose-business-structure"},
+    {l:"SBA: Get business insurance", u:"https://www.sba.gov/business-guide/manage-your-business/get-business-insurance"}
+  ],
+  citations:["Entity formation, business licensing, and insurance requirements are set by state law, not federal procurement rules — the SBA links above are federal informational resources, not compliance requirements."],
+  sections:[
+    {h:"Legal and financial setup", why:"If the business can't show a registered entity, dedicated bank account, and invoicing process, it can't legally accept a federal award or survive the 30–60+ day payment lag that follows delivery.", items:[
+      "Register the legal entity with the state.",
+      "Confirm the exact legal business name and physical address.",
+      "Obtain an EIN from the IRS.",
+      "Create an operating agreement, bylaws, or partnership agreement.",
+      "Open a dedicated business bank account.",
+      "Establish bookkeeping and accounting software.",
+      "Create a standard chart of accounts (government contract revenue, subcontractor expenses, materials/equipment, freight and installation, travel, professional services).",
+      "Establish an invoicing process.",
+      "Complete a current IRS Form W-9.",
+      "Set up ACH and electronic payment capabilities.",
+      "Establish access to working capital, a line of credit, or supplier terms.",
+      "Confirm the business can carry payroll and expenses while waiting for government payment.",
+      "Obtain required business licenses.",
+      "Obtain general liability insurance.",
+      "Determine whether professional liability, cyber liability, workers' compensation, commercial auto, bonding, or umbrella coverage is needed.",
+      "Create a professional domain email.",
+      "Establish a professional business phone number.",
+      "Launch at least a credible one-page website."
+    ]},
+    {h:"Ownership documentation to keep on file", why:"Contracting officers, sureties, and certifying agencies all eventually ask for this paperwork — having it organized before it's requested is the difference between a fast yes and a missed deadline.", items:[
+      "Articles of organization or incorporation",
+      "EIN confirmation",
+      "Operating agreement or bylaws",
+      "Ownership ledger",
+      "Business licenses",
+      "Resumes of owners and key managers",
+      "Tax returns and financial statements",
+      "Lease or proof of physical location",
+      "Citizenship or veteran-status documentation when relevant to certification",
+      "Supplier, dealer, reseller, or manufacturer authorization agreements"
+    ]}
+  ]
+},
+{
+  id:"p2", title:"Define What the Government Will Buy From You",
+  blurb:"Do not register under twenty unrelated services because they sound profitable. Pick a lane the business can credibly perform — this phase forces the specificity that a contracting officer, and later a bid/no-bid decision, will demand anyway.",
+  links:[
+    {l:"SBA Size Standards Tool", u:"https://www.sba.gov/federal-contracting/contracting-guide/size-standards"},
+    {l:"NAICS code lookup — Census Bureau", u:"https://www.census.gov/naics/"},
+    {l:"Product Service Code (PSC) manual", u:"https://www.acquisition.gov/psc-manual"}
+  ],
+  citations:["SBA small-business size standards by NAICS code are codified at 13 CFR Part 121."],
+  sections:[
+    {h:"Define the offer", why:"A vague, do-everything pitch reads as unqualified to a contracting officer — a specific, provable offering is what actually gets shortlisted.", items:[
+      "Select one to three primary government offerings.",
+      "Define the exact deliverables for each offering.",
+      "Identify whether each offering is product, service, construction, consulting, technology, installation, maintenance, distribution/resale, or an integrated solution.",
+      "Identify the agencies that regularly purchase each offering.",
+      "Decide whether the company will pursue work as prime contractor, subcontractor, authorized reseller, manufacturer's representative, distributor, systems integrator, or joint-venture partner.",
+      "Define the geographic service area.",
+      "Establish minimum and maximum project sizes.",
+      "Identify the work the company will self-perform.",
+      "Identify work that must be subcontracted.",
+      "Identify required manufacturers, installers, engineers, or technical partners."
+    ]},
+    {h:"Classification codes", why:"NAICS, PSC, and NIGP codes are literally how buyers and set-aside eligibility find you — wrong or missing codes mean the opportunity never surfaces in your search.", items:[
+      "Select a primary NAICS code.",
+      "Select supporting NAICS codes that represent work the company actually performs.",
+      "Check the SBA size standard for every NAICS code.",
+      "Identify applicable Product Service Codes (PSCs).",
+      "Identify applicable NIGP commodity codes for state and local purchasing.",
+      "Create a keyword list based on how buyers describe the need — not just how the company describes itself."
+    ]}
+  ],
+  note:"<strong>Positioning sentence.</strong> For every offering, complete this: <em>\"We help [specific government buyer] accomplish [specific outcome] by providing [product or service], including [key deliverables], without [common operational problem].\"</em>"
+},
+{
+  id:"p3", title:"Complete SAM.gov Registration",
+  blurb:"A business pursuing federal prime contracts needs a full SAM entity registration, not merely a Unique Entity ID. Federal solicitations generally require the offeror to be registered in SAM at the time the offer is submitted and at the time of award — registration can take up to 10 business days to activate, so it should never be left until a solicitation deadline.",
+  links:[
+    {l:"SAM.gov entity registration", u:"https://sam.gov/entity-registration"},
+    {l:"Login.gov account", u:"https://login.gov"},
+    {l:"FAR 52.204-7 — System for Award Management", u:"https://www.acquisition.gov/far/52.204-7"}
+  ],
+  citations:["SAM.gov registration is required under FAR 52.204-7 for any entity submitting an offer on a federal contract, and generally required for federal financial-assistance recipients under 2 CFR Part 25."],
+  sections:[
+    {h:"Information to gather first", why:"SAM.gov validation stalls most often because this information is incomplete or inconsistent with IRS or state records — gathering it up front avoids a rejected submission.", items:[
+      "Exact legal business name","Physical address","Mailing address","Date the business was formed","EIN/TIN","Bank routing and account information","Number of employees","Average annual revenue","Primary and secondary NAICS codes","Ownership information","Executive information","Accounts receivable contact","Electronic business contact","Government business contact","Past performance contact","Immediate and highest-level owner information","Proceedings, exclusions, debts, or legal disclosures","Business type and socioeconomic representations"
+    ]},
+    {h:"Registration process", why:"An offer submitted while SAM.gov is inactive is not eligible for award under FAR 52.204-7, no matter how strong the proposal is.", items:[
+      "Create a Login.gov account using a controlled company email.",
+      "Create the company's SAM.gov workspace.",
+      "Select Register Entity.",
+      "Request and validate the Unique Entity ID.",
+      "Complete entity validation.",
+      "Complete the Core Data section.",
+      "Complete Assertions.",
+      "Complete Representations and Certifications.",
+      "Complete Points of Contact.",
+      "Complete the SBA small-business profile information where applicable.",
+      "Authorize IRS TIN validation.",
+      "Submit the registration.",
+      "Monitor the registration until the record shows Active.",
+      "Confirm the UEI is correct.",
+      "Confirm the CAGE code is populated.",
+      "Download or save the active registration record.",
+      "Record the activation and expiration dates."
+    ]},
+    {h:"Maintenance", why:"SAM registrations expire after 365 days and lapse silently — an expired registration during performance can suspend payment or eligibility on a live contract.", items:[
+      "Create renewal reminders 90, 60, 30, and 15 days before expiration.",
+      "Renew every 365 days.",
+      "Update banking, ownership, addresses, NAICS codes, contacts, and representations whenever they change.",
+      "Review annual Representations and Certifications for accuracy.",
+      "Maintain active registration throughout contract performance and final payment."
+    ]}
+  ]
+},
+{
+  id:"p4", title:"Complete Small-Business Profiles and Certifications",
+  blurb:"The former Dynamic Small Business Search (DSBS) has been replaced by Small Business Search (SBS); existing profiles were migrated automatically. Contracting personnel use it during market research — treat it as a second storefront, not a formality. Certification is leverage, not a substitute for capability, and should only be pursued once the company genuinely meets the eligibility rules.",
+  links:[
+    {l:"SBA login and registration portals", u:"https://www.sba.gov/about-sba/open-government/about-sbagov-website/sba-account-login-registration-portals"},
+    {l:"8(a) Business Development Program", u:"https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program"},
+    {l:"HUBZone Program", u:"https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program"},
+    {l:"Women-Owned Small Business Program", u:"https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contracting-program"},
+    {l:"Veteran Small Business Certification (VetCert)", u:"https://veterans.certify.sba.gov/"}
+  ],
+  citations:["8(a) Business Development — 13 CFR Part 124. HUBZone — 13 CFR Part 126. WOSB/EDWOSB — 13 CFR Part 127. VOSB/SDVOSB certification (via VetCert) — 13 CFR Part 128."],
+  sections:[
+    {h:"SBA Small Business Search (SBS) profile", why:"Contracting and program staff use this profile during market research to build vendor lists — an incomplete profile means you're invisible at the exact moment sourcing decisions get made.", items:[
+      "Locate or create the company's SBS profile.",
+      "Add a clear capabilities narrative.",
+      "Include all relevant NAICS codes.",
+      "Add searchable industry keywords.",
+      "Add geographic service areas.",
+      "Add differentiators.",
+      "Add past performance.",
+      "Add bonding levels if applicable.",
+      "Add quality certifications.",
+      "Add licenses.",
+      "Add manufacturer or reseller relationships.",
+      "Add a direct sales contact.",
+      "Review the profile as though you were a contracting officer searching for suppliers."
+    ]},
+    {h:"Federal certifications to evaluate", why:"Each certification opens a different category of set-aside competition — pursuing one you don't actually qualify for wastes months and creates protest or eligibility risk later.", items:[
+      "Small Business","Small Disadvantaged Business","8(a) Business Development","HUBZone","Women-Owned Small Business","Economically Disadvantaged WOSB","Veteran-Owned Small Business","Service-Disabled Veteran-Owned Small Business"
+    ]},
+    {h:"State and local certifications to evaluate in every target market", why:"State and local certifications are separate systems from federal ones — holding a federal certification does not automatically carry over to a state or municipal buyer.", items:[
+      "Minority Business Enterprise","Women Business Enterprise","Disadvantaged Business Enterprise","Small Business Enterprise","Historically Underutilized Business","Local Small Business","Airport Concessions DBE","Veteran-owned certification","City- or county-specific minority supplier programs"
+    ]}
+  ],
+  note:"<strong>Certification control sheet.</strong> Track for each certification: name, issuing agency, application date, status, certification number, effective/expiration dates, renewal deadline, documents required, eligible industries, geographic applicability, and contact person."
+},
+{
+  id:"p5", title:"Build the Government Sales Package",
+  blurb:"This is the material a contracting officer, prime contractor, or procurement portal will actually read. Treat the capability statement as the resume of the business — one page, no fluff, built to be skimmed in under a minute.",
+  links:[
+    {l:"GSA: Build a capability statement", u:"https://www.gsa.gov/small-business/have-a-question-contact-us/gsa-small-business-events"}
+  ],
+  citations:["No single regulation governs capability-statement format — this is industry practice, not a compliance requirement."],
+  sections:[
+    {h:"Core sales materials", why:"These are the materials a buyer, prime contractor, or portal reviewer actually asks for before a first conversation — not having them ready stalls or kills the opportunity before it starts.", items:[
+      "One-page federal capability statement","State/local capability statement","Company overview","Website government-solutions page","Product or service line cards","Past-performance sheets","Key-personnel resumes","Project photographs","Customer references","Case studies","Technical data sheets","Warranty documentation","Installation methodology","Maintenance and support plan","Manufacturer authorization letters","Authorized reseller letters","Subcontractor and partner profiles"
+    ]},
+    {h:"Capability statement contents", why:"This one document is often the entire first impression a contracting officer forms of the company — missing UEI, CAGE, or NAICS makes it unusable for their internal search process.", items:[
+      "Legal business name","Logo and contact information","UEI","CAGE code","Primary NAICS codes","Certifications","Core competencies","Differentiators","Past performance","Geographic coverage","Contract vehicles","Website","Direct contact information"
+    ]},
+    {h:"Compliance library — create folders for", why:"Proposal deadlines are measured in hours, not days — scrambling to locate a certificate of insurance or a resume during a live solicitation is how compliant bids become late bids.", items:[
+      "SAM registration","W-9","Certificates of insurance","Licenses","Certifications","Financial statements","Resumes","Past performance","References","Safety plan","Quality-control plan","Cybersecurity policies","Data-handling policies","Supply-chain documentation","Environmental and sustainability policies","Equal employment policies","Subcontracting plan templates","Manufacturer letters","Product specifications","Warranty information","Standard contract exceptions"
+    ]},
+    {h:"Pricing readiness", why:"Underpriced fixed-price work is one of the most common ways a small government contractor fails a contract it actually won — pricing has to survive freight, escalation, and payment delay, not just cover the base cost.", items:[
+      "Establish fully burdened labor rates.",
+      "Establish material markups.",
+      "Establish subcontractor markups.",
+      "Include freight, storage, installation, travel, permits, bonding, insurance, and taxes where applicable.",
+      "Establish minimum acceptable gross margin.",
+      "Establish escalation assumptions for multiyear contracts.",
+      "Obtain supplier and subcontractor quote-validity periods.",
+      "Develop a standard cost-estimating workbook.",
+      "Establish approval authority for discounts.",
+      "Confirm cash-flow requirements before submitting fixed-price bids."
+    ]}
+  ]
+},
+{
+  id:"p6", title:"Register in Vendor Portals",
+  blurb:"Do not randomly register in 200 systems. Start with the agencies that already purchase what the company sells — registration alone does not activate notifications, so commodity codes and alert preferences need to be checked separately on every portal.",
+  links:[
+    {l:"SAM.gov Contract Opportunities", u:"https://sam.gov/opportunities"},
+    {l:"NC eVP — North Carolina Vendor Portal", u:"https://evp.nc.gov/"},
+    {l:"GSA Schedules program overview", u:"https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-schedule"}
+  ],
+  citations:["Beyond SAM.gov (FAR 52.204-7, cited in Phase 03), state and local vendor-portal requirements are set by each jurisdiction's own procurement code — confirm with the specific agency."],
+  sections:[
+    {h:"Federal systems", why:"Registration in a portal does not equal visibility — commodity codes and notification settings have to be actively configured on each system or opportunities pass by unseen.", items:[
+      "SAM.gov entity registration","SAM.gov Contract Opportunities","Small Business Search","Agency-specific supplier systems when required","Prime-contractor supplier-diversity portals","GSA systems only when pursuing or holding an applicable contract vehicle","Department of Defense systems only when relevant to the opportunity"
+    ]},
+    {h:"State systems", why:"Every state runs its own procurement system with its own renewal, fee, and notification rules — assuming one setup covers every state is how pipelines go quiet.", items:[
+      "Register in the home state's procurement portal.",
+      "Register in each priority target state.",
+      "Select all relevant commodity codes.",
+      "Activate solicitation notifications.",
+      "Add multiple company contacts.",
+      "Complete tax and payment forms.",
+      "Upload certifications.",
+      "Confirm whether registration must be renewed.",
+      "Confirm whether the portal charges optional or mandatory fees.",
+      "Test login credentials before an opportunity is due."
+    ]},
+    {h:"Local-agency portals — register directly with priority", why:"Local agencies frequently buy off their own portal instead of a statewide one — skipping this layer means missing exactly the buyers most likely to be reachable and less competitive.", items:[
+      "Cities","Counties","Transit authorities","Airports","Public utilities","Housing authorities","School districts","Colleges and universities","Parks departments","Public works departments","Transportation departments","Emergency-management agencies","Port authorities"
+    ]}
+  ],
+  note:"<strong>Watch for these third-party portal families:</strong> OpenGov, Bonfire, IonWave, PlanetBids, DemandStar, BidNet, Jaggaer, Public Purchase, Periscope, and Euna Procurement. Agencies frequently host solicitations through one of these rather than their own site."
+},
+{
+  id:"p7", title:"Build the Opportunity Search System",
+  blurb:"Anyone can browse SAM.gov opportunities, but a saved account lets you follow specific searches, track changes, and join interested-vendor lists — the difference between hunting cold every week and having the pipeline come to you.",
+  links:[
+    {l:"SAM.gov Contract Opportunities", u:"https://sam.gov/opportunities"},
+    {l:"SAM.gov Contract Award Data", u:"https://sam.gov/contract-data"}
+  ],
+  citations:["Sources Sought and Request for Information notices are published under FAR Subpart 5.2 (Synopses of Proposed Contract Actions)."],
+  sections:[
+    {h:"Create saved searches by", why:"A saved search turns opportunity-hunting into a passive pipeline instead of a weekly manual search — skip this and you're relying on memory to catch new postings.", items:[
+      "NAICS code","PSC","NIGP or commodity code","Product name","Service name","Industry terminology","Competitor name","Manufacturer name","Agency","Geographic location","Set-aside type","Notice type","Contracting office","Place of performance","Due date"
+    ]},
+    {h:"Search across every opportunity type", why:"Sources-sought notices and RFIs are where agencies shape a requirement before it's ever competed — ignoring them means only ever seeing opportunities after the direction is already locked in.", items:[
+      "Sources sought","Requests for information","Presolicitation notices","Invitations for bid","Requests for quotation","Requests for proposal","Simplified acquisitions","Emergency purchases","Sole-source notices","Cooperative-contract solicitations","Subcontracting opportunities","Vendor outreach events","Industry days","Forecasted procurements","Expiring contracts","Budgeted capital projects"
+    ]},
+    {h:"Conduct pre-opportunity research", why:"Knowing the incumbent, past award values, and recompete timing turns a cold bid into an informed one — this research is what a capture strategy is actually built on.", items:[
+      "Search previous contract awards.",
+      "Identify incumbent contractors.",
+      "Determine historical contract values.",
+      "Review previous solicitations.",
+      "Review agency budgets and capital-improvement plans.",
+      "Review board and council meeting agendas.",
+      "Identify procurement and program contacts.",
+      "Identify likely recompete dates.",
+      "Identify purchasing methods and contract vehicles.",
+      "Identify recurring purchasing cycles.",
+      "Identify prime contractors already serving the agency."
+    ]}
+  ],
+  note:"<strong>Suggested weekly cadence.</strong> Mon — federal &amp; state portal searches. Tue — local agencies &amp; cooperative contracts. Wed — prior-award &amp; competitor research. Thu — prime-contractor &amp; subcontracting outreach. Fri — pipeline review, bid/no-bid decisions, next-week assignments."
+},
+{
+  id:"p8", title:"Apply a Bid/No-Bid Gate",
+  blurb:"Do not bid because the title looks interesting. Every opportunity should clear a real filter before it consumes proposal time — the questions below are the filter, and the scoring table turns a gut feeling into a number you can defend later.",
+  citations:["The eligibility and responsibility questions above mirror the factors a contracting officer must consider under FAR Subpart 9.1 (Responsible Prospective Contractors)."],
+  sections:[
+    {h:"Mandatory questions", why:"Answering these honestly before committing proposal hours is what keeps a bid/no-bid decision from being a guess — a 'no' on eligibility or financing here should stop the pursuit immediately, not get rationalized away.", items:[
+      "Are we eligible?","Is SAM active?","Do we meet the required certification or set-aside?","Does the scope match our core offering?","Can we meet every technical requirement?","Can we meet the delivery schedule?","Do we have relevant past performance?","Can we satisfy insurance and bonding requirements?","Can we obtain required products and subcontractors?","Can we finance performance?","Is the contract profitable after all compliance costs?","Can we submit a polished response before the deadline?","Do we understand the evaluation method?","Do we have a relationship or credible entry point with the agency?","Is there a realistic reason we can win?"
+    ]}
+  ],
+  extraHTML:`
+    <div class="group">
+      <div class="group-title">Scoring system — score each category 0 to 2</div>
+      <table class="ref-table">
+        <tr><th>Category</th><th>0</th><th>1</th><th>2</th></tr>
+        <tr><td>Scope fit</td><td>Poor</td><td>Partial</td><td>Strong</td></tr>
+        <tr><td>Eligibility</td><td>No</td><td>Uncertain</td><td>Confirmed</td></tr>
+        <tr><td>Past performance</td><td>None</td><td>Adjacent</td><td>Direct</td></tr>
+        <tr><td>Buyer knowledge</td><td>None</td><td>Some</td><td>Strong</td></tr>
+        <tr><td>Partner readiness</td><td>Missing</td><td>Possible</td><td>Confirmed</td></tr>
+        <tr><td>Pricing confidence</td><td>Low</td><td>Moderate</td><td>High</td></tr>
+        <tr><td>Delivery capacity</td><td>Weak</td><td>Manageable</td><td>Strong</td></tr>
+        <tr><td>Competitive advantage</td><td>None</td><td>General</td><td>Specific</td></tr>
+        <tr><td>Strategic value</td><td>Low</td><td>Moderate</td><td>High</td></tr>
+        <tr><td>Proposal time</td><td>Insufficient</td><td>Tight</td><td>Adequate</td></tr>
+      </table>
+      <div class="note-box"><strong>Decision:</strong> 16–20 → Bid. 12–15 → Bid only with a clear gap-closing plan. Below 12 → No-bid, or pursue as a subcontractor instead.</div>
+    </div>
+  `
+},
+{
+  id:"p9", title:"Respond to the Procurement",
+  blurb:"This is the highest-effort, highest-risk phase — a single missed form or exceeded page limit can make an otherwise winning proposal nonresponsive. Build the compliance matrix before writing a single word of the technical response.",
+  citations:["Formal proposal evaluation and award procedures for negotiated procurements are set out in FAR Part 15; commercial-item and commercial-product solicitations typically incorporate FAR 52.212-1 (Instructions to Offerors)."],
+  sections:[
+    {h:"Solicitation intake", why:"Missing the exact due date, time zone, or submission method is one of the most common reasons a technically strong proposal is rejected as late or nonresponsive.", items:[
+      "Download the solicitation.","Download every attachment.","Record the solicitation number.","Record the issuing agency.","Record the contracting officer.","Record the due date, exact time, and time zone.","Record the submission method.","Record the question deadline.","Record the pre-bid meeting or site-visit date.","Register as an interested vendor when available.","Assign an internal opportunity owner.","Create a secure opportunity folder."
+    ]},
+    {h:"Solicitation review", why:"A requirement missed on the first read doesn't reappear later — the second, compliance-focused read is what catches the mandatory items a strong technical writer would otherwise skip past.", items:[
+      "Read the full solicitation once for understanding.","Read it a second time for compliance.","Identify mandatory requirements.","Identify minimum qualifications.","Identify evaluation factors.","Identify pricing structure.","Identify contract term and options.","Identify insurance and bonding requirements.","Identify licenses and certifications.","Identify subcontracting limitations.","Identify required forms and signatures.","Identify page limits.","Identify formatting rules.","Identify required file names.","Identify exceptions that could make the response nonresponsive.","Review all referenced terms, clauses, and exhibits."
+    ]},
+    {h:"Questions and pre-bid activities", why:"Only official written answers and amendments are binding — verbal guidance at a site visit that isn't confirmed in writing can't be relied on and shouldn't shape the response.", items:[
+      "Attend the pre-bid conference.","Complete mandatory site visits.","Submit questions before the deadline.","Avoid asking questions already answered in the solicitation.","Document all verbal guidance.","Rely only on official written answers and amendments.","Review the interested-vendor list for teaming opportunities.","Confirm all subcontractor commitments."
+    ]},
+    {h:"Technical response", why:"Evaluators score against the stated evaluation factors, not against effort — a technical response that doesn't map directly to each scope item and evaluation factor loses points it can't recover elsewhere.", items:[
+      "Restate the agency's need clearly.","Explain the proposed solution.","Address every scope item.","Provide technical specifications.","Explain implementation.","Provide schedule and milestones.","Identify staffing.","Identify subcontractors.","Explain quality control.","Explain risk management.","Explain reporting and communication.","Explain warranty, maintenance, and support.","Demonstrate past performance.","Connect every differentiator to an agency benefit."
+    ]},
+    {h:"Pricing response", why:"A math error or an omitted cost category — freight, bonding, escalation — in the pricing schedule can make an otherwise winning proposal unaffordable to perform or disqualify it on a technicality.", items:[
+      "Follow the required pricing format exactly.","Verify quantities and units.","Verify labor hours and rates.","Verify equipment and materials.","Include freight and delivery.","Include installation.","Include travel.","Include permits and inspections.","Include bonding and insurance.","Include subcontractor costs.","Include escalation for option years when allowed.","Confirm tax treatment.","Check mathematical formulas.","Check totals against the technical response.","Obtain internal pricing approval."
+    ]},
+    {h:"Required forms (confirm against the actual solicitation)", why:"A signed but incomplete or missing certification is one of the most common reasons a proposal is found nonresponsive before technical merit is even evaluated.", items:[
+      "Signed offer form","Pricing schedule","Certifications","Addenda acknowledgments","Non-collusion affidavit","Debarment certification","Conflict-of-interest disclosure","Lobbying certification","E-Verify documentation","W-9","Insurance acknowledgment","Subcontractor listing","Minority-participation forms","References","Bid bond","Any agency-specific affidavits"
+    ]},
+    {h:"Final review", why:"This is the last checkpoint before submission is irreversible — a red-team review by someone who wasn't writing the proposal catches the compliance gaps the authors are too close to see.", items:[
+      "Verify every compliance-matrix item.","Confirm all amendments are acknowledged.","Confirm all signatures.","Confirm dates.","Confirm page limits.","Confirm file names.","Confirm pricing totals.","Confirm contact information.","Remove internal comments and tracked changes.","Test every attachment.","Convert documents to the required format.","Have someone uninvolved perform a final red-team review.","Submit at least several hours before the deadline.","Save submission confirmation.","Preserve the exact final files submitted."
+    ]}
+  ],
+  note:"<strong>Compliance matrix.</strong> Build one with: requirement number, solicitation page, exact requirement, response location, responsible person, supporting document, status, and final-review confirmation. This single artifact is what a red-team reviewer should check the proposal against."
+},
+{
+  id:"p10", title:"Post-Submission and Post-Award",
+  blurb:"Winning the bid is the midpoint, not the finish line. What happens between submission and final payment determines whether this becomes referenceable past performance or a cautionary tale in the next capture meeting.",
+  citations:["Contract administration is governed by FAR Part 42; payment timing is governed by the Prompt Payment Act (31 U.S.C. Chapter 39) and FAR Subpart 32.9."],
+  sections:[
+    {h:"After submission", why:"How you handle the post-submission period — clarifications, debriefs, lessons learned — shapes whether the next proposal is stronger or repeats the same mistakes.", items:[
+      "Confirm receipt.","Monitor amendments and communications.","Respond promptly to clarification requests.","Prepare for presentations, interviews, demonstrations, or best-and-final offers.","Record the expected award date.","Track competitor and award information.","Request a debrief when appropriate.","Record lessons learned.","Update reusable content."
+    ]},
+    {h:"Before accepting an award", why:"The signed contract, not the proposal, governs performance — differences between what was proposed and what was awarded need to be resolved in writing before work starts, not discovered mid-contract.", items:[
+      "Review the final contract.","Compare the award to the submitted proposal.","Confirm pricing and quantities.","Confirm period of performance.","Confirm payment terms.","Confirm insurance and bonding.","Confirm reporting obligations.","Confirm subcontractor commitments.","Confirm delivery dates.","Confirm termination and damages provisions.","Resolve exceptions in writing.","Obtain legal review for material risk."
+    ]},
+    {h:"Contract performance", why:"This is the phase that actually produces referenceable past performance — mishandling scope, invoicing, or reporting here can turn a won contract into a liability for the next bid instead of an asset.", items:[
+      "Hold an internal kickoff.","Hold an agency kickoff.","Create a project schedule.","Assign contract and project managers.","Track deliverables.","Track labor, materials, and subcontractors.","Submit required reports.","Document approvals and changes.","Do not perform out-of-scope work without written authorization.","Invoice according to contract requirements.","Track accounts receivable.","Document customer acceptance.","Capture project photographs and performance data.","Request a performance reference after successful completion.","Add the project to the past-performance library."
+    ]}
+  ]
+}
+];
+
+const GATE_ITEMS = [
+  "Legal entity and bank account","Accounting and invoicing system","Active SAM registration","Verified UEI and CAGE","Correct NAICS and commodity codes","Complete SBS profile","Defined government offering","Capability statement","Pricing model","Insurance plan","Past-performance strategy","Supplier/subcontractor network","Vendor registrations in priority markets","Opportunity tracking system","Bid/no-bid process","Proposal compliance template","Working-capital plan","Contract-performance process"
+];
+
+/* ============ STATE ============ */
+const STORAGE_KEY = "gcrc_progress_v1";
+let state = {};
+try{ state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ state = {}; }
+
+function saveState(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+/* ============ RENDER ============ */
+const container = document.getElementById('phaseContainer');
+const sidebar = document.getElementById('sidebar');
+
+function itemId(phaseId, sIdx, iIdx){ return phaseId+"_s"+sIdx+"_i"+iIdx; }
+
+PHASES.forEach((phase, pIdx) => {
+  // sidebar entry
+  const navA = document.createElement('a');
+  navA.href = "#"+phase.id;
+  navA.className = "nav-item";
+  navA.dataset.phase = phase.id;
+  navA.innerHTML = `<span class="nav-num">${String(pIdx+1).padStart(2,'0')}</span><span>${phase.title}</span><span class="nav-dot" data-navdot="${phase.id}"></span>`;
+  sidebar.appendChild(navA);
+
+  // phase card
+  const card = document.createElement('section');
+  card.className = "phase";
+  card.id = phase.id;
+
+  let linksHTML = "";
+  if(phase.links && phase.links.length){
+    linksHTML = `<div class="ref-links">` + phase.links.map(x=>`<a class="ref-link" href="${x.u}" target="_blank" rel="noopener">${x.l}</a>`).join("") + `</div>`;
+  }
+
+  let citationsHTML = "";
+  if(phase.citations && phase.citations.length){
+    citationsHTML = `<div class="citations"><b>Regulatory reference</b> — verify current text at acquisition.gov (FAR) or ecfr.gov (CFR), since regulations are amended periodically.<br>${phase.citations.join("<br>")}</div>`;
+  }
+
+  let sectionsHTML = "";
+  phase.sections.forEach((sec, sIdx) => {
+    let itemsHTML = sec.items.map((txt, iIdx) => {
+      const id = itemId(phase.id, sIdx, iIdx);
+      const checked = !!state[id];
+      return `<div class="item ${checked?'checked':''}" data-id="${id}">
+        <input type="checkbox" id="${id}" ${checked?'checked':''}>
+        <label for="${id}">${txt}</label>
+      </div>`;
+    }).join("");
+    sectionsHTML += `<div class="group">
+      <div class="group-title">${sec.h}</div>
+      ${sec.why ? `<div class="group-why">Why it matters: ${sec.why}</div>` : ""}
+      ${itemsHTML}
+    </div>`;
+  });
+
+  card.innerHTML = `
+    <div class="phase-head">
+      <div class="phase-num">${String(pIdx+1).padStart(2,'0')}</div>
+      <div class="phase-headtext">
+        <div class="phase-title">${phase.title}</div>
+        <div class="phase-progress-track"><div class="phase-progress-fill" data-fill="${phase.id}"></div></div>
+      </div>
+      <div class="phase-meta" data-count="${phase.id}"></div>
+      <div class="chevron">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-body-inner">
+        <div class="phase-blurb">${phase.blurb}</div>
+        ${linksHTML}
+        ${citationsHTML}
+        ${sectionsHTML}
+        ${phase.extraHTML || ""}
+        ${phase.note ? `<div class="note-box">${phase.note}</div>` : ""}
+        <div class="phase-next">
+          <div class="phase-next-label">Your next step</div>
+          <div class="phase-next-text" data-nexttext="${phase.id}"></div>
+        </div>
+        <div class="phase-docs" data-docsphase="${phase.id}"></div>
+      </div>
+    </div>
+  `;
+  container.appendChild(card);
+
+  card.querySelector('.phase-head').addEventListener('click', () => {
+    card.classList.toggle('open');
+  });
+});
+
+// open first phase by default
+document.getElementById(PHASES[0].id).classList.add('open');
+
+// Minimum Readiness Gate items
+const gateGroup = document.getElementById('gateItemsGroup');
+GATE_ITEMS.forEach((txt, i) => {
+  const id = "gate_i"+i;
+  const checked = !!state[id];
+  const div = document.createElement('div');
+  div.className = "item " + (checked?'checked':'');
+  div.dataset.id = id;
+  div.innerHTML = `<input type="checkbox" id="${id}" ${checked?'checked':''}><label for="${id}" style="color:${checked?'#8aa0c9':'var(--warm-white)'}">${txt}</label>`;
+  gateGroup.appendChild(div);
+});
+
+/* ============ INTERACTIVITY ============ */
+document.body.addEventListener('change', (e) => {
+  if(e.target.type === 'checkbox'){
+    const id = e.target.id;
+    state[id] = e.target.checked;
+    saveState();
+    const row = e.target.closest('.item');
+    row.classList.toggle('checked', e.target.checked);
+    if(row.querySelector('label') && row.closest('#gateItemsGroup')){
+      row.querySelector('label').style.color = e.target.checked ? '#8aa0c9' : 'var(--warm-white)';
+    }
+    updateProgress();
+  }
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if(confirm('Clear all checked items? This cannot be undone.')){
+    state = {};
+    saveState();
+    document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('.item').forEach(it => it.classList.remove('checked'));
+    document.querySelectorAll('#gateItemsGroup label').forEach(l => l.style.color = 'var(--warm-white)');
+    updateProgress();
+  }
+});
+
+function updateProgress(){
+  let totalAll = 0, checkedAll = 0;
+  PHASES.forEach(phase => {
+    let total = 0, checked = 0;
+    phase.sections.forEach((sec, sIdx) => {
+      sec.items.forEach((txt, iIdx) => {
+        const id = itemId(phase.id, sIdx, iIdx);
+        total++; totalAll++;
+        if(state[id]){ checked++; checkedAll++; }
+      });
+    });
+    const pct = total ? Math.round((checked/total)*100) : 0;
+    const fillEl = document.querySelector(`[data-fill="${phase.id}"]`);
+    if(fillEl) fillEl.style.width = pct+"%";
+    const countEl = document.querySelector(`[data-count="${phase.id}"]`);
+    if(countEl) countEl.textContent = `${checked}/${total}`;
+    const dotEl = document.querySelector(`[data-navdot="${phase.id}"]`);
+    if(dotEl) dotEl.textContent = pct+"%";
+
+    // dynamic "your next step" — points at the first unchecked item in this phase
+    const nextEl = document.querySelector(`[data-nexttext="${phase.id}"]`);
+    if(nextEl){
+      let nextItemTxt = null;
+      outer: for(let sIdx=0; sIdx<phase.sections.length; sIdx++){
+        const items = phase.sections[sIdx].items;
+        for(let iIdx=0; iIdx<items.length; iIdx++){
+          if(!state[itemId(phase.id, sIdx, iIdx)]){ nextItemTxt = items[iIdx]; break outer; }
+        }
+      }
+      if(nextItemTxt){
+        nextEl.textContent = `${nextItemTxt}`;
+      } else {
+        const pIdx = PHASES.indexOf(phase);
+        const nextPhase = PHASES[pIdx+1];
+        nextEl.textContent = nextPhase
+          ? `This phase is fully checked — move on to Phase ${String(pIdx+2).padStart(2,"0")}: ${nextPhase.title}.`
+          : `This phase is fully checked — you're through the last phase. Revisit the Minimum Readiness Gate below to confirm you're ready to bid.`;
+      }
+    }
+  });
+
+  // include gate items in overall score too, weighted lightly
+  let gateTotal = GATE_ITEMS.length, gateChecked = 0;
+  GATE_ITEMS.forEach((t,i)=>{ if(state["gate_i"+i]) gateChecked++; });
+
+  const combinedTotal = totalAll + gateTotal;
+  const combinedChecked = checkedAll + gateChecked;
+  const overallPct = combinedTotal ? Math.round((combinedChecked/combinedTotal)*100) : 0;
+
+  document.getElementById('gateScore').innerHTML = overallPct + "<span>%</span>";
+
+  // animate gate doors: 0% = fully closed, 100% = fully open
+  const openAmount = overallPct / 100; // 0..1
+  const doorLeft = document.getElementById('doorLeft');
+  const doorRight = document.getElementById('doorRight');
+  const maxRotate = 62; // degrees at full open
+  doorLeft.style.transform = `rotateY(0deg) skewY(0deg) translateX(0) scaleX(${1-openAmount*0.72})`;
+  doorRight.style.transform = `scaleX(${1-openAmount*0.72})`;
+  doorLeft.setAttribute('transform', '');
+  document.getElementById('gateGlow').style.opacity = (openAmount*0.55).toFixed(2);
+}
+
+// Scrollspy for sidebar
+const navItems = Array.from(document.querySelectorAll('.nav-item'));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navItems.forEach(n => n.classList.remove('active'));
+      const match = navItems.find(n => n.dataset.phase === entry.target.id);
+      if(match) match.classList.add('active');
+    }
+  });
+}, {rootMargin: "-10% 0px -70% 0px"});
+PHASES.forEach(p => observer.observe(document.getElementById(p.id)));
+
+navItems.forEach(n => {
+  n.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.getElementById(n.dataset.phase);
+    target.classList.add('open');
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+updateProgress();
+
+document.getElementById("footerLastReviewed").textContent = CONTENT_LAST_REVIEWED;
+document.getElementById("hiwLastReviewed").textContent = CONTENT_LAST_REVIEWED;
+</script>
+<script>
+/* ============================================================
+   BUSINESS PROFILE + DOCUMENT GENERATOR
+   ============================================================ */
+const PROFILE_KEY = "gcrc_profile_v1";
+const SIMPLE_FIELDS = ["legalName","dba","address","mailingAddress","phone","email","website","ownerName","ownerTitle",
+  "ein","uei","cage","naicsPrimary","naicsSupporting","pscCodes","geographicCoverage","contractVehicles","bondingCapacity",
+  "coreCompetencies","differentiators"];
+
+const GLOSSARY = [
+  {term:"UEI", def:"Unique Entity ID — the 12-character identifier SAM.gov assigns to a business; it replaced DUNS and is required for federal registration."},
+  {term:"CAGE Code", def:"Commercial and Government Entity code — a 5-character code identifying a supplier across numerous federal contracting systems."},
+  {term:"NAICS", def:"North American Industry Classification System — the code that classifies your primary business activity and determines which SBA size standard applies."},
+  {term:"PSC", def:"Product Service Code — identifies the specific product, service, or research category being bought on a given contract or solicitation."},
+  {term:"NIGP Code", def:"A commodity/service code used by many state and local agencies (instead of PSC) to classify what they're purchasing."},
+  {term:"SAM", def:"System for Award Management (sam.gov) — the federal government's official registration system, required before bidding on or receiving a federal award."},
+  {term:"FAR", def:"Federal Acquisition Regulation — the primary rulebook governing how federal agencies buy goods and services."},
+  {term:"DFARS", def:"Defense Federal Acquisition Regulation Supplement — Department of Defense–specific rules that supplement the FAR for defense contracts."},
+  {term:"CFR", def:"Code of Federal Regulations — the codified federal regulations (including SBA's certification program rules) referenced throughout this checklist."},
+  {term:"SBS", def:"Small Business Search — SBA's public directory (formerly DSBS) that contracting officers use to find and vet small-business suppliers."},
+  {term:"8(a)", def:"SBA's Business Development Program for socially and economically disadvantaged small businesses, allowing sole-source and set-aside federal contracts."},
+  {term:"HUBZone", def:"SBA program giving contracting preference to small businesses located in and hiring from designated economically distressed areas."},
+  {term:"WOSB / EDWOSB", def:"Women-Owned Small Business / Economically Disadvantaged WOSB — SBA certifications enabling competition for contracts set aside for women-owned businesses."},
+  {term:"VOSB / SDVOSB", def:"Veteran-Owned / Service-Disabled Veteran-Owned Small Business — certifications (administered via VetCert) reserving contracts for veteran-owned small businesses."},
+  {term:"MBE / WBE / DBE / SBE", def:"Minority / Women / Disadvantaged / Small Business Enterprise — state and local certification categories, separate from and not interchangeable with federal certifications."},
+  {term:"EIN", def:"Employer Identification Number — the IRS-issued tax ID for a business entity."},
+  {term:"W-9", def:"IRS form providing a business's taxpayer ID and certification; most buyers, including government agencies, require it before setting up payment."},
+  {term:"ACH", def:"Automated Clearing House — the electronic bank-to-bank payment network federal agencies typically use to pay contractors."},
+  {term:"RFP / RFQ / RFI / IFB", def:"Request for Proposal / Quotation / Information, and Invitation for Bid — the different formats an agency can use to solicit a purchase."},
+  {term:"Set-Aside", def:"A procurement restricted to a specific socioeconomic category of business (e.g. small business, 8(a), HUBZone) rather than open to all offerors."},
+  {term:"GSA Schedule", def:"A pre-negotiated, long-term federal contract vehicle (via the General Services Administration) that agencies can order directly from."}
+];
+
+function renderGlossary(){
+  const grid = document.getElementById("glossaryGrid");
+  if(!grid) return;
+  grid.innerHTML = GLOSSARY.map(g => `<div class="glossary-term"><b>${esc(g.term)}</b> — ${esc(g.def)}</div>`).join("");
+}
+
+const CERT_LIST = [
+  {key:"smallBusiness", label:"Small Business"},
+  {key:"sdb", label:"Small Disadvantaged Business"},
+  {key:"a8", label:"8(a) Business Development"},
+  {key:"hubzone", label:"HUBZone"},
+  {key:"wosb", label:"Women-Owned Small Business"},
+  {key:"edwosb", label:"Economically Disadvantaged WOSB"},
+  {key:"vosb", label:"Veteran-Owned Small Business"},
+  {key:"sdvosb", label:"Service-Disabled Veteran-Owned Small Business"}
+];
+
+const TABLE_CONFIGS = {
+  pastPerformance:{cols:[{k:"client",l:"Client / Agency"},{k:"project",l:"Project"},{k:"value",l:"Contract Value"},{k:"period",l:"Period of Performance"},{k:"description",l:"Description"}]},
+  keyPersonnel:{cols:[{k:"name",l:"Name"},{k:"title",l:"Title / Role"},{k:"bio",l:"Relevant Experience"}]},
+  certControl:{cols:[{k:"name",l:"Certification"},{k:"agency",l:"Issuing Agency"},{k:"appDate",l:"Application Date"},{k:"status",l:"Status"},{k:"certNumber",l:"Cert #"},{k:"effDate",l:"Effective"},{k:"expDate",l:"Expires"},{k:"renewalDeadline",l:"Renewal Deadline"}]},
+  portalTracker:{cols:[{k:"agency",l:"Agency"},{k:"portal",l:"Portal"},{k:"account",l:"Login Email"},{k:"vendorNumber",l:"Vendor #"},{k:"commodityCodes",l:"Commodity Codes"},{k:"regDate",l:"Registered"},{k:"renewalDate",l:"Renewal"},{k:"notifications",l:"Notifications On?"},{k:"notes",l:"Notes"}]},
+  complianceMatrix:{cols:[{k:"reqNum",l:"Req #"},{k:"page",l:"Page"},{k:"requirement",l:"Requirement"},{k:"responseLocation",l:"Response Location"},{k:"responsible",l:"Responsible"},{k:"status",l:"Status"}]}
+};
+
+function defaultProfile(){
+  const p = {certifications:{}};
+  SIMPLE_FIELDS.forEach(f => p[f] = "");
+  Object.keys(TABLE_CONFIGS).forEach(k => p[k] = []);
+  return p;
+}
+
+let PROFILE = defaultProfile();
+try{
+  const saved = JSON.parse(localStorage.getItem(PROFILE_KEY));
+  if(saved){ PROFILE = Object.assign(defaultProfile(), saved); Object.keys(TABLE_CONFIGS).forEach(k=>{ if(!Array.isArray(PROFILE[k])) PROFILE[k]=[]; }); if(!PROFILE.certifications) PROFILE.certifications = {}; }
+}catch(e){}
+
+function saveProfile(){ try{ localStorage.setItem(PROFILE_KEY, JSON.stringify(PROFILE)); }catch(e){} }
+
+function esc(s){ return (s===undefined||s===null) ? "" : String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function escAttr(s){ return esc(s).replace(/"/g,"&quot;"); }
+
+/* ---- simple text/textarea fields ---- */
+function bindSimpleFields(){
+  SIMPLE_FIELDS.forEach(f => {
+    const el = document.getElementById("f_"+f);
+    if(!el) return;
+    el.value = PROFILE[f] || "";
+    el.addEventListener("input", () => {
+      PROFILE[f] = el.value;
+      saveProfile();
+    });
+  });
+}
+
+/* ---- certification checkboxes ---- */
+function renderCertChecks(){
+  const wrap = document.getElementById("certChecks");
+  wrap.innerHTML = CERT_LIST.map(c => `<label><input type="checkbox" data-cert="${c.key}" ${PROFILE.certifications[c.key] ? "checked" : ""}> ${c.label}</label>`).join("");
+  wrap.querySelectorAll("input[type=checkbox]").forEach(cb => {
+    cb.addEventListener("change", () => {
+      PROFILE.certifications[cb.dataset.cert] = cb.checked;
+      saveProfile();
+    });
+  });
+}
+
+/* ---- repeatable tables ---- */
+function renderTable(key){
+  const cfg = TABLE_CONFIGS[key];
+  const rows = PROFILE[key];
+  const table = document.getElementById("tbl_"+key);
+  if(!table) return;
+  const thead = "<tr>" + cfg.cols.map(c => `<th>${c.l}</th>`).join("") + "<th></th></tr>";
+  const body = rows.map((row, i) => {
+    const tds = cfg.cols.map(c => `<td><input type="text" value="${escAttr(row[c.k]||"")}" data-table="${key}" data-row="${i}" data-col="${c.k}"></td>`).join("");
+    return `<tr>${tds}<td><button class="rm-row" data-rm="${key}" data-rmrow="${i}" title="Remove row">✕</button></td></tr>`;
+  }).join("");
+  table.innerHTML = thead + body || thead;
+  if(rows.length === 0){ table.innerHTML = thead + `<tr><td colspan="${cfg.cols.length+1}" style="color:#93a0b3; font-style:italic; padding:8px;">No rows yet — click "add" below.</td></tr>`; }
+}
+
+function renderAllTables(){ Object.keys(TABLE_CONFIGS).forEach(renderTable); }
+
+document.body.addEventListener("input", (e) => {
+  if(e.target.matches("table.repeat-table input[data-table]")){
+    const {table, row, col} = e.target.dataset;
+    PROFILE[table][row][col] = e.target.value;
+    saveProfile();
+  }
+});
+
+document.body.addEventListener("click", (e) => {
+  const addKey = e.target.dataset.add;
+  if(addKey){
+    const blank = {};
+    TABLE_CONFIGS[addKey].cols.forEach(c => blank[c.k] = "");
+    PROFILE[addKey].push(blank);
+    saveProfile();
+    renderTable(addKey);
+    return;
+  }
+  const rmKey = e.target.dataset.rm;
+  if(rmKey !== undefined && rmKey !== ""){
+    const idx = parseInt(e.target.dataset.rmrow, 10);
+    PROFILE[rmKey].splice(idx, 1);
+    saveProfile();
+    renderTable(rmKey);
+    return;
+  }
+  const docBtn = e.target.closest("[data-doc]");
+  if(docBtn){
+    const doc = GEN_DOCS.find(d => d.id === docBtn.dataset.doc);
+    if(!doc) return;
+    const html = doc.build(PROFILE);
+    if(docBtn.dataset.format === "pdf"){ downloadPDF(doc.title, html); }
+    else{ downloadWord(doc.filename, html); }
+    return;
+  }
+
+  const previewBtn = e.target.closest("[data-preview]");
+  if(previewBtn){
+    const doc = GEN_DOCS.find(d => d.id === previewBtn.dataset.preview);
+    if(doc) openDocPreview(doc);
+    return;
+  }
+
+  const buyBtn = e.target.closest("[data-buyfull]");
+  if(buyBtn){
+    openPaymentFlow();
+    return;
+  }
+});
+
+/* ---- document builders ---- */
+function buildCapabilityStatement(p){
+  const certs = CERT_LIST.filter(c => p.certifications[c.key]).map(c => c.label);
+  const comps = (p.coreCompetencies||"").split("\n").map(s=>s.trim()).filter(Boolean);
+  const diffs = (p.differentiators||"").split("\n").map(s=>s.trim()).filter(Boolean);
+  const topPP = p.pastPerformance.slice(0,4);
+  return `<div class="docpaper">
+    <h1>${esc(p.legalName)||"[Legal Business Name]"}</h1>
+    <div class="doc-sub">${p.dba?("DBA "+esc(p.dba)+" &middot; "):""}${esc(p.address)}</div>
+    <div class="kv">
+      <div><b>UEI:</b> ${esc(p.uei)||"—"}</div><div><b>CAGE:</b> ${esc(p.cage)||"—"}</div>
+      <div><b>Primary NAICS:</b> ${esc(p.naicsPrimary)||"—"}</div><div><b>Supporting NAICS:</b> ${esc(p.naicsSupporting)||"—"}</div>
+      <div><b>Phone:</b> ${esc(p.phone)||"—"}</div><div><b>Email:</b> ${esc(p.email)||"—"}</div>
+      <div><b>Website:</b> ${esc(p.website)||"—"}</div><div><b>Geographic Coverage:</b> ${esc(p.geographicCoverage)||"—"}</div>
+      <div><b>Contract Vehicles:</b> ${esc(p.contractVehicles)||"—"}</div><div><b>Bonding Capacity:</b> ${esc(p.bondingCapacity)||"—"}</div>
+    </div>
+    <h2>Core Competencies</h2>
+    ${comps.length ? "<ul>"+comps.map(c=>`<li>${esc(c)}</li>`).join("")+"</ul>" : '<div class="empty-note">Add core competencies in the Business Profile.</div>'}
+    <h2>Differentiators</h2>
+    ${diffs.length ? "<ul>"+diffs.map(c=>`<li>${esc(c)}</li>`).join("")+"</ul>" : '<div class="empty-note">Add differentiators in the Business Profile.</div>'}
+    <h2>Certifications</h2>
+    ${certs.length ? "<ul>"+certs.map(c=>`<li>${esc(c)}</li>`).join("")+"</ul>" : '<div class="empty-note">No certifications selected yet.</div>'}
+    <h2>Past Performance</h2>
+    ${topPP.length ? `<table><tr><th>Client</th><th>Project</th><th>Value</th><th>Period</th></tr>${topPP.map(r=>`<tr><td>${esc(r.client)}</td><td>${esc(r.project)}</td><td>${esc(r.value)}</td><td>${esc(r.period)}</td></tr>`).join("")}</table>` : '<div class="empty-note">Add past performance in the Business Profile.</div>'}
+    <h2>Contact</h2>
+    <div class="kv"><div><b>${esc(p.ownerName)||"[Owner / Key Contact]"}</b>${p.ownerTitle?(", "+esc(p.ownerTitle)):""}</div><div>${esc(p.email)}${p.phone?(" &middot; "+esc(p.phone)):""}</div></div>
+  </div>`;
+}
+
+function buildSimpleTableDoc(title, p, tableKey){
+  const cfg = TABLE_CONFIGS[tableKey];
+  const rows = p[tableKey];
+  return `<div class="docpaper">
+    <h1>${title}</h1>
+    <div class="doc-sub">${esc(p.legalName)||"[Legal Business Name]"}</div>
+    <table><tr>${cfg.cols.map(c=>`<th>${c.l}</th>`).join("")}</tr>
+    ${rows.length ? rows.map(r=>`<tr>${cfg.cols.map(c=>`<td>${esc(r[c.k]||"")}</td>`).join("")}</tr>`).join("") : `<tr><td colspan="${cfg.cols.length}" class="empty-note">No rows added yet.</td></tr>`}
+    </table>
+  </div>`;
+}
+const buildCertControl = (p) => buildSimpleTableDoc("Certification Control Sheet", p, "certControl");
+const buildPortalTracker = (p) => buildSimpleTableDoc("Vendor Portal Tracker", p, "portalTracker");
+const buildComplianceMatrix = (p) => buildSimpleTableDoc("Proposal Compliance Matrix", p, "complianceMatrix");
+
+/* ---- downloads ---- */
+function downloadWord(filename, innerHtml){
+  const pre = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>"+esc(filename)+"</title></head><body>";
+  const full = pre + innerHtml + "</body></html>";
+  const blob = new Blob(["\ufeff", full], {type:"application/msword"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename.toLowerCase().endsWith(".doc") ? filename : filename + ".doc";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+
+function downloadPDF(title, innerHtml){
+  const w = window.open("", "_blank");
+  if(!w){ alert("Your browser blocked the pop-up needed to generate the PDF. Allow pop-ups for this page and click again."); return; }
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>${esc(title)}</title><style>
+    body{font-family:Arial,Helvetica,sans-serif; margin:24px; color:#111;}
+    h1{font-size:20px;color:#133A75;margin:0 0 4px;}
+    h2{font-size:13px;color:#133A75;border-bottom:1.5px solid #133A75;padding-bottom:3px;margin:14px 0 6px;}
+    .doc-sub{font-size:10px;color:#555;margin-bottom:12px;font-family:monospace;}
+    table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:8px;}
+    th,td{border:1px solid #ccc;padding:5px 7px;text-align:left;}
+    th{background:#eef1f6;font-size:9.5px;text-transform:uppercase;}
+    .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:3px 16px;font-size:11px;margin-bottom:6px;}
+    .kv div b{color:#133A75;}
+    ul{margin:4px 0 0;padding-left:18px;}
+    .empty-note{color:#999;font-style:italic;}
+    @media print{ body{margin:12mm;} }
+  </style></head><body>${innerHtml}</body></html>`);
+  w.document.close();
+  w.focus();
+  setTimeout(() => { w.print(); }, 350);
+}
+
+/* ---- doc cards ---- */
+const GEN_DOCS = [
+  {id:"capstmt", title:"Capability Statement", filename:"Capability-Statement", desc:"One-page federal capability statement built from company basics, competencies, and top past performance.", build:buildCapabilityStatement, gated:true},
+  {id:"certctrl", title:"Certification Control Sheet", filename:"Certification-Control-Sheet", desc:"Every certification, its issuing agency, numbers, and renewal deadlines.", build:buildCertControl, gated:true},
+  {id:"portal", title:"Vendor Portal Tracker", filename:"Vendor-Portal-Tracker", desc:"Every procurement portal you're registered in, with renewal and notification status.", build:buildPortalTracker, gated:false},
+  {id:"compliance", title:"Proposal Compliance Matrix", filename:"Compliance-Matrix", desc:"Solicitation requirements mapped to response location, owner, and status.", build:buildComplianceMatrix, gated:true}
+];
+
+function renderDocCards(){
+  const grid = document.getElementById("docGrid");
+  grid.innerHTML = GEN_DOCS.map(d => `
+    <div class="doc-card">
+      <div class="doc-card-head"><h3>${d.title}<span class="doc-badge ${d.gated?'paid':'free'}">${d.gated?'Full Report':'Free'}</span></h3><p>${d.desc}</p></div>
+      <div class="doc-card-actions">
+        ${d.gated ? `
+          <button class="doc-btn" data-preview="${d.id}" type="button">Preview (free)</button>
+          <button class="doc-btn pdf" data-buyfull="${d.id}" type="button">Get Full Report</button>
+        ` : `
+          <button class="doc-btn pdf" data-doc="${d.id}" data-format="pdf">Download PDF</button>
+          <button class="doc-btn" data-doc="${d.id}" data-format="word">Download Word</button>
+        `}
+      </div>
+    </div>`).join("");
+}
+
+/* ---- free preview modal (works for gated AND free docs, no payment needed) ---- */
+function openDocPreview(doc){
+  const modal = document.getElementById("previewModal");
+  const body = document.getElementById("previewModalBody");
+  body.innerHTML = doc.build(PROFILE);
+  modal.classList.add("show");
+}
+function closeDocPreview(){
+  document.getElementById("previewModal").classList.remove("show");
+}
+document.getElementById("previewModalClose").addEventListener("click", closeDocPreview);
+document.getElementById("previewModal").addEventListener("click", (e) => {
+  if(e.target.id === "previewModal") closeDocPreview();
+});
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape") closeDocPreview();
+});
+
+/* ---- payment flow (Phase 0: Square Payment Link + manual fulfillment) ---- */
+function openPaymentFlow(){
+  window.open(SQUARE_PAYMENT_LINK, "_blank", "noopener");
+  document.querySelectorAll(".fullreport-banner").forEach(b => {
+    b.textContent = "Thanks — after your payment goes through, check the email you used at Square checkout. We'll send your full Capability Statement, Certification Control Sheet, and Compliance Matrix within 24 hours. No further action needed on your end. Not satisfied with your report? Email andrew@akrandall.com within 7 days of purchase for a refund.";
+    b.classList.add("show");
+  });
+  const nearest = document.getElementById("fullReportBannerProfile") || document.getElementById("fullReportBannerTop");
+  if(nearest) nearest.scrollIntoView({behavior:"smooth", block:"nearest"});
+  // Matches the existing privacy note: this profile data only ever reaches AKRD when the Full Report is purchased.
+  if(PROFILE.email){
+    submitLead({
+      name: PROFILE.ownerName || PROFILE.legalName || "",
+      email: PROFILE.email,
+      company: PROFILE.legalName || "",
+      focus: "Government Contracting Checklist — Full Report purchase",
+      message: [
+        PROFILE.legalName ? `Business: ${PROFILE.legalName}` : "",
+        PROFILE.naicsPrimary ? `Primary NAICS: ${PROFILE.naicsPrimary}` : "",
+        PROFILE.uei ? `UEI: ${PROFILE.uei}` : "",
+        PROFILE.phone ? `Phone: ${PROFILE.phone}` : ""
+      ].filter(Boolean).join("\n"),
+      captureSource: "govcon-tool-purchase-intent"
+    }).catch(()=>{});
+  }
+}
+document.querySelectorAll(".fr-price").forEach(el => el.textContent = FULL_REPORT_PRICE);
+document.getElementById("getFullReportTop").addEventListener("click", openPaymentFlow);
+document.getElementById("getFullReportBtn").addEventListener("click", openPaymentFlow);
+
+/* ---- sample data (Deliverable: preview generator output without filling out the form) ---- */
+const SAMPLE_PROFILE = {
+  legalName:"Ridgeline Facilities Group, LLC", dba:"", address:"4210 Meridian Business Court, Suite 220, Charlotte, NC 28217", mailingAddress:"",
+  phone:"(704) 555-0148", email:"contracts@ridgelinefacilities.com", website:"www.ridgelinefacilities.com",
+  ownerName:"Dana Whitfield", ownerTitle:"President",
+  ein:"58-1234567", uei:"K9DGH2LMN4T7", cage:"8X4R2",
+  naicsPrimary:"561210", naicsSupporting:"561720, 238220, 561730", pscCodes:"S201, S214",
+  geographicCoverage:"North Carolina, South Carolina, Virginia", contractVehicles:"NC eVP, GSA MAS (in process)", bondingCapacity:"$500,000 single / $2,000,000 aggregate",
+  coreCompetencies:"Facilities maintenance and janitorial services\nHVAC preventive maintenance\nGrounds and landscaping upkeep\nEmergency facility response (24/7)",
+  differentiators:"15 years of continuous local operations\nIn-house crews — no subcontracted labor on core services\nSDVOSB-certified\n98% on-time work-order completion rate (2023–2025)",
+  certifications:{smallBusiness:true, sdb:false, a8:false, hubzone:false, wosb:false, edwosb:false, vosb:true, sdvosb:true},
+  pastPerformance:[
+    {client:"City of Charlotte — General Services", project:"Municipal Facilities Maintenance Contract", value:"$1,240,000", period:"2022–2025", description:"Full-service janitorial and HVAC maintenance across 14 municipal buildings."},
+    {client:"Mecklenburg County Parks & Rec", project:"Grounds Maintenance IDIQ", value:"$380,000", period:"2021–2023", description:"Grounds upkeep and emergency response for 9 county park facilities."}
+  ],
+  keyPersonnel:[
+    {name:"Dana Whitfield", title:"President / Contracts Lead", bio:"15 years managing facilities contracts for municipal and county government clients."},
+    {name:"Marcus Ilievski", title:"Operations Manager", bio:"Licensed HVAC technician; oversees field crews and preventive maintenance scheduling."}
+  ],
+  certControl:[
+    {name:"SDVOSB", agency:"U.S. Dept. of Veterans Affairs (VetCert)", appDate:"2023-02-10", status:"Active", certNumber:"VC-2023-04471", effDate:"2023-03-01", expDate:"2026-03-01", renewalDeadline:"2025-12-01"},
+    {name:"Small Business", agency:"SBA (self-certified via SAM.gov)", appDate:"—", status:"Active", certNumber:"—", effDate:"—", expDate:"—", renewalDeadline:"Reviewed with annual SAM update"}
+  ],
+  portalTracker:[
+    {agency:"State of North Carolina", portal:"NC eVP", account:"contracts@ridgelinefacilities.com", vendorNumber:"NC-00841223", commodityCodes:"91000, 91050", regDate:"2022-01-14", renewalDate:"2026-01-14", notifications:"Yes", notes:"Primary state portal"},
+    {agency:"City of Charlotte", portal:"Bonfire", account:"contracts@ridgelinefacilities.com", vendorNumber:"CLT-5521", commodityCodes:"91000", regDate:"2022-03-02", renewalDate:"—", notifications:"Yes", notes:""}
+  ],
+  complianceMatrix:[
+    {reqNum:"C.3.1", page:"12", requirement:"Offeror shall provide 3 references for facilities contracts of similar size within the last 5 years.", responseLocation:"Past Performance, p.4", responsible:"D. Whitfield", status:"Complete"},
+    {reqNum:"C.3.4", page:"14", requirement:"Offeror shall submit a signed Non-Collusion Affidavit.", responseLocation:"Attachment C", responsible:"M. Ilievski", status:"In progress"}
+  ]
+};
+
+function profileHasData(){
+  return SIMPLE_FIELDS.some(f => (PROFILE[f]||"").trim()) || Object.keys(TABLE_CONFIGS).some(k => PROFILE[k].length > 0);
+}
+
+function refreshProfileUI(){
+  bindSimpleFields();
+  renderCertChecks();
+  renderAllTables();
+}
+
+function loadSampleData(){
+  if(profileHasData() && !confirm('This loads example company data into the Business Profile so you can preview the generated documents — it will overwrite what\'s currently entered there. Continue?')) return;
+  PROFILE = JSON.parse(JSON.stringify(SAMPLE_PROFILE));
+  saveProfile();
+  refreshProfileUI();
+  document.getElementById("clearSampleBtn").style.display = "";
+  document.getElementById("profile").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function clearSampleData(){
+  if(!confirm("Clear the Business Profile back to blank?")) return;
+  PROFILE = defaultProfile();
+  saveProfile();
+  refreshProfileUI();
+  document.getElementById("clearSampleBtn").style.display = "none";
+}
+
+document.getElementById("loadSampleBtn").addEventListener("click", loadSampleData);
+document.getElementById("loadSampleTop").addEventListener("click", loadSampleData);
+document.getElementById("clearSampleBtn").addEventListener("click", clearSampleData);
+if(profileHasData()){ document.getElementById("clearSampleBtn").style.display = ""; }
+
+/* ============================================================
+   QUICK-START ASSESSMENT
+   ============================================================ */
+function findItemId(phaseId, frag){
+  const phase = PHASES.find(p => p.id === phaseId);
+  if(!phase) return null;
+  const f = frag.toLowerCase();
+  for(let sIdx=0; sIdx<phase.sections.length; sIdx++){
+    const items = phase.sections[sIdx].items;
+    for(let iIdx=0; iIdx<items.length; iIdx++){
+      if(items[iIdx].toLowerCase().includes(f)) return itemId(phaseId, sIdx, iIdx);
+    }
+  }
+  return null;
+}
+function findGateId(frag){
+  const f = frag.toLowerCase();
+  const idx = GATE_ITEMS.findIndex(t => t.toLowerCase().includes(f));
+  return idx >= 0 ? "gate_i"+idx : null;
+}
+
+const ASSESSMENT = [
+  {group:"Foundation", questions:[
+    {id:"a_legalName", type:"text", label:"Legal business name", placeholder:"e.g. AK Randall Digital, LLC", profileField:"legalName", onFill:[{phase:"p1",frag:"Confirm the exact legal business name"}]},
+    {id:"a_entity", type:"yesno", label:"Is your business entity registered with your state?", on:[{phase:"p1",frag:"Register the legal entity"},{gate:"Legal entity and bank account"}]},
+    {id:"a_ein", type:"text", label:"EIN (leave blank if you don't have one yet)", placeholder:"XX-XXXXXXX", profileField:"ein", onFill:[{phase:"p1",frag:"Obtain an EIN"}]},
+    {id:"a_bank", type:"yesno", label:"Do you have a dedicated business bank account with bookkeeping and invoicing set up?", on:[{phase:"p1",frag:"Open a dedicated business bank account"},{phase:"p1",frag:"Establish bookkeeping"},{phase:"p1",frag:"Establish an invoicing process"},{phase:"p1",frag:"Set up ACH"},{gate:"Accounting and invoicing system"}]},
+    {id:"a_insurance", type:"yesno", label:"Do you carry general liability insurance (and other required coverage)?", on:[{phase:"p1",frag:"Obtain general liability insurance"},{gate:"Insurance plan"}]},
+    {id:"a_brand", type:"yesno", label:"Do you have a professional domain email, business phone, and at least a one-page website?", on:[{phase:"p1",frag:"Create a professional domain email"},{phase:"p1",frag:"Establish a professional business phone"},{phase:"p1",frag:"Launch at least a credible one-page website"}]},
+    {id:"a_capital", type:"yesno", label:"Can you finance payroll and materials while waiting on government payment terms?", on:[{phase:"p1",frag:"Confirm the business can carry payroll"},{gate:"Working-capital plan"}]}
+  ]},
+  {group:"Offering & Classification", questions:[
+    {id:"a_offering", type:"yesno", label:"Have you defined 1–3 specific offerings you sell to government (not a broad list)?", on:[{phase:"p2",frag:"Select one to three primary government offerings"},{gate:"Defined government offering"}]},
+    {id:"a_naicsPrimary", type:"text", label:"Primary NAICS code", placeholder:"e.g. 238210", profileField:"naicsPrimary", onFill:[{phase:"p2",frag:"Select a primary NAICS code"},{gate:"Correct NAICS and commodity codes"}]},
+    {id:"a_naicsSupporting", type:"text", label:"Supporting NAICS codes", placeholder:"comma-separated", profileField:"naicsSupporting", onFill:[{phase:"p2",frag:"Select supporting NAICS codes"}]}
+  ]},
+  {group:"Federal Registration", questions:[
+    {id:"a_sam", type:"yesno", label:"Is your SAM.gov registration currently Active?", on:[{phase:"p3",frag:"Submit the registration"},{phase:"p3",frag:"Monitor the registration until"},{gate:"Active SAM registration"}]},
+    {id:"a_uei", type:"text", label:"UEI (if registered)", placeholder:"12-character UEI", profileField:"uei", onFill:[{phase:"p3",frag:"Confirm the UEI is correct"},{gate:"Verified UEI and CAGE"}]},
+    {id:"a_cage", type:"text", label:"CAGE code (if assigned)", placeholder:"5-character CAGE", profileField:"cage", onFill:[{phase:"p3",frag:"Confirm the CAGE code is populated"}]}
+  ]},
+  {group:"Certifications & Profiles", questions:[
+    {id:"a_sbs", type:"yesno", label:"Do you have a complete SBA Small Business Search (SBS) profile?", on:[{phase:"p4",frag:"Locate or create the company"},{gate:"Complete SBS profile"}]}
+  ]},
+  {group:"Sales Materials & Pricing", questions:[
+    {id:"a_capstmt", type:"yesno", label:"Do you already have a one-page capability statement?", on:[{phase:"p5",frag:"One-page federal capability statement"},{gate:"Capability statement"}]},
+    {id:"a_pricing", type:"yesno", label:"Do you have burdened labor rates and a standard pricing/markup model?", on:[{phase:"p5",frag:"Establish fully burdened labor rates"},{gate:"Pricing model"}]},
+    {id:"a_pastperf", type:"yesno", label:"Do you have documented past performance you can point to (even adjacent work)?", on:[{gate:"Past-performance strategy"}]}
+  ]},
+  {group:"Portals & Pipeline", questions:[
+    {id:"a_stateportal", type:"yesno", label:"Are you registered in your state's procurement portal and any priority local agency portals?", on:[{phase:"p6",frag:"Register in the home state"},{gate:"Vendor registrations in priority markets"}]},
+    {id:"a_tracking", type:"yesno", label:"Do you have saved searches or alerts set up to catch new opportunities?", on:[{phase:"p7",frag:"NAICS code"},{gate:"Opportunity tracking system"}]},
+    {id:"a_bidnobid", type:"yesno", label:"Do you use a bid/no-bid process before committing time to a proposal?", on:[{gate:"Bid/no-bid process"}]}
+  ]}
+];
+
+const ASSESS_KEY = "gcrc_assess_v1";
+let ASSESS_ANSWERS = {};
+try{ ASSESS_ANSWERS = JSON.parse(localStorage.getItem(ASSESS_KEY)) || {}; }catch(e){ ASSESS_ANSWERS = {}; }
+function saveAssessAnswers(){ try{ localStorage.setItem(ASSESS_KEY, JSON.stringify(ASSESS_ANSWERS)); }catch(e){} }
+
+function renderAssessment(){
+  const wrap = document.getElementById("assessGroups");
+  wrap.innerHTML = ASSESSMENT.map(g => `
+    <div class="assess-group">
+      <div class="assess-group-title">${g.group}</div>
+      ${g.questions.map(q => {
+        if(q.type === "yesno"){
+          const val = ASSESS_ANSWERS[q.id];
+          return `<div class="assess-q">
+            <div class="qtext">${q.label}</div>
+            <div class="yn-group" data-yn="${q.id}">
+              <button type="button" class="yn-btn yes ${val==='yes'?'active':''}" data-val="yes">Yes</button>
+              <button type="button" class="yn-btn no ${val==='no'?'active':''}" data-val="no">No</button>
+            </div>
+          </div>`;
+        }
+        return `<div class="assess-q">
+          <div class="qtext">${q.label}</div>
+          <input type="text" data-atext="${q.id}" placeholder="${q.placeholder||''}" value="${escAttr(ASSESS_ANSWERS[q.id]||'')}">
+        </div>`;
+      }).join("")}
+    </div>
+  `).join("");
+
+  wrap.querySelectorAll(".yn-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const group = btn.closest(".yn-group");
+      const qid = group.dataset.yn;
+      ASSESS_ANSWERS[qid] = btn.dataset.val;
+      saveAssessAnswers();
+      group.querySelectorAll(".yn-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+  wrap.querySelectorAll("input[data-atext]").forEach(inp => {
+    inp.addEventListener("input", () => {
+      ASSESS_ANSWERS[inp.dataset.atext] = inp.value;
+      saveAssessAnswers();
+    });
+  });
+}
+
+function applyCheck(id){
+  if(!id) return;
+  const cb = document.getElementById(id);
+  if(cb && !cb.checked){
+    cb.checked = true;
+    cb.dispatchEvent(new Event("change", {bubbles:true}));
+  } else if(!cb){
+    // element not yet rendered defensively — still record state directly
+    state[id] = true;
+  }
+}
+
+function applyMapping(mapArr){
+  (mapArr||[]).forEach(m => {
+    if(m.phase){ applyCheck(findItemId(m.phase, m.frag)); }
+    if(m.gate){ applyCheck(findGateId(m.gate)); }
+  });
+}
+
+function phaseCompletion(phase){
+  let total = 0, checked = 0;
+  phase.sections.forEach((sec, sIdx) => {
+    sec.items.forEach((txt, iIdx) => {
+      total++;
+      if(state[itemId(phase.id, sIdx, iIdx)]) checked++;
+    });
+  });
+  return {total, checked, pct: total ? checked/total : 0};
+}
+
+function runAssessment(){
+  ASSESSMENT.forEach(g => g.questions.forEach(q => {
+    const ans = ASSESS_ANSWERS[q.id];
+    if(q.type === "text"){
+      if(ans && ans.trim() && q.profileField){
+        PROFILE[q.profileField] = ans.trim();
+        applyMapping(q.onFill);
+      }
+    } else if(q.type === "yesno"){
+      if(ans === "yes"){ applyMapping(q.on); }
+    }
+  }));
+  saveProfile();
+  bindSimpleFields();
+  renderCertChecks();
+  saveState();
+  updateProgress();
+
+  // open every phase that now has at least one checked item, so progress is visible
+  PHASES.forEach(p => {
+    const {checked} = phaseCompletion(p);
+    if(checked > 0){ document.getElementById(p.id).classList.add("open"); }
+  });
+
+  // find recommended starting phase: first phase in order that isn't fully complete
+  let target = PHASES.find(p => phaseCompletion(p).pct < 1);
+  const resultBox = document.getElementById("assessResult");
+  const titleEl = document.getElementById("assessResultTitle");
+  const textEl = document.getElementById("assessResultText");
+  const jumpBtn = document.getElementById("assessJumpBtn");
+
+  if(!target){
+    titleEl.textContent = "You're already through the setup phases.";
+    textEl.textContent = "Based on your answers, Phases 01–07 are essentially covered. Focus your time on Phase 08 (bid/no-bid) and the live procurement phases from here on.";
+    jumpBtn.onclick = () => { document.getElementById("p8").classList.add("open"); document.getElementById("p8").scrollIntoView({behavior:"smooth"}); };
+  } else {
+    const idx = PHASES.indexOf(target) + 1;
+    const {checked, total} = phaseCompletion(target);
+    titleEl.textContent = `Phase ${String(idx).padStart(2,"0")} — ${target.title}`;
+    textEl.textContent = `Everything ahead of this is already checked off from your answers. This phase has ${checked} of ${total} items done — pick up here.`;
+    jumpBtn.onclick = () => { document.getElementById(target.id).classList.add("open"); document.getElementById(target.id).scrollIntoView({behavior:"smooth"}); };
+  }
+  resultBox.classList.add("show");
+  resultBox.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+document.getElementById("assessShareToggle").addEventListener("click", () => {
+  document.getElementById("assessShareForm").style.display = "block";
+  document.getElementById("assessShareToggle").style.display = "none";
+});
+document.getElementById("assessShareSubmit").addEventListener("click", () => {
+  const name = document.getElementById("shareName").value.trim();
+  const email = document.getElementById("shareEmail").value.trim();
+  const statusEl = document.getElementById("assessShareStatus");
+  if(!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ statusEl.textContent = "Enter your name and a valid email."; return; }
+  const score = document.getElementById("gateScore") ? document.getElementById("gateScore").textContent : "";
+  const target = document.getElementById("assessResultTitle").textContent;
+  statusEl.textContent = "Saving…";
+  submitLead({
+    name, email, company: "",
+    focus: "Government Contracting Checklist — Quick-Start Assessment",
+    message: `Readiness score: ${score}\nRecommended starting point: ${target}`,
+    captureSource: "govcon-tool-assessment"
+  }).then(()=>{ statusEl.textContent = "Saved — thanks!"; })
+    .catch(()=>{ statusEl.textContent = "Could not save automatically — email andrew@akrandall.com directly."; });
+});
+document.getElementById("runAssessBtn").addEventListener("click", runAssessment);
+document.getElementById("skipAssessBtn").addEventListener("click", () => {
+  document.getElementById("p1").classList.add("open");
+  document.getElementById("p1").scrollIntoView({behavior:"smooth"});
+});
+
+/* ============================================================
+   SUPPORTING DOCUMENTS (per phase + company-wide)
+   ============================================================ */
+const DOCS_KEY = "gcrc_docs_v1";
+const MAX_FILE_BYTES = 3 * 1024 * 1024;      // 3MB per file
+const MAX_TOTAL_BYTES = 4.5 * 1024 * 1024;   // ~4.5MB total budget for documents
+
+let DOCS = [];
+try{ DOCS = JSON.parse(localStorage.getItem(DOCS_KEY)) || []; }catch(e){ DOCS = []; }
+function saveDocs(){
+  try{ localStorage.setItem(DOCS_KEY, JSON.stringify(DOCS)); return true; }
+  catch(e){ alert("Couldn't save that file — your browser's storage is full. Remove an existing document or add a link instead of a file."); return false; }
+}
+function docsTotalBytes(){ return DOCS.reduce((sum,d) => sum + (d.kind === "file" ? (d.size||0) : 0), 0); }
+function fmtBytes(n){ if(!n) return "0 KB"; const kb = n/1024; return kb < 1024 ? Math.round(kb)+" KB" : (kb/1024).toFixed(1)+" MB"; }
+
+function docLibHTML(scopeId){
+  return `
+    <div class="phase-docs-title">Supporting documents</div>
+    <div class="docupload-row">
+      <input type="text" placeholder="Label (e.g. Certificate of Insurance)" data-doclabel="${scopeId}">
+      <input type="file" data-docfile="${scopeId}">
+      <input type="text" placeholder="...or paste a link instead" data-doclink="${scopeId}">
+      <button type="button" class="doclib-add-btn" data-docadd="${scopeId}">Add</button>
+    </div>
+    <div class="doclib-hint">Files stay in this browser only (not uploaded anywhere) — keep individual files under 3MB. For larger files, paste a link (Google Drive, Dropbox, etc.) instead.</div>
+    <div class="doc-list" data-doclist="${scopeId}"></div>
+  `;
+}
+
+function renderDocScope(scopeId){
+  const listEl = document.querySelector(`[data-doclist="${scopeId}"]`);
+  if(!listEl) return;
+  const items = DOCS.filter(d => d.scope === scopeId);
+  if(!items.length){
+    listEl.innerHTML = `<div class="doclib-empty">No documents added yet.</div>`;
+    return;
+  }
+  listEl.innerHTML = items.map(d => {
+    const icon = d.kind === "link" ? "🔗" : "📄";
+    const href = d.kind === "link" ? d.url : d.dataUrl;
+    const sizeText = d.kind === "file" ? fmtBytes(d.size) : "link";
+    return `<div class="doc-row">
+      <span class="doc-icon">${icon}</span>
+      <a class="doc-name" href="${href}" target="_blank" rel="noopener" download="${d.kind==='file'?escAttr(d.name):''}">${esc(d.name)}</a>
+      <span class="doc-size">${sizeText}</span>
+      <button class="doc-rm" data-docrm="${d.id}" title="Remove">✕</button>
+    </div>`;
+  }).join("");
+}
+
+function renderAllDocScopes(){
+  document.querySelectorAll("[data-docsphase]").forEach(el => {
+    const scopeId = el.dataset.docsphase;
+    el.innerHTML = docLibHTML(scopeId);
+    renderDocScope(scopeId);
+  });
+}
+
+document.body.addEventListener("click", (e) => {
+  const addBtn = e.target.closest("[data-docadd]");
+  if(addBtn){
+    const scopeId = addBtn.dataset.docadd;
+    const wrap = addBtn.closest(".phase-docs");
+    const labelInput = wrap.querySelector(`[data-doclabel="${scopeId}"]`);
+    const fileInput = wrap.querySelector(`[data-docfile="${scopeId}"]`);
+    const linkInput = wrap.querySelector(`[data-doclink="${scopeId}"]`);
+    const label = labelInput.value.trim();
+    const link = linkInput.value.trim();
+    const file = fileInput.files[0];
+
+    if(!file && !link){ alert("Choose a file or paste a link first."); return; }
+    if(file && link){ alert("Add either a file or a link, not both, in one go."); return; }
+
+    if(link){
+      DOCS.push({id:"doc_"+Date.now(), scope:scopeId, kind:"link", name:label || link, url:link, addedAt:Date.now()});
+      if(saveDocs()){ labelInput.value=""; linkInput.value=""; renderDocScope(scopeId); }
+      return;
+    }
+
+    if(file.size > MAX_FILE_BYTES){
+      alert(`"${file.name}" is ${fmtBytes(file.size)} — that's over the 3MB per-file limit for browser storage. Use the link field instead for larger files.`);
+      return;
+    }
+    if(docsTotalBytes() + file.size > MAX_TOTAL_BYTES){
+      alert("You're near this browser's storage limit for documents. Remove an existing file or use a link instead.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      DOCS.push({id:"doc_"+Date.now(), scope:scopeId, kind:"file", name:label || file.name, dataUrl:reader.result, size:file.size, addedAt:Date.now()});
+      if(saveDocs()){ labelInput.value=""; fileInput.value=""; renderDocScope(scopeId); }
+    };
+    reader.onerror = () => alert("Couldn't read that file — try again or use a link instead.");
+    reader.readAsDataURL(file);
+    return;
+  }
+
+  const rmBtn = e.target.closest("[data-docrm]");
+  if(rmBtn){
+    const id = rmBtn.dataset.docrm;
+    const doc = DOCS.find(d => d.id === id);
+    if(doc && confirm(`Remove "${doc.name}"?`)){
+      DOCS = DOCS.filter(d => d.id !== id);
+      saveDocs();
+      renderDocScope(doc.scope);
+    }
+  }
+});
+
+/* ============================================================
+   HARD RESET
+   ============================================================ */
+document.getElementById("hardResetBtn").addEventListener("click", () => {
+  const ok = confirm("This permanently erases everything in this browser: checklist progress, your Business Profile, assessment answers, and every uploaded document or link. This cannot be undone.\n\nType-safe confirm: press OK to erase everything, or Cancel to keep your data.");
+  if(!ok) return;
+  try{
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(PROFILE_KEY);
+    localStorage.removeItem(ASSESS_KEY);
+    localStorage.removeItem(DOCS_KEY);
+  }catch(e){}
+  location.reload();
+});
+
+/* ---- init ---- */
+bindSimpleFields();
+renderCertChecks();
+renderAllTables();
+renderDocCards();
+renderAssessment();
+renderAllDocScopes();
+renderGlossary();
+
+/* ---- report height to parent when embedded in an iframe (landing-page wrapper) ---- */
+function reportHeightToParent(){
+  try{ window.parent && window.parent !== window && window.parent.postMessage({type:"akrd-assessment-height", height:document.documentElement.scrollHeight}, "*"); }catch(e){}
+}
+window.addEventListener("load", reportHeightToParent);
+if(window.ResizeObserver){
+  new ResizeObserver(reportHeightToParent).observe(document.body);
+} else {
+  setInterval(reportHeightToParent, 600);
+}
+</script>
+</body>
+</html>
