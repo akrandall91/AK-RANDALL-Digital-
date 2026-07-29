@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Government Contracting Readiness Checklist — AKRD</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="styles.min.css?v=20260729a">
 <style>
   :root{
@@ -1095,7 +1096,7 @@
       <div class="profile-body">
 
         <div class="privacy-note">
-          <strong>Privacy note.</strong> This form collects business details you choose to enter — company name, EIN, UEI, CAGE code, certifications, and similar identifiers — so this tool can build documents from them. That data is stored <strong>only in this browser's local storage, tied to this file on this device</strong>. It is not uploaded to a server or database, and AKRD does not see, receive, or store it automatically. The only ways any of this information reaches AKRD are: (1) you click "Get Full Report" to purchase, which sends your Business Profile name/company/NAICS/UEI to AKRD directly (in addition to sharing your name/email with Square for payment processing) so report fulfillment has the context it needs; (2) you use the "Save my results — share with Andrew" option on the Quick-Start Assessment, which sends only your name, email, and readiness score; or (3) you email your details to us directly.
+          <strong>Privacy note.</strong> This form collects business details you choose to enter — company name, EIN, UEI, CAGE code, certifications, and similar identifiers — so this tool can build documents from them. That data is stored <strong>only in this browser's local storage, tied to this file on this device</strong>. It is not uploaded to a server or database, and AKRD does not see, receive, or store it automatically. The only ways any of this information reaches AKRD are: (1) you click "Get Full Report," which records your purchase intent and sends your Business Profile name/company/NAICS/UEI to AKRD directly (in addition to sharing your name/email with Square if you continue through checkout) so report fulfillment has the context it needs; (2) you use the "Save my results — share with Andrew" option on the Quick-Start Assessment, which sends only your name, email, and readiness score; or (3) you email your details to us directly.
         </div>
 
         <div style="margin-bottom:20px;">
@@ -2103,18 +2104,18 @@ document.addEventListener("keydown", (e) => {
 function openPaymentFlow(){
   window.open(SQUARE_PAYMENT_LINK, "_blank", "noopener");
   document.querySelectorAll(".fullreport-banner").forEach(b => {
-    b.textContent = "Thanks — after your payment goes through, check the email you used at Square checkout. We'll send your full Capability Statement, Certification Control Sheet, and Compliance Matrix within 24 hours. No further action needed on your end. Not satisfied with your report? Email andrew@akrandall.com within 7 days of purchase for a refund.";
+    b.textContent = "You're about to check out with Square in a new tab. Once your payment goes through, check the email you used at checkout — we'll send your full Capability Statement, Certification Control Sheet, and Compliance Matrix within 24 hours. Not satisfied with your report? Email andrew@akrandall.com within 7 days of purchase for a refund.";
     b.classList.add("show");
   });
   const nearest = document.getElementById("fullReportBannerProfile") || document.getElementById("fullReportBannerTop");
   if(nearest) nearest.scrollIntoView({behavior:"smooth", block:"nearest"});
-  // Matches the existing privacy note: this profile data only ever reaches AKRD when the Full Report is purchased.
+  // Record purchase intent when the Full Report button is clicked so fulfillment has the profile context it needs.
   if(PROFILE.email){
     submitLead({
       name: PROFILE.ownerName || PROFILE.legalName || "",
       email: PROFILE.email,
       company: PROFILE.legalName || "",
-      focus: "Government Contracting Checklist — Full Report purchase",
+      focus: "Government Contracting Checklist — Full Report purchase intent",
       message: [
         PROFILE.legalName ? `Business: ${PROFILE.legalName}` : "",
         PROFILE.naicsPrimary ? `Primary NAICS: ${PROFILE.naicsPrimary}` : "",
@@ -2390,7 +2391,7 @@ document.getElementById("assessShareSubmit").addEventListener("click", () => {
     focus: "Government Contracting Checklist — Quick-Start Assessment",
     message: `Readiness score: ${score}\nRecommended starting point: ${target}`,
     captureSource: "govcon-tool-assessment"
-  }).then(()=>{ statusEl.textContent = "Saved — thanks!"; })
+  }).then(()=>{ statusEl.textContent = "Your results were sent."; })
     .catch(()=>{ statusEl.textContent = "Could not save automatically — email andrew@akrandall.com directly."; });
 });
 document.getElementById("runAssessBtn").addEventListener("click", runAssessment);

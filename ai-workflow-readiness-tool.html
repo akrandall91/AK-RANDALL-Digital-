@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>AI Workflow Readiness Roadmap — AKRD</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="styles.min.css?v=20260729a">
 <style>
 :root{
@@ -188,7 +189,7 @@ function submitShare(){
     focus: 'AI Workflow Readiness Roadmap — Automation Brief',
     message: pitchText,
     captureSource: 'ai-workflow-tool'
-  }).then(()=>{ shareStatus = 'Saved — thanks!'; renderReport(); })
+  }).then(()=>{ shareStatus = 'Your brief was sent.'; renderReport(); })
     .catch(()=>{ shareStatus = 'Could not save automatically — email andrew@akrandall.com directly.'; renderReport(); });
 }
 

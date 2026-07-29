@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free Growth Assessment | AK Randall Digital</title>
+<meta name="robots" content="noindex, nofollow">
 <meta name="description" content="A free, tailored growth assessment from AK Randall Digital.">
 <meta name="theme-color" content="#071526">
 <style>
@@ -713,7 +714,7 @@ function render(){
     const c = answers.contact || {};
     panel.innerHTML = `
       <h2>Last thing, ${escapeHTML(answers.firstName||'there')} — where should I send your next-step context?</h2>
-      <p class="sub">${APPS_SCRIPT_URL ? 'Your recommendation appears immediately, and a copy is saved for Andrew so any follow-up starts with useful context.' : 'Your recommendation appears immediately. You can then choose whether to email the results to Andrew or book a free intro call.'}</p>
+      <p class="sub">${APPS_SCRIPT_URL ? 'Your recommendation appears immediately, and a copy is sent to Andrew so any follow-up can start with useful context.' : 'Your recommendation appears immediately. You can then choose whether to email the results to Andrew or book a free intro call.'}</p>
       <label class="field" for="fName">Full name</label><input type="text" id="fName" value="${escapeHTML(c.name||answers.firstName||'')}" autocomplete="name" maxlength="120">
       <label class="field" for="fCompany">Company</label><input type="text" id="fCompany" value="${escapeHTML(c.company||'')}" autocomplete="organization" maxlength="180">
       <label class="field" for="fEmail">Work email</label><input type="email" id="fEmail" value="${escapeHTML(c.email||'')}" autocomplete="email" maxlength="180">
@@ -907,7 +908,7 @@ function autoSendReport(rec){
     mode:'no-cors',
     body:payload
   }).then(()=>{
-    status.textContent = 'Assessment saved. Andrew can review the context before you speak.';
+    status.textContent = 'Your assessment was sent. Andrew can review the context before you speak.';
   }).catch(()=>{
     status.textContent = 'The assessment could not be saved automatically. Use the email option below or book a free intro call.';
     status.insertAdjacentHTML('afterend', `<div class="summary-actions"><button class="btn btn-outline" onclick="emailResults()">Email results to Andrew</button></div>`);

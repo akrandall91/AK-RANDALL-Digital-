@@ -302,7 +302,7 @@
       if (success) success.hidden = false;
       if (status) {
         status.dataset.state = 'success';
-        status.textContent = 'Thank you. Your message has been received.';
+        status.textContent = 'Your message was sent.';
       }
       trackConversion('form_success', { sourcePage: window.location.pathname, focus: String(focus) });
     } catch (error) {
