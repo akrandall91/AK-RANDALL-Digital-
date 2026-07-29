@@ -7,6 +7,10 @@ const publicPages = [
   'services.html',
   'work.html',
   'resources.html',
+  'tools.html',
+  'government-contracting-readiness.html',
+  'ai-workflow-readiness.html',
+  'website-build-readiness.html',
   'about.html',
   'assessment.html',
   'connect.html',
@@ -16,6 +20,7 @@ const expectedNav = [
   ['services.html', 'Services'],
   ['work.html', 'Proof'],
   ['resources.html', 'Resources'],
+  ['tools.html', 'Tools'],
   ['about.html', 'About'],
   ['assessment.html', 'Free assessment'],
   ['connect.html', 'Connect']
@@ -31,11 +36,11 @@ for (const file of publicPages) {
   const html = fs.readFileSync(fullPath, 'utf8');
 
   const stylesheet = html.match(/<link rel="stylesheet" href="(styles\.min\.css\?v=[^"]+)">/);
-  if (!stylesheet || stylesheet[1] !== 'styles.min.css?v=20260723a') {
-    errors.push(`${file}: expected styles.min.css?v=20260723a`);
+  if (!stylesheet || stylesheet[1] !== 'styles.min.css?v=20260729a') {
+    errors.push(`${file}: expected styles.min.css?v=20260729a`);
   }
 
-  for (const asset of ['lead-config.js?v=20260723a', 'analytics.js?v=20260723a', 'script.js?v=20260723a']) {
+  for (const asset of ['lead-config.js?v=20260729a', 'analytics.js?v=20260729a', 'script.js?v=20260729a']) {
     if (!html.includes(asset)) errors.push(`${file}: missing ${asset}`);
   }
 
