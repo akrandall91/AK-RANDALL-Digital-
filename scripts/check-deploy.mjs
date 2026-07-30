@@ -38,11 +38,11 @@ for (const file of publicPages) {
   const html = fs.readFileSync(fullPath, 'utf8');
 
   const stylesheet = html.match(/<link rel="stylesheet" href="(styles\.min\.css\?v=[^"]+)">/);
-  if (!stylesheet || stylesheet[1] !== 'styles.min.css?v=20260729d') {
-    errors.push(`${file}: expected styles.min.css?v=20260729d`);
+  if (!stylesheet || stylesheet[1] !== 'styles.min.css?v=20260729e') {
+    errors.push(`${file}: expected styles.min.css?v=20260729e`);
   }
 
-  for (const asset of ['lead-config.js?v=20260729d', 'analytics.js?v=20260729d', 'script.js?v=20260729d']) {
+  for (const asset of ['lead-config.js?v=20260729e', 'analytics.js?v=20260729e', 'script.js?v=20260729e']) {
     if (!html.includes(asset)) errors.push(`${file}: missing ${asset}`);
   }
 

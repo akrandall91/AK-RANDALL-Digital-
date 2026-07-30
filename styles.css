@@ -2172,6 +2172,27 @@ p, li, .lead, .page-intro { text-wrap: pretty; }
 .case-proof-rail strong { display: block; color: #fff; font: 700 clamp(1.8rem,2.5vw,2.75rem)/1 var(--display); letter-spacing: -.04em; }
 .case-proof-rail strong span { color: var(--sage); }
 .case-proof-rail p { max-width: 220px; margin: 12px 0 0; color: rgba(255,255,255,.56); font-size: .78rem; line-height: 1.5; }
+.case-reading-guide {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(250px,.72fr) minmax(0,1.28fr);
+  gap: clamp(30px,5vw,72px);
+  margin-top: 28px;
+  padding: clamp(28px,4vw,48px);
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(3,10,18,.56);
+  backdrop-filter: blur(12px);
+}
+.case-reading-guide .eyebrow { color: var(--sage); }
+.case-reading-guide h2 { max-width: 480px; margin: 16px 0; color: #fff; font: 700 clamp(1.8rem,2.7vw,3rem)/.98 var(--display); letter-spacing: -.045em; }
+.case-reading-guide > div > p:last-child { max-width: 520px; margin: 0; color: rgba(255,255,255,.66); line-height: 1.65; }
+.case-reading-guide dl { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border-top: 1px solid rgba(255,255,255,.14); border-left: 1px solid rgba(255,255,255,.14); }
+.case-reading-guide dl > div { padding: 20px; border-right: 1px solid rgba(255,255,255,.14); border-bottom: 1px solid rgba(255,255,255,.14); }
+.case-reading-guide dt { margin-bottom: 8px; color: #fff; font: 700 .7rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.case-reading-guide dd { margin: 0; color: rgba(255,255,255,.64); font-size: .82rem; line-height: 1.55; }
+.command-center-case-page .case-reading-guide .eyebrow { color: var(--command-cyan); }
+.command-center-case-page .case-reading-guide dt { color: var(--command-amber); }
 
 .case-film { padding: clamp(100px,11vw,168px) 0; color: #fff; background: #030914; }
 .case-film-heading,.case-section-heading { display: grid; grid-template-columns: minmax(190px,.42fr) minmax(0,1.58fr); gap: clamp(38px,7vw,112px); align-items: start; margin-bottom: clamp(50px,7vw,88px); }
@@ -2337,6 +2358,8 @@ p, li, .lead, .page-intro { text-wrap: pretty; }
   .case-browser--before,.home-case-visual .case-browser--before { width: 58%; height: 230px; }
   .case-proof-rail { grid-template-columns: 1fr 1fr; margin-top: 48px; }
   .case-proof-rail article { min-height: 138px; padding: 22px; }
+  .case-reading-guide { grid-template-columns: 1fr; gap: 28px; padding: 24px; }
+  .case-reading-guide dl { grid-template-columns: 1fr; }
   .case-film-heading,.case-section-heading { grid-template-columns: 1fr; gap: 22px; }
   .case-film-heading h2,.case-section-heading h2 { font-size: clamp(2.85rem,13vw,4.7rem); }
   .case-film-frame { aspect-ratio: 16/9; }
