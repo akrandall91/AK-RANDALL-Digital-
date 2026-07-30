@@ -261,19 +261,19 @@ function buildRoadmap(ans){
   if(ans.pricing_documented === false) p1.tasks.push({id:'get_pricing', label:'Get pricing/packages documented from client'});
   if(ans.pricing_display !== 'quote_only' && ans.packages_defined === false) p1.tasks.push({id:'define_packages', label:'Define service/product packages or tiers'});
   if(!ans.proof_available || ans.proof_available.length===0 || ans.proof_available.includes('none_proof')) p1.tasks.push({id:'collect_proof', label:'Collect testimonials, case studies, or certifications'});
-  if(ans.owns_domain === false) p1.tasks.push({id:'secure_domain', label:'Help client secure/confirm domain: ' + (ans.domain_choice_needed || 'TBD')});
+  if(ans.owns_domain === false) p1.tasks.push({id:'secure_domain', label:'Secure or confirm the domain: ' + (ans.domain_choice_needed || 'Not yet provided')});
   phases.push(p1);
 
   const p2 = {title:'Copy & Structure', tasks:[]};
   p2.tasks.push({id:'draft_pitch', label:'Draft homepage/about pitch from intake answers'});
-  p2.tasks.push({id:'finalize_sitemap', label:'Finalize sitemap: ' + (labelsFor(findQ('pages_needed'), ans.pages_needed).join(', ') || 'pages TBD')});
+  p2.tasks.push({id:'finalize_sitemap', label:'Finalize the page list: ' + (labelsFor(findQ('pages_needed'), ans.pages_needed).join(', ') || 'Not yet provided')});
   if(['need_copy','need_copy_photos','scratch'].includes(ans.content_ready)) p2.tasks.push({id:'write_copy', label:'Write full site copy with/for client'});
   if(['need_copy_photos','scratch'].includes(ans.content_ready)) p2.tasks.push({id:'source_photos', label:'Source or shoot remaining photography'});
   phases.push(p2);
 
   const p3 = {title:'Design', tasks:[]};
   p3.tasks.push({id:'apply_brand', label:'Apply brand colors & fonts to the design system'});
-  p3.tasks.push({id:'design_pricing_display', label:'Design pricing section as: ' + (labelFor(findQ('pricing_display'), ans.pricing_display) || 'TBD')});
+  p3.tasks.push({id:'design_pricing_display', label:'Show pricing as: ' + (labelFor(findQ('pricing_display'), ans.pricing_display) || 'Not yet provided')});
   if(ans.has_logo_files === false) p3.tasks.push({id:'design_logo', label:'Design the logo'});
   phases.push(p3);
 
@@ -286,8 +286,8 @@ function buildRoadmap(ans){
 
   const p5 = {title:'Leads & Routing', tasks:[]};
   const capLabels = labelsFor(findQ('lead_capture_methods'), ans.lead_capture_methods);
-  p5.tasks.push({id:'build_contact', label:'Build contact methods: ' + (capLabels.join(', ') || 'TBD')});
-  p5.tasks.push({id:'wire_routing', label:'Wire submissions to: ' + (labelFor(findQ('leads_destination'), ans.leads_destination) || 'TBD') + (ans.crm_name ? ' — '+ans.crm_name : '')});
+  p5.tasks.push({id:'build_contact', label:'Set up contact methods: ' + (capLabels.join(', ') || 'Not yet provided')});
+  p5.tasks.push({id:'wire_routing', label:'Send submissions to: ' + (labelFor(findQ('leads_destination'), ans.leads_destination) || 'Not yet provided') + (ans.crm_name ? ' — '+ans.crm_name : '')});
   p5.tasks.push({id:'test_forms', label:'Test every form on desktop and mobile'});
   phases.push(p5);
 
@@ -382,7 +382,7 @@ function renderIntro(){
   wrap.innerHTML = `
     <p class="top-eyebrow">AKRD / Website Build Readiness</p>
     <h1 class="top-title">Tell us about your project</h1>
-    <p class="top-sub">A short intake that turns into a phased roadmap for your site — the starting point for a scoped conversation with AKRD, not a generic diagnostic.</p>
+    <p class="top-sub">A short intake that becomes a step-by-step website plan based on your business, goals, and current materials.</p>
 
     <div class="how-it-works">
       <div class="hiw-title">How this tool works</div>
@@ -396,7 +396,7 @@ function renderIntro(){
         <button class="sample-btn clear" type="button" onclick="clearSample()" ${sampleLoaded?'':'style="display:none;"'}>Clear sample data</button>
         <span class="sample-note">No cost, no account needed.</span>
       </div>
-      <div class="hiw-note">This tool is informational only. The roadmap it produces is a starting point for a scoped conversation with AK Randall Digital LLC — not a binding project plan, quote, or contract.</div>
+      <div class="hiw-note">This tool provides planning guidance. Its roadmap can help you discuss priorities, scope, timing, and next steps with AK Randall Digital LLC, but it is not a binding project plan, quote, or contract.</div>
     </div>
 
     <div class="notice-grid">
@@ -577,7 +577,7 @@ function renderRoadmap(){
       <p>This roadmap is a starting point — not a binding plan or quote. If it looks close, the fastest next step is a short call to scope it for real.</p>
       <a class="talk-cta" href="connect.html#schedule" target="_top">Book a free intro call</a>
     </div>
-    <div class="hiw-note" style="margin-top:14px;">Informational only — this roadmap is a starting point for a scoped conversation with AK Randall Digital LLC, not a binding project plan, quote, or contract. AK Randall Digital LLC &middot; andrew@akrandall.com &middot; 336&ndash;437&ndash;4484</div>
+    <div class="hiw-note" style="margin-top:14px;">Planning guidance only — use this roadmap to discuss priorities, scope, timing, and next steps with AK Randall Digital LLC. It is not a binding project plan, quote, or contract. AK Randall Digital LLC &middot; andrew@akrandall.com &middot; 336&ndash;437&ndash;4484</div>
   `;
   persist();
 }
