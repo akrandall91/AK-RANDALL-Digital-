@@ -17,6 +17,10 @@
     'assessment_complete',
     'assessment_booking_click',
     'guide_download',
+    'case_story_open',
+    'case_story_video_play',
+    'case_story_assessment_click',
+    'case_story_intro_call_click',
     'generate_lead',
     'scroll_depth'
   ]);

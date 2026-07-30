@@ -6,6 +6,8 @@ const publicPages = [
   'index.html',
   'services.html',
   'work.html',
+  'case-story-redeemer.html',
+  'case-story-business-command-center.html',
   'resources.html',
   'tools.html',
   'government-contracting-readiness.html',
@@ -36,11 +38,11 @@ for (const file of publicPages) {
   const html = fs.readFileSync(fullPath, 'utf8');
 
   const stylesheet = html.match(/<link rel="stylesheet" href="(styles\.min\.css\?v=[^"]+)">/);
-  if (!stylesheet || stylesheet[1] !== 'styles.min.css?v=20260729a') {
-    errors.push(`${file}: expected styles.min.css?v=20260729a`);
+  if (!stylesheet || stylesheet[1] !== 'styles.min.css?v=20260729d') {
+    errors.push(`${file}: expected styles.min.css?v=20260729d`);
   }
 
-  for (const asset of ['lead-config.js?v=20260729a', 'analytics.js?v=20260729a', 'script.js?v=20260729a']) {
+  for (const asset of ['lead-config.js?v=20260729d', 'analytics.js?v=20260729d', 'script.js?v=20260729d']) {
     if (!html.includes(asset)) errors.push(`${file}: missing ${asset}`);
   }
 

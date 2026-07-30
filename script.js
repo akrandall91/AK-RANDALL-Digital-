@@ -79,6 +79,12 @@
 
     mobileConversionBar.append(mobileAssessmentLink, mobileBookingLink);
     document.body.append(mobileConversionBar);
+
+    const updateMobileConversionBar = () => {
+      mobileConversionBar.classList.toggle('is-visible', window.scrollY > 560);
+    };
+    updateMobileConversionBar();
+    window.addEventListener('scroll', updateMobileConversionBar, { passive: true });
   }
 
   const bookingFrame = document.querySelector('[data-booking-frame]');
@@ -212,6 +218,43 @@
       });
     }, { threshold: .35 });
     videoObserver.observe(video);
+  });
+
+  if (document.body.classList.contains('case-story-page')) {
+    trackConversion('case_story_open', {
+      sourcePage: window.location.pathname,
+      label: document.body.dataset.caseStory || 'case-story'
+    });
+  }
+
+  document.querySelectorAll('[data-case-event]').forEach(link => {
+    link.addEventListener('click', () => trackConversion(link.dataset.caseEvent, {
+      sourcePage: window.location.pathname,
+      label: link.dataset.caseLabel || document.body.dataset.caseStory || 'case-story'
+    }));
+  });
+
+  document.querySelectorAll('[data-case-video]').forEach(caseFilm => {
+    caseFilm.addEventListener('play', () => {
+      if (caseFilm.dataset.playTracked) return;
+      caseFilm.dataset.playTracked = 'true';
+      trackConversion('case_story_video_play', {
+        sourcePage: window.location.pathname,
+        label: caseFilm.dataset.caseVideo || document.body.dataset.caseStory || 'case-story'
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-case-compare]').forEach(comparison => {
+    const range = comparison.querySelector('[data-case-compare-range]');
+    if (!range) return;
+    const updateComparison = () => {
+      const value = Math.max(0, Math.min(100, Number(range.value) || 0));
+      comparison.style.setProperty('--case-position', `${value}%`);
+      range.setAttribute('aria-valuetext', `${value} percent of redesigned view revealed`);
+    };
+    range.addEventListener('input', updateComparison);
+    updateComparison();
   });
 
   const filterButtons = document.querySelectorAll('[data-filter]');
