@@ -8,6 +8,7 @@ const publicPages = [
   'work.html',
   'case-story-redeemer.html',
   'case-story-business-command-center.html',
+  'case-story-sep-tracker.html',
   'resources.html',
   'tools.html',
   'government-contracting-readiness.html',
