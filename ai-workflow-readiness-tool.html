@@ -173,7 +173,7 @@ function submitLead({name, email, company, focus, message, captureSource}){
   const query = new URLSearchParams(queryString);
   if(!APPS_SCRIPT_URL){
     const lines = [`Name: ${name}`, `Email: ${email}`, company ? `Company: ${company}` : '', '', message].filter(Boolean);
-    window.open('mailto:andrew@akrandall.com?subject=' + encodeURIComponent(focus) + '&body=' + encodeURIComponent(lines.join('\n')), '_top');
+    window.open('mailto:Andrew@AKRandall.com?subject=' + encodeURIComponent(focus) + '&body=' + encodeURIComponent(lines.join('\n')), '_top');
     return Promise.resolve();
   }
   const payload = new URLSearchParams({
@@ -200,7 +200,7 @@ function submitShare(){
     message: pitchText,
     captureSource: 'ai-workflow-tool'
   }).then(()=>{ shareStatus = 'Your brief was sent.'; renderReport(); })
-    .catch(()=>{ shareStatus = 'Could not save automatically — email andrew@akrandall.com directly.'; renderReport(); });
+    .catch(()=>{ shareStatus = 'Could not save automatically — email Andrew@AKRandall.com directly.'; renderReport(); });
 }
 
 const GLOSSARY = [
@@ -756,7 +756,7 @@ function renderRoadmap(){
 
     <div class="privacy-note">
       <strong>Privacy note.</strong> This tool collects what you choose to enter — automation goals, current systems, repetitive tasks, and data-sensitivity answers — so it can build your personalized automation plan. That data is stored <strong>only in this browser’s local storage on this device</strong>. It is not uploaded to a server or database, and AK Randall Digital LLC does not see, receive, or store it unless you explicitly share your brief with us.
-      <div class="contact-line">Questions? <a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a> &middot; 336&ndash;437&ndash;4484 &middot; AK Randall Digital LLC</div>
+      <div class="contact-line">Questions? <a href="mailto:Andrew@AKRandall.com">Andrew@AKRandall.com</a> &middot; 336&ndash;437&ndash;4484 &middot; AK Randall Digital LLC</div>
     </div>
 
     <details class="glossary" id="glossary" ${glossaryOpen?'open':''} ontoggle="glossaryOpen=this.open">
@@ -951,7 +951,7 @@ function renderReport(){
     </div>
 
     ${sampleLoaded ? '<div class="hiw-note" style="background:rgba(224,168,62,0.12);border:1px solid rgba(224,168,62,0.4);border-radius:8px;padding:10px 14px;margin-bottom:16px;">This is a sample brief built from example data, not your real answers.</div>' : ''}
-    <div class="hiw-note" style="margin-bottom:16px;">This brief is informational only and not a substitute for professional IT, security, or legal consultation before implementing AI systems that handle sensitive data. AK Randall Digital LLC &middot; <a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a> &middot; 336&ndash;437&ndash;4484</div>
+    <div class="hiw-note" style="margin-bottom:16px;">This brief is informational only and not a substitute for professional IT, security, or legal consultation before implementing AI systems that handle sensitive data. AK Randall Digital LLC &middot; <a href="mailto:Andrew@AKRandall.com">Andrew@AKRandall.com</a> &middot; 336&ndash;437&ndash;4484</div>
 
     <button class="restart-btn" onclick="showRoadmap()">← Back to roadmap</button>
   `;

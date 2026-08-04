@@ -361,7 +361,7 @@
         submitButton.textContent = originalLabel || 'Send my inquiry ↗';
       }
       trackConversion('form_fallback', { sourcePage: window.location.pathname, focus: String(focus) });
-      window.location.href = `mailto:andrew@akrandall.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:Andrew@AKRandall.com?subject=${subject}&body=${body}`;
     }
   });
 
@@ -426,7 +426,7 @@
     } catch (error) {
       if (status) {
         status.dataset.state = 'fallback';
-        status.textContent = 'The form is temporarily unavailable. Email Andrew directly at andrew@akrandall.com.';
+        status.textContent = 'The form is temporarily unavailable. Email Andrew directly at Andrew@AKRandall.com.';
       }
       if (submitButton) {
         submitButton.disabled = false;

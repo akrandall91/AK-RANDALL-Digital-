@@ -1032,7 +1032,7 @@
           </table>
           <button class="btn primary" id="getFullReportTop" type="button">Get Full Report — <span class="fr-price"></span></button>
           <button class="btn" id="loadSampleTop" type="button">See a sample first</button>
-          <div class="hiw-note">How it works: click "Get Full Report" → pay securely via Square in a new tab → check the email you used at checkout — we’ll send your finished documents within 24 hours. No account or login required. Not satisfied? Email andrew@akrandall.com within 7 days for a refund.</div>
+          <div class="hiw-note">How it works: click "Get Full Report" → pay securely via Square in a new tab → check the email you used at checkout — we’ll send your finished documents within 24 hours. No account or login required. Not satisfied? Email Andrew@AKRandall.com within 7 days for a refund.</div>
           <div class="fullreport-banner" id="fullReportBannerTop"></div>
         </div>
       </div>
@@ -1046,7 +1046,7 @@
       </div>
       <div class="notice-block">
         <h3>Terms</h3>
-        This is a self-assessment and document-drafting tool, not a certification or guarantee. Scores, gates, and generated documents reflect only what you enter — AKRD makes no representation about their accuracy, completeness, or suitability for any specific procurement, and is not liable for business decisions made based on this tool’s output. <strong>Refund policy:</strong> not satisfied with your Full Report? Email <a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a> within 7 days of purchase for a refund.
+        This is a self-assessment and document-drafting tool, not a certification or guarantee. Scores, gates, and generated documents reflect only what you enter — AKRD makes no representation about their accuracy, completeness, or suitability for any specific procurement, and is not liable for business decisions made based on this tool’s output. <strong>Refund policy:</strong> not satisfied with your Full Report? Email <a href="mailto:Andrew@AKRandall.com">Andrew@AKRandall.com</a> within 7 days of purchase for a refund.
       </div>
     </div>
 
@@ -1186,7 +1186,7 @@
           <div class="field-group-title">Generated documents</div>
           <div style="margin-bottom:14px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
             <button class="btn primary" id="getFullReportBtn" type="button">Get Full Report — <span class="fr-price"></span> (unlocks all 3 documents)</button>
-            <span style="font-size:12px; color:#5b6879;">Vendor Portal Tracker export is free — no purchase needed. Not satisfied with your report? Email andrew@akrandall.com within 7 days for a refund.</span>
+            <span style="font-size:12px; color:#5b6879;">Vendor Portal Tracker export is free — no purchase needed. Not satisfied with your report? Email Andrew@AKRandall.com within 7 days for a refund.</span>
           </div>
           <div class="fullreport-banner" id="fullReportBannerProfile"></div>
           <div class="doc-grid" id="docGrid"></div>
@@ -1247,7 +1247,7 @@ function submitLead({name, email, company, focus, message, captureSource}){
   const query = new URLSearchParams(queryString);
   if(!APPS_SCRIPT_URL){
     const lines = [`Name: ${name}`, `Email: ${email}`, company ? `Company: ${company}` : "", "", message].filter(Boolean);
-    window.open("mailto:andrew@akrandall.com?subject=" + encodeURIComponent(focus) + "&body=" + encodeURIComponent(lines.join("\n")), "_top");
+    window.open("mailto:Andrew@AKRandall.com?subject=" + encodeURIComponent(focus) + "&body=" + encodeURIComponent(lines.join("\n")), "_top");
     return Promise.resolve();
   }
   const payload = new URLSearchParams({
@@ -2104,7 +2104,7 @@ document.addEventListener("keydown", (e) => {
 function openPaymentFlow(){
   window.open(SQUARE_PAYMENT_LINK, "_blank", "noopener");
   document.querySelectorAll(".fullreport-banner").forEach(b => {
-    b.textContent = "You’re about to check out with Square in a new tab. Once your payment goes through, check the email you used at checkout — we’ll send your full Capability Statement, Certification Control Sheet, and Compliance Matrix within 24 hours. Not satisfied with your report? Email andrew@akrandall.com within 7 days of purchase for a refund.";
+    b.textContent = "You’re about to check out with Square in a new tab. Once your payment goes through, check the email you used at checkout — we’ll send your full Capability Statement, Certification Control Sheet, and Compliance Matrix within 24 hours. Not satisfied with your report? Email Andrew@AKRandall.com within 7 days of purchase for a refund.";
     b.classList.add("show");
   });
   const nearest = document.getElementById("fullReportBannerProfile") || document.getElementById("fullReportBannerTop");
@@ -2392,7 +2392,7 @@ document.getElementById("assessShareSubmit").addEventListener("click", () => {
     message: `Readiness score: ${score}\nRecommended starting point: ${target}`,
     captureSource: "govcon-tool-assessment"
   }).then(()=>{ statusEl.textContent = "Your results were sent."; })
-    .catch(()=>{ statusEl.textContent = "Could not save automatically — email andrew@akrandall.com directly."; });
+    .catch(()=>{ statusEl.textContent = "Could not save automatically — email Andrew@AKRandall.com directly."; });
 });
 document.getElementById("runAssessBtn").addEventListener("click", runAssessment);
 document.getElementById("skipAssessBtn").addEventListener("click", () => {

@@ -160,7 +160,7 @@ function submitLead({name, email, company, focus, message, captureSource}){
   const query = new URLSearchParams(queryString);
   if(!APPS_SCRIPT_URL){
     const lines = [`Name: ${name}`, `Email: ${email}`, company ? `Company: ${company}` : '', '', message].filter(Boolean);
-    window.open('mailto:andrew@akrandall.com?subject=' + encodeURIComponent(focus) + '&body=' + encodeURIComponent(lines.join('\n')), '_top');
+    window.open('mailto:Andrew@AKRandall.com?subject=' + encodeURIComponent(focus) + '&body=' + encodeURIComponent(lines.join('\n')), '_top');
     return Promise.resolve();
   }
   const payload = new URLSearchParams({
@@ -187,7 +187,7 @@ function submitShare(){
     message: pitchText,
     captureSource: 'site-build-tool'
   }).then(()=>{ shareStatus = 'Your roadmap was sent.'; renderRoadmap(); })
-    .catch(()=>{ shareStatus = 'Could not save automatically — email andrew@akrandall.com directly.'; renderRoadmap(); });
+    .catch(()=>{ shareStatus = 'Could not save automatically — email Andrew@AKRandall.com directly.'; renderRoadmap(); });
 }
 
 const GLOSSARY = [
@@ -412,7 +412,7 @@ function renderIntro(){
 
     <div class="privacy-note">
       <strong>Privacy note.</strong> This tool collects what you choose to enter — business and brand details, target customer info, pricing notes, and similar project details — so it can build your roadmap. That data is stored <strong>only in this browser’s local storage on this device</strong>. It is not uploaded to a server or database, and AK Randall Digital LLC does not see, receive, or store it unless you explicitly share it with us.
-      <div class="contact-line">Questions? <a href="mailto:andrew@akrandall.com">andrew@akrandall.com</a> &middot; 336&ndash;437&ndash;4484 &middot; AK Randall Digital LLC</div>
+      <div class="contact-line">Questions? <a href="mailto:Andrew@AKRandall.com">Andrew@AKRandall.com</a> &middot; 336&ndash;437&ndash;4484 &middot; AK Randall Digital LLC</div>
     </div>
 
     <details class="glossary" ${glossaryOpen?'open':''} ontoggle="glossaryOpen=this.open">
@@ -577,7 +577,7 @@ function renderRoadmap(){
       <p>This roadmap is a starting point — not a binding plan or quote. If it looks close, the fastest next step is a short call to scope it for real.</p>
       <a class="talk-cta" href="connect.html#schedule" target="_top">Book a free intro call</a>
     </div>
-    <div class="hiw-note" style="margin-top:14px;">Planning guidance only — use this roadmap to discuss priorities, scope, timing, and next steps with AK Randall Digital LLC. It is not a binding project plan, quote, or contract. AK Randall Digital LLC &middot; andrew@akrandall.com &middot; 336&ndash;437&ndash;4484</div>
+    <div class="hiw-note" style="margin-top:14px;">Planning guidance only — use this roadmap to discuss priorities, scope, timing, and next steps with AK Randall Digital LLC. It is not a binding project plan, quote, or contract. AK Randall Digital LLC &middot; Andrew@AKRandall.com &middot; 336&ndash;437&ndash;4484</div>
   `;
   persist();
 }
