@@ -89,7 +89,7 @@ const DEEP_DIVE_TOOL_PAGES = {
 
 /* ======= Paste the Web app URL from your deployed Apps Script here.
    Leave blank and the tool falls back to the manual "Send this to Andrew"
-   Gmail button — nothing breaks, it just won't auto-email the customer. ======= */
+   Gmail button — nothing breaks, it just won’t auto-email the customer. ======= */
 const APPS_SCRIPT_URL = String((window.AKRD_LEAD_CONFIG || window.parent?.AKRD_LEAD_CONFIG || {}).appsScriptUrl || '').trim();
 
 function escapeHTML(value){
@@ -139,27 +139,27 @@ const INDUSTRIES = [
 ];
 
 const PATH_COPY = {
-  home_services: { sub:"We'll ask about how home-service businesses actually get hired.",
+  home_services: { sub:"We’ll ask about how home-service businesses actually get hired.",
     descs:{ brand:'Get a site that turns lookers into booked jobs.', system:'Stop losing leads between the phone, texts, and a notebook.', work:'Pursue commercial or government facility contracts.' } },
-  solar: { sub:"We'll ask how you're actually selling — residential, commercial, or government.",
+  solar: { sub:"We’ll ask how you’re actually selling — residential, commercial, or government.",
     descs:{ brand:'A site built to convert homeowner or commercial leads.', system:'Connect leads, installs, and follow-up into one pipeline.', work:'Break into government, utility, or cooperative-vehicle sales.' } },
-  govvendor: { sub:"We'll ask where you are between registration, market entry, and active pursuit.",
+  govvendor: { sub:"We’ll ask where you are between registration, market entry, and active pursuit.",
     descs:{ brand:'Build buyer-ready positioning, capability material, and proof.', system:'Organize vendor profiles, capture, proposals, and follow-through.', work:'Build the market-entry and pursuit infrastructure to compete.' } },
-  infra: { sub:"We'll ask whether this is one relationship or a broader market push.",
+  infra: { sub:"We’ll ask whether this is one relationship or a broader market push.",
     descs:{ brand:'A site that positions you for agency and operator buyers.', system:'Connect field data, ops, and reporting into one system.', work:'Build capture infrastructure for transit, EV, or smart-city pursuits.' } },
-  professional: { sub:"We'll ask whether this is about new clients or serving current ones better.",
+  professional: { sub:"We’ll ask whether this is about new clients or serving current ones better.",
     descs:{ brand:'A site that signals credibility to the clients you want.', system:'Connect intake, scheduling, and client communication.', work:'Pursue government or institutional contracts.' } },
-  nonprofit: { sub:"We'll ask whether this is donor-facing or program-facing.",
+  nonprofit: { sub:"We’ll ask whether this is donor-facing or program-facing.",
     descs:{ brand:'A site that builds donor and community trust.', system:'Connect donor, volunteer, and program data.', work:'Pursue government or foundation funding relationships.' } },
-  retail: { sub:"We'll ask how your customers actually buy from you today.",
+  retail: { sub:"We’ll ask how your customers actually buy from you today.",
     descs:{ brand:'A site built to convert browsers into buyers.', system:'Connect inventory, orders, and customer data.', work:'Pursue institutional or bulk/government purchasing.' } },
-  other: { sub:"Pick whichever one is closest — we'll dig into specifics next.",
+  other: { sub:"Pick whichever one is closest — we’ll dig into specifics next.",
     descs:{ brand:'Make the capability legible — site, positioning, first impression.', system:'Organize the messy middle — tools, workflows, automation.', work:'Build pursuit infrastructure for public-sector or infrastructure sales.' } },
 };
 
 const INDUSTRY_SIGNAL = {
   home_services: { question:'How do most of your jobs come in today?',
-    options:[{value:'referral',label:'Word of mouth / referrals'},{value:'ads',label:'Paid ads or online search'},{value:'repeat',label:'Repeat customers'},{value:'mixed',label:"It's a mix, nothing dominant"}] },
+    options:[{value:'referral',label:'Word of mouth / referrals'},{value:'ads',label:'Paid ads or online search'},{value:'repeat',label:'Repeat customers'},{value:'mixed',label:"It’s a mix, nothing dominant"}] },
   solar: { question:'Who are you actually selling to?',
     options:[{value:'residential',label:'Homeowners (residential)'},{value:'commercial',label:'Businesses (commercial)'},{value:'government',label:'Government / utility / institutional'},{value:'mixed',label:'A mix of these'}] },
   govvendor: { question:'How established is your public-sector market position today?',
@@ -172,8 +172,8 @@ const INDUSTRY_SIGNAL = {
     options:[{value:'donor',label:'Donor-facing (fundraising, awareness)'},{value:'program',label:'Program / service delivery'},{value:'both',label:'Both'}] },
   retail: { question:'Do you sell primarily online, in-person, or both?',
     options:[{value:'online',label:'Online'},{value:'inperson',label:'In-person'},{value:'both',label:'Both'}] },
-  other: { question:"What's the main way people currently find and choose you?",
-    options:[{value:'referral',label:'Referrals / word of mouth'},{value:'search',label:'Online search or ads'},{value:'network',label:'Professional network / outreach'},{value:'unsure',label:"Honestly, it's inconsistent"}] },
+  other: { question:"What’s the main way people currently find and choose you?",
+    options:[{value:'referral',label:'Referrals / word of mouth'},{value:'search',label:'Online search or ads'},{value:'network',label:'Professional network / outreach'},{value:'unsure',label:"Honestly, it’s inconsistent"}] },
 };
 
 const INDUSTRY_SIGNAL_B = {
@@ -198,7 +198,7 @@ const INDUSTRY_SIGNAL_B = {
 function industryLabel(val){ return (INDUSTRIES.find(i=>i.value===val)||{}).label || 'your industry'; }
 
 /* ============ SUB-INDUSTRY GRANULARITY ============
-   A landscaper isn't a general contractor isn't an HVAC company — even though
+   A landscaper isn’t a general contractor isn’t an HVAC company — even though
    the site nav groups them. This layer keeps the broad question menu
    maintainable while every generated sentence still names the real business. */
 const SUBINDUSTRY = {
@@ -280,8 +280,8 @@ const STAKES_HOOK = {
   other: "For any capable organization, the value becomes easier to buy when the problem, evidence, and next step are clear.",
 };
 const PATH_SELL = {
-  brand: (ind,hook)=> `${hook} In LinkedIn and Edelman's 2024 research, 75% of surveyed decision-makers said thought leadership led them to research an offering they had not previously considered. That does not guarantee conversion; it explains why clear buyer education, usable proof, and a specific next step should be treated as business infrastructure, not decoration. <a href="https://www.linkedin.com/business/marketing/blog/research-and-insights/b2b-thought-leadership-research-impact-linkedin-edelman" target="_blank" rel="noopener">View the research</a>.`,
-  system: (ind,hook)=> `${hook} In the U.S. Chamber's 2025 survey, 83% of small businesses said technology platforms helped them compete with larger companies. The useful goal is not more software. It is a connected way for ownership, information, and repeatable steps to move with the work. <a href="https://www.uschamber.com/assets/documents/20251621-CTEC-Empowering-Small-Business-Report-2025-v1-r10-Digital-FINAL.pdf" target="_blank" rel="noopener">View the research</a>.`,
+  brand: (ind,hook)=> `${hook} In LinkedIn and Edelman’s 2024 research, 75% of surveyed decision-makers said thought leadership led them to research an offering they had not previously considered. That does not guarantee conversion; it explains why clear buyer education, usable proof, and a specific next step should be treated as business infrastructure, not decoration. <a href="https://www.linkedin.com/business/marketing/blog/research-and-insights/b2b-thought-leadership-research-impact-linkedin-edelman" target="_blank" rel="noopener">View the research</a>.`,
+  system: (ind,hook)=> `${hook} In the U.S. Chamber’s 2025 survey, 83% of small businesses said technology platforms helped them compete with larger companies. The useful goal is not more software. It is a connected way for ownership, information, and repeatable steps to move with the work. <a href="https://www.uschamber.com/assets/documents/20251621-CTEC-Empowering-Small-Business-Report-2025-v1-r10-Digital-FINAL.pdf" target="_blank" rel="noopener">View the research</a>.`,
   work: (ind,hook)=> `${hook} The U.S. Small Business Administration reports that small businesses received nearly 28% of federal prime contracting dollars in FY2025—approximately $179 billion. That is market context, not a promised award. The practical improvement is a disciplined way to qualify opportunities, prepare proof and compliance, and decide where pursuit effort is justified. <a href="https://www.sba.gov/article/2026/06/25/sba-releases-fy25-scorecard-small-business-contracting" target="_blank" rel="noopener">View the scorecard</a>.`,
 };
 
@@ -303,34 +303,34 @@ function buildDeepInsight(a){
   let body;
   if(a.path==='brand'){
     const issuePhrase = (a.brand_whatswrong && a.brand_whatswrong.length)
-      ? `what's not working today — ${answerLabel('brand_whatswrong', a)}`
-      : `the timeline you're on — ${answerLabel('brand_urgency', a)} to launch`;
+      ? `what’s not working today — ${answerLabel('brand_whatswrong', a)}`
+      : `the timeline you’re on — ${answerLabel('brand_urgency', a)} to launch`;
     const assets = a.current_assets_brand || [];
     const hasLeverage = assets.length && !(assets.length===1 && assets[0]==='none');
     const assetPhrase = hasLeverage
-      ? ` You've already got ${answerLabel('current_assets_brand', a).toLowerCase()} working — that's real leverage most ${ind}s starting from zero don't have, and it's exactly what shouldn't get wasted by a disconnected new site.`
-      : ` Starting without any of that in place isn't a disadvantage, though — it means there's no inconsistent old branding to untangle first.`;
-    body = `Here's what's forming: ${issuePhrase}, combined with ${sigLabel} as how people actually find you — that combination means the fix isn't cosmetic. A site that doesn't account for how a ${ind}'s clients actually arrive and decide will keep losing the same deals a redesign alone won't catch.${assetPhrase}`;
+      ? ` You’ve already got ${answerLabel('current_assets_brand', a).toLowerCase()} working — that’s real leverage most ${ind}s starting from zero don’t have, and it’s exactly what shouldn’t get wasted by a disconnected new site.`
+      : ` Starting without any of that in place isn’t a disadvantage, though — it means there’s no inconsistent old branding to untangle first.`;
+    body = `Here’s what’s forming: ${issuePhrase}, combined with ${sigLabel} as how people actually find you — that combination means the fix isn’t cosmetic. A site that doesn’t account for how a ${ind}'s clients actually arrive and decide will keep losing the same deals a redesign alone won’t catch.${assetPhrase}`;
   } else if(a.path==='system'){
     const focus = answerLabel('system_focus', a);
     const docState = a.current_assets_system;
     const docPhrase = docState==='none'
-      ? " And since none of it is written down anywhere, the real risk isn't the tooling — it's that the process only exists in your head right now."
+      ? " And since none of it is written down anywhere, the real risk isn’t the tooling — it’s that the process only exists in your head right now."
       : docState==='documented'
-      ? " The good news: it's already documented, just disconnected from the tools — that's a much faster fix than building the process from scratch."
+      ? " The good news: it’s already documented, just disconnected from the tools — that’s a much faster fix than building the process from scratch."
       : " With some of it already in notes, this is more about organizing what exists than inventing a process from nothing.";
-    body = `Here's what's forming: ${focus} is the real bottleneck for a ${ind} like yours, and "${sigLabel}" is exactly the kind of detail that decides whether this needs a lightweight fix or a real rebuild.${docPhrase} The businesses that guess wrong here end up paying for the fix twice.`;
+    body = `Here’s what’s forming: ${focus} is the real bottleneck for a ${ind} like yours, and "${sigLabel}" is exactly the kind of detail that decides whether this needs a lightweight fix or a real rebuild.${docPhrase} The businesses that guess wrong here end up paying for the fix twice.`;
   } else {
     const pipeline = answerLabel('work_pipeline', a);
     const capAssets = a.current_assets_work || [];
     const hasCapture = capAssets.length && !(capAssets.length===1 && capAssets[0]==='none');
     const capPhrase = hasCapture
-      ? ` Having ${answerLabel('current_assets_work', a).toLowerCase()} already in place means you're not starting cold on compliance — the gap is turning that groundwork into active pursuits.`
-      : ` None of the compliance groundwork being in place yet just means that's where this actually needs to start — chasing pursuits before that's ready usually means losing winnable ones on paperwork, not price.`;
-    body = `Here's what's forming: ${pipeline}, and your position on cooperative vehicles — "${sigLabel}" — tells us exactly how much foundation-building versus capture support a ${ind} like yours actually needs right now.${capPhrase}`;
+      ? ` Having ${answerLabel('current_assets_work', a).toLowerCase()} already in place means you’re not starting cold on compliance — the gap is turning that groundwork into active pursuits.`
+      : ` None of the compliance groundwork being in place yet just means that’s where this actually needs to start — chasing pursuits before that’s ready usually means losing winnable ones on paperwork, not price.`;
+    body = `Here’s what’s forming: ${pipeline}, and your position on cooperative vehicles — "${sigLabel}" — tells us exactly how much foundation-building versus capture support a ${ind} like yours actually needs right now.${capPhrase}`;
   }
   const name = a.firstName ? `, ${a.firstName}` : '';
-  return { headline:`What I'm seeing${name}`, body };
+  return { headline:`What I’m seeing${name}`, body };
 }
 
 const STEPS = {
@@ -363,7 +363,7 @@ const STEPS = {
     build:(a)=>{
       const copy = PATH_COPY[a.industry] || PATH_COPY.other;
       return {
-        question:"What's the most immediate problem you're trying to solve?",
+        question:"What’s the most immediate problem you’re trying to solve?",
         sub: copy.sub,
         options:[
           {value:'brand', label:'Launch the brand', desc: copy.descs.brand, emoji:'🎯'},
@@ -407,11 +407,11 @@ const STEPS = {
     next: a=> a.brand_live==='yes' ? 'brand_whatswrong' : 'brand_urgency'
   },
   brand_whatswrong: {
-    type:'multi', key:'brand_whatswrong', question:"What's not working about it?",
+    type:'multi', key:'brand_whatswrong', question:"What’s not working about it?",
     sub:'Select all that apply.',
     options:[
       {value:'outdated',label:'Looks outdated'},
-      {value:'noleads',label:"Doesn't generate leads"},
+      {value:'noleads',label:"Doesn’t generate leads"},
       {value:'hardupdate',label:'Hard to update myself'},
       {value:'missing',label:'Missing key information'},
       {value:'mobile',label:'Not mobile-friendly'},
@@ -449,7 +449,7 @@ const STEPS = {
   },
 
   system_focus: {
-    type:'single', key:'system_focus', question:"What's more broken right now?",
+    type:'single', key:'system_focus', question:"What’s more broken right now?",
     options:[
       {value:'tools',label:'The tools & organization',desc:'CRM, docs, dashboards — the structure itself'},
       {value:'automation',label:'The automation & workflows',desc:'Manual steps that should connect automatically'},
@@ -488,11 +488,11 @@ const STEPS = {
   },
   current_assets_system: {
     type:'single', key:'current_assets_system', question:'How much of your current process is actually written down anywhere?',
-    sub:"Not judging — just need to know if I'm documenting from scratch or organizing what's already there.",
+    sub:"Not judging — just need to know if I’m documenting from scratch or organizing what’s already there.",
     options:[
-      {value:'documented', label:'Fully documented', desc:"It's written down, just disconnected from the tools", emoji:'📘'},
+      {value:'documented', label:'Fully documented', desc:"It’s written down, just disconnected from the tools", emoji:'📘'},
       {value:'some', label:'Some notes', desc:'Mostly lives in memory or old emails', emoji:'📝'},
-      {value:'none', label:'Nothing written', desc:"It's all in someone's head — probably mine", emoji:'🧠'},
+      {value:'none', label:'Nothing written', desc:"It’s all in someone’s head — probably mine", emoji:'🧠'},
     ],
     next:()=>'industry_signal'
   },
@@ -557,7 +557,7 @@ const STEPS = {
   },
 
   budget: {
-    type:'single', key:'budget', question:"What's your comfort range for this investment?",
+    type:'single', key:'budget', question:"What’s your comfort range for this investment?",
     options:[
       {value:'low',label:'Under $2,500'},
       {value:'mid',label:'$2,500 – $6,000'},
@@ -738,7 +738,7 @@ function render(){
         <h2>${rec.capability} — ${rec.tier}</h2>
         <p>${rec.explanation}</p>
         <p style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);">${rec.closing}</p>
-        <p style="margin-top:10px;font-size:12px;opacity:.75;">${rec.tier} is one of AKRD's three engagement tiers — <a href="services.html#tier-grid" target="_top" style="color:inherit;text-decoration:underline;">see how they compare</a>.</p>
+        <p style="margin-top:10px;font-size:12px;opacity:.75;">${rec.tier} is one of AKRD’s three engagement tiers — <a href="services.html#tier-grid" target="_top" style="color:inherit;text-decoration:underline;">see how they compare</a>.</p>
       </div>
       <div id="sendStatus" class="reassure" style="text-align:left;">${APPS_SCRIPT_URL ? 'Saving your assessment for Andrew to review…' : 'Your recommendation is ready. If you want Andrew to review the context, email the results or book a free intro call.'}</div>
       <div class="summary-actions">
@@ -801,10 +801,10 @@ function submitForm(){
 }
 
 function closingLine(a){
-  if(a.timeline==='now') return "You said you want to move this month — that's a realistic timeline for this scope, and the sooner it starts, the sooner it's not costing you deals anymore.";
-  if(a.timeline==='quarter') return "Next quarter gives room to do this right instead of rushed — worth locking in a start date now so it doesn't slip to 'someday.'";
+  if(a.timeline==='now') return "You said you want to move this month — that’s a realistic timeline for this scope, and the sooner it starts, the sooner it’s not costing you deals anymore.";
+  if(a.timeline==='quarter') return "Next quarter gives room to do this right instead of rushed — worth locking in a start date now so it doesn’t slip to 'someday.'";
   if(a.timeline==='researching') return "No pressure to move today — but this is exactly the kind of gap that gets more expensive to fix the longer it sits, since every week is a week of the current version still costing you something.";
-  return "Whenever you're ready to move, the next step is a short call to confirm scope and get a real number.";
+  return "Whenever you’re ready to move, the next step is a short call to confirm scope and get a real number.";
 }
 
 function computeRecommendation(){
