@@ -442,7 +442,7 @@
   progressBar.setAttribute('aria-hidden', 'true');
   document.body.append(progressBar);
 
-  const chapters = [...document.querySelectorAll('main > section')].filter(section => !section.classList.contains('proof-strip'));
+  const chapters = [...document.querySelectorAll('main > section')].filter(section => !section.hidden && !section.classList.contains('proof-strip'));
   let chapterButtons = [];
   if (chapters.length > 2) {
     const chapterRail = document.createElement('nav');
