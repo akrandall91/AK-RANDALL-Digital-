@@ -472,7 +472,7 @@
   const homeScrollVideo = homeScrollSection?.querySelector('[data-scroll-video]');
   const homeScrollChapters = homeScrollSection ? [...homeScrollSection.querySelectorAll('[data-scroll-chapter]')] : [];
   const homeScrollLabel = homeScrollSection?.querySelector('[data-scroll-progress-label]');
-  const homeScrollLabels = ['See the market', 'Build the system', 'Win with proof'];
+  const homeScrollLabels = ['Find the real problem', 'Connect the information', 'Build the experience', 'Make proof understandable', 'Move toward action'];
   const saveData = Boolean(navigator.connection?.saveData);
   let homeVideoDuration = homeScrollVideo?.readyState >= 1 ? homeScrollVideo.duration : 0;
   let motionFrame = 0;

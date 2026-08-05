@@ -319,6 +319,10 @@ main { overflow-x: clip; overflow-y: visible; }
 .chain-step p { color: rgba(255,255,255,.62); font-size: .94rem; }
 .chain-step .micro { color: var(--sage); }
 
+.chain-five { grid-template-columns: repeat(5, 1fr); }
+.chain-five .chain-step { min-width: 0; }
+.chain-five .chain-step h3 { margin-top: 96px; font-size: 1.2rem; }
+
 .media-feature { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, .6fr); min-height: 650px; background: var(--ink); }
 .media-feature-visual { position: relative; min-height: 580px; overflow: hidden; }
 .media-feature-visual video, .media-feature-visual img { width: 100%; height: 100%; object-fit: cover; }
@@ -775,6 +779,7 @@ main { overflow-x: clip; overflow-y: visible; }
   .chain { grid-template-columns: 1fr 1fr; }
   .chain-step:nth-child(2) { border-right: 1px solid var(--line-light); }
   .chain-step::after { display: none; }
+  .chain-five .chain-step:nth-child(4) { border-right: 1px solid var(--line-light); }
   .media-feature { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 100px 1fr; }
   .service-row > p { grid-column: 2; }
@@ -1216,7 +1221,7 @@ main { overflow-x: clip; overflow-y: visible; }
 .home-hero-trust { margin: 17px 0 0; color: rgba(255,255,255,.5); font: 600 .61rem/1.5 var(--mono); letter-spacing: .075em; text-transform: uppercase; }
 
 .home-scroll-sequence { align-self: center; border-top: 1px solid rgba(255,255,255,.2); }
-.home-scroll-sequence article { display: grid; grid-template-columns: 42px 1fr; gap: 16px; min-height: 124px; align-items: center; border-bottom: 1px solid rgba(255,255,255,.17); color: rgba(255,255,255,.34); transition: color .3s ease, background .3s ease, transform .3s ease; }
+.home-scroll-sequence article { display: grid; grid-template-columns: 42px 1fr; gap: 16px; min-height: 100px; align-items: center; border-bottom: 1px solid rgba(255,255,255,.17); color: rgba(255,255,255,.34); transition: color .3s ease, background .3s ease, transform .3s ease; }
 .home-scroll-sequence article > span { font: 600 .65rem/1 var(--mono); }
 .home-scroll-sequence strong { display: block; font: 700 clamp(1.15rem,1.8vw,1.55rem)/1 var(--display); letter-spacing: -.035em; }
 .home-scroll-sequence p { max-width: 340px; margin: 8px 0 0; font-size: .86rem; line-height: 1.45; }
@@ -1327,8 +1332,8 @@ main { overflow-x: clip; overflow-y: visible; }
 .home-proof-story-metrics span { color: rgba(255,255,255,.74); font-size: .9rem; }
 
 .home-method { padding: clamp(105px,12vw,184px) 0; background: #f8fafc; }
-.home-method-grid { display: grid; grid-template-columns: repeat(4,1fr); margin: 0; padding: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; }
-.home-method-grid li { min-height: 350px; padding: clamp(28px,3vw,42px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.home-method-grid { display: grid; grid-template-columns: repeat(5,1fr); margin: 0; padding: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; }
+.home-method-grid li { min-width: 0; min-height: 350px; padding: clamp(28px,3vw,42px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .home-method-grid li > span { color: var(--blue); font: 600 .68rem/1 var(--mono); }
 .home-method-grid h3 { margin: 116px 0 18px; font: 700 clamp(1.7rem,2.4vw,2.6rem)/1 var(--display); letter-spacing: -.045em; }
 .home-method-grid p { margin: 0; color: #586677; }
@@ -1399,7 +1404,7 @@ main { overflow-x: clip; overflow-y: visible; }
   .home-scroll-copy { max-width: 680px; }
   .home-scroll-copy h1 { font-size: clamp(3.55rem,12vw,6.2rem); }
   .home-hero-proof { max-width: none; }
-  .home-scroll-sequence { display: grid; grid-template-columns: repeat(3,1fr); align-self: stretch; }
+  .home-scroll-sequence { display: grid; grid-template-columns: repeat(5,1fr); align-self: stretch; }
   .home-scroll-sequence article { grid-template-columns: 1fr; gap: 10px; min-height: 130px; align-content: center; padding: 14px; border-right: 1px solid rgba(255,255,255,.17); }
   .home-scroll-sequence article.is-active { padding-left: 14px; transform: none; }
   .home-scroll-sequence article p { display: none; }
@@ -2133,7 +2138,7 @@ p, li, .lead, .page-intro { text-wrap: pretty; }
   .home-scroll-copy .hero-actions { margin-top: 18px; }
   .home-scroll-copy .button { min-height: 42px; padding: 12px 17px; font-size: .61rem; }
   .home-hero-trust { margin-top: 9px; font-size: .51rem; }
-  .home-scroll-sequence article { min-height: 100px; padding: 13px 0; }
+  .home-scroll-sequence article { min-height: 80px; padding: 10px 0; }
   .home-scroll-sequence strong { font-size: 1rem; }
   .home-scroll-sequence p { font-size: .78rem; line-height: 1.45; }
   .home-scroll-footer { bottom: 16px; }
