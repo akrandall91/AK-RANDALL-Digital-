@@ -3025,6 +3025,85 @@ p, li, .lead, .page-intro { text-wrap: pretty; }
 }
 
 /* AKRD Print Lab — Memory Light & Mini Tap */
+
+.product-gallery {
+  padding: clamp(64px, 8vw, 112px) 0;
+}
+
+.product-gallery-heading {
+  max-width: 760px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.product-gallery-heading .headline {
+  margin: 10px 0 14px;
+}
+
+.product-gallery-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(18px, 2vw, 28px);
+}
+
+.product-gallery-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.product-photo {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(20, 30, 50, .14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(14, 22, 40, .12);
+}
+
+.product-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.product-photo--wide img {
+  aspect-ratio: 16 / 9;
+  object-position: center 47%;
+}
+
+.product-photo figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px 20px;
+  color: var(--ink, #111827);
+}
+
+.product-photo figcaption strong {
+  font-size: .96rem;
+}
+
+.product-photo figcaption span {
+  color: var(--muted, #657086);
+  font-size: .84rem;
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .product-gallery-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .product-photo figcaption {
+    display: block;
+  }
+
+  .product-photo figcaption span {
+    display: block;
+    margin-top: 5px;
+    text-align: left;
+  }
+}
 .chain-three { grid-template-columns: repeat(3, 1fr); }
 .spec-list { display: grid; gap: 0; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .spec-list div { display: flex; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--line); }
