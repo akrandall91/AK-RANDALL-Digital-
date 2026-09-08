@@ -18,7 +18,8 @@ const publicPages = [
   'about.html',
   'assessment.html',
   'connect.html',
-  'privacy.html'
+  'privacy.html',
+  'print-lab.html'
 ];
 const expectedNav = [
   ['services.html', 'Services'],

@@ -21,7 +21,8 @@ const publicPages = [
   'assessment-tool.html',
   'government-contracting-readiness-tool.html',
   'ai-workflow-readiness-tool.html',
-  'website-build-readiness-tool.html'
+  'website-build-readiness-tool.html',
+  'print-lab.html'
 ];
 
 const forbidden = [
