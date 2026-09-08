@@ -3026,6 +3026,39 @@ p, li, .lead, .page-intro { text-wrap: pretty; }
 
 /* AKRD Print Lab — Memory Light & Mini Tap */
 
+.product-page { --product-accent: #3d5afe; --product-glow: rgba(61,90,254,.32); }
+.product-page--light { --product-accent: #ff8a3d; --product-glow: rgba(255,138,61,.38); }
+.product-page--tap { --product-accent: #c9ff4f; --product-glow: rgba(201,255,79,.3); }
+.product-hero { position: relative; padding: 150px 0 0; overflow: hidden; color: white; background: #07101e; }
+.product-hero::before { content: ''; position: absolute; inset: -30% -10% auto 38%; height: 760px; background: radial-gradient(circle,var(--product-glow),transparent 65%); pointer-events: none; }
+.product-hero::after { content: ''; position: absolute; inset: 0; opacity: .16; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom,black,transparent 80%); }
+.product-hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,.88fr) minmax(420px,1.12fr); gap: clamp(42px,6vw,92px); align-items: center; min-height: 650px; padding-bottom: 72px; }
+.product-hero-copy { padding: 30px 0; }
+.product-kicker { display: inline-block; margin-bottom: 28px; color: rgba(255,255,255,.54); font: 600 .64rem/1.4 var(--mono); letter-spacing: .15em; }
+.product-hero .eyebrow { color: var(--product-accent); }
+.product-hero .display { margin-top: 20px; font-size: clamp(3.4rem,6vw,6.7rem); line-height: .86; color: white; }
+.product-hero .display span { color: var(--product-accent); text-shadow: 0 0 42px var(--product-glow); }
+.product-hero .page-intro { max-width: 630px; color: rgba(255,255,255,.76); font-size: clamp(1.08rem,1.5vw,1.3rem); line-height: 1.55; }
+.product-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.product-pills span { padding: 8px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: rgba(255,255,255,.86); background: rgba(255,255,255,.06); backdrop-filter: blur(8px); font: 600 .62rem/1 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+.product-hero .button--blue { border-color: var(--product-accent); color: #07101e; background: var(--product-accent); box-shadow: 0 12px 40px var(--product-glow); }
+.product-hero .button--ghost { color: white; border-color: rgba(255,255,255,.3); }
+.product-hero-media { position: relative; margin: 0; isolation: isolate; transform: rotate(1.5deg); }
+.product-hero-media::before { content: ''; position: absolute; z-index: -1; inset: 18px -18px -18px 18px; border: 1px solid var(--product-accent); opacity: .52; }
+.product-hero-media img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; box-shadow: 0 34px 100px rgba(0,0,0,.48); }
+.product-hero-media figcaption { position: absolute; right: 18px; bottom: 18px; left: 18px; display: flex; justify-content: space-between; gap: 20px; padding: 15px 17px; color: white; background: rgba(6,13,25,.78); backdrop-filter: blur(14px); }
+.product-hero-media figcaption span { color: var(--product-accent); font: 600 .59rem/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.product-hero-media figcaption strong { font-size: .8rem; }
+.tap-wave { position: absolute; top: 22px; right: 24px; display: flex; align-items: center; gap: 5px; width: 70px; height: 70px; border-radius: 50%; background: rgba(7,16,30,.72); backdrop-filter: blur(10px); }
+.tap-wave i { display: block; width: 8px; height: 8px; margin-left: 9px; border: 2px solid var(--product-accent); border-left: 0; border-top-color: transparent; border-bottom-color: transparent; border-radius: 0 50% 50% 0; animation: tap-pulse 1.6s ease-in-out infinite; }
+.tap-wave i + i { width: 15px; height: 22px; margin-left: -9px; animation-delay: .18s; }
+.tap-wave i + i + i { width: 23px; height: 38px; animation-delay: .36s; }
+@keyframes tap-pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+.product-marquee { position: relative; z-index: 2; overflow: hidden; border-top: 1px solid rgba(255,255,255,.13); border-bottom: 1px solid rgba(255,255,255,.13); color: var(--product-accent); background: rgba(255,255,255,.035); }
+.product-marquee div { width: max-content; padding: 17px 0; font: 700 .68rem/1 var(--mono); letter-spacing: .14em; animation: product-marquee 22s linear infinite; }
+@keyframes product-marquee { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
+.product-mobile-cta { display: none; }
+
 .product-gallery {
   padding: clamp(64px, 8vw, 112px) 0;
 }
@@ -3090,6 +3123,26 @@ p, li, .lead, .page-intro { text-wrap: pretty; }
 }
 
 @media (max-width: 720px) {
+  .product-page { padding-bottom: 70px; }
+  .product-hero { padding-top: 104px; }
+  .product-hero-grid { width: calc(100vw - 28px); max-width: calc(100vw - 28px); margin-inline: auto; grid-template-columns: minmax(0,1fr); gap: 28px; min-height: 0; padding-bottom: 48px; }
+  .product-hero-copy, .product-hero-media { min-width: 0; width: 100%; max-width: calc(100vw - 28px); }
+  .product-hero-copy { padding: 12px 0 0; }
+  .product-kicker { margin-bottom: 18px; font-size: .57rem; }
+  .product-hero .display { max-width: 100%; margin-top: 15px; font-size: clamp(2.42rem,11.7vw,3.7rem); line-height: .9; overflow-wrap: anywhere; }
+  .product-hero .page-intro, .product-hero .hero-actions, .product-pills { max-width: calc(100vw - 28px); }
+  .product-hero .page-intro { margin-top: 20px; font-size: 1.02rem; }
+  .product-pills { gap: 6px; margin-top: 21px; }
+  .product-pills span { padding: 7px 9px; font-size: .54rem; }
+  .product-hero .hero-actions { display: grid; grid-template-columns: 1fr; }
+  .product-hero .hero-actions .button { width: 100%; }
+  .product-hero-media { margin: 0 3px 0 0; overflow: visible; transform: none; }
+  .product-hero-media img { width: 100%; height: auto; max-height: none; aspect-ratio: 4 / 3; }
+  .product-hero-media::before { inset: 10px -8px -8px 10px; }
+  .product-hero-media figcaption { right: 10px; bottom: 10px; left: 10px; padding: 11px 12px; }
+  .product-hero-media figcaption strong { font-size: .68rem; }
+  .product-marquee div { padding: 14px 0; font-size: .59rem; }
+  .product-gallery { padding: 58px 0; }
   .product-gallery-grid--two {
     grid-template-columns: 1fr;
   }
@@ -3103,6 +3156,17 @@ p, li, .lead, .page-intro { text-wrap: pretty; }
     margin-top: 5px;
     text-align: left;
   }
+  .product-mobile-cta { position: fixed; z-index: 50; right: 12px; bottom: 10px; left: 12px; display: flex; align-items: center; justify-content: space-between; min-height: 54px; padding: 0 18px; border: 1px solid rgba(255,255,255,.32); border-radius: 12px; color: #07101e; background: var(--product-accent); box-shadow: 0 14px 40px rgba(7,16,30,.34); font: 700 .78rem/1 var(--mono); letter-spacing: .03em; text-transform: uppercase; }
+  .product-mobile-cta span { font-size: 1.2rem; }
+}
+
+@media (min-width: 721px) and (max-width: 1040px) {
+  .product-hero-grid { grid-template-columns: minmax(0,.9fr) minmax(340px,1.1fr); gap: 40px; }
+  .product-hero .display { font-size: clamp(3.1rem,6.6vw,4.8rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-marquee div, .tap-wave i { animation: none; }
 }
 .chain-three { grid-template-columns: repeat(3, 1fr); }
 .spec-list { display: grid; gap: 0; margin: 0; padding: 0; border-top: 1px solid var(--line); }
