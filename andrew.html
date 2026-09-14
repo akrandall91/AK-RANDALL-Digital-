@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Andrew Randall — AK Randall Digital</title>
+<meta name="description" content="Tap-card hub for Andrew Randall — AK Randall Digital and MadeParticular, plus quick contact actions.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#06101c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Andrew Randall">
+<meta property="og:image" content="assets/brand/og-image.png">
+<link rel="icon" href="assets/brand/favicon.ico">
+<link rel="apple-touch-icon" href="akrandall_logo_pack_transparent/logo-mark-512.png">
+<link rel="canonical" href="https://akrandall.com/andrew.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="akrandall_logo_pack_transparent/logo-mark-512.png" fetchpriority="high">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap');
+
+  *{box-sizing:border-box;}
+  html{color-scheme:dark; -webkit-text-size-adjust:100%;}
+
+  :root{
+    --paper:#e9edf1;
+    --paper-bright:#f8fafc;
+    --ink:#06101c;
+    --navy:#0a1d3b;
+    --panel:#0d1c30;
+    --panel-2:#101f36;
+    --blue:#2f5d62;
+    --sage:#b5502e;
+    --coral:#c97c4d;
+    --cyan:#7fa39c;
+    --muted:#9aa6b8;
+    --hairline:rgba(233,237,241,0.12);
+    --display:'Bricolage Grotesque', 'Arial Narrow', sans-serif;
+    --body:'Instrument Sans', 'Helvetica Neue', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+    --radius:20px;
+    --shadow: 0 26px 70px -24px rgba(5,10,20,0.65);
+    --safe-t: env(safe-area-inset-top, 0px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --safe-l: env(safe-area-inset-left, 0px);
+    --safe-r: env(safe-area-inset-right, 0px);
+  }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(560px 420px at 14% -8%, rgba(47,93,98,0.28), transparent 60%),
+      radial-gradient(520px 420px at 92% 6%, rgba(201,124,77,0.16), transparent 55%),
+      radial-gradient(700px 560px at 50% 100%, rgba(181,80,46,0.10), transparent 60%),
+      var(--ink);
+    background-attachment:fixed;
+    color:var(--paper-bright);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-top:calc(36px + var(--safe-t));
+    padding-bottom:calc(48px + var(--safe-b));
+    padding-left:calc(20px + var(--safe-l));
+    padding-right:calc(20px + var(--safe-r));
+    display:flex;
+    justify-content:center;
+    overflow-x:hidden;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  a{color:inherit; text-decoration:none; -webkit-tap-highlight-color:transparent;}
+  a, button{ touch-action:manipulation; }
+  button{font:inherit; color:inherit;}
+  img{max-width:100%; display:block;}
+  ::selection{ color:var(--ink); background:var(--sage); }
+
+  .card{
+    width:100%;
+    max-width:460px;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+  }
+
+  /* ---------- Entrance + scroll-reveal ---------- */
+  @media (prefers-reduced-motion: no-preference){
+    .rise{ animation: rise .65s cubic-bezier(.2,.7,.2,1) both; }
+    .rise.d1{animation-delay:.05s}
+    .rise.d2{animation-delay:.14s}
+    @keyframes rise{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);} }
+
+    .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in{ opacity:1; transform:translateY(0); }
+    .reveal.d1.in{ transition-delay:.06s; }
+    .reveal.d2.in{ transition-delay:.14s; }
+    .reveal.d3.in{ transition-delay:.22s; }
+    .reveal.d4.in{ transition-delay:.30s; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; }
+
+  .logo-wrap{
+    position:relative;
+    width:64px; height:64px;
+    margin-bottom:4px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .logo-glow{
+    position:absolute; inset:-22px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(127,163,156,0.35), transparent 70%);
+    z-index:0;
+  }
+  .logo-mark{
+    width:56px; height:56px;
+    object-fit:contain;
+    display:block;
+    position:relative;
+    z-index:1;
+    filter:drop-shadow(0 8px 20px rgba(0,0,0,0.5));
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .logo-glow{ animation: glowPulse 3.6s ease-in-out infinite; }
+    @keyframes glowPulse{
+      0%,100%{ opacity:.6; transform:scale(1); }
+      50%{ opacity:1; transform:scale(1.12); }
+    }
+  }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono);
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--coral);
+    padding:6px 13px;
+    border:1px solid rgba(201,124,77,0.35);
+    border-radius:100px;
+    background:rgba(201,124,77,0.08);
+  }
+  .eyebrow svg{width:13px; height:13px; flex:none;}
+  .name{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(32px, 9vw, 44px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    text-wrap:balance;
+    margin:2px 0 0;
+    color:#fff;
+  }
+  .title{
+    font-family:var(--mono);
+    font-size:13.5px;
+    color:var(--cyan);
+    letter-spacing:.02em;
+  }
+  .divider{
+    width:64px; height:3px; border-radius:3px; margin-top:6px;
+    background:linear-gradient(90deg, var(--blue), var(--cyan), var(--coral), var(--blue));
+    background-size:220% 100%;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .divider{ animation: shimmer 5s linear infinite; }
+    @keyframes shimmer{ 0%{background-position:0% 0;} 100%{background-position:220% 0;} }
+  }
+
+  /* ---------- Destination tiles ---------- */
+  .tiles{ display:flex; flex-direction:column; gap:14px; }
+  .tile{
+    position:relative;
+    display:block;
+    padding:18px 20px 18px 22px;
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--hairline);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .tile:active{ transform:scale(.98); }
+  .tile::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:4px; z-index:2;
+  }
+  .tile.akrd::before{ background:linear-gradient(var(--cyan), var(--blue)); }
+  .tile.mini::before{ background:linear-gradient(var(--blue), var(--coral)); }
+  .tile.mp::before{ background:linear-gradient(var(--coral), var(--sage)); }
+
+  .tile-media{
+    position:relative;
+    height:118px;
+    border-radius:13px;
+    overflow:hidden;
+    margin-bottom:14px;
+    background:var(--navy);
+  }
+  .tile-media img{
+    width:100%; height:100%; object-fit:cover;
+    transform:scale(1.06);
+  }
+  .tile-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(6,16,28,0) 40%, rgba(6,16,28,0.55) 100%);
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .tile-media img{ animation: kenburns 9s ease-in-out infinite alternate; }
+    @keyframes kenburns{ from{ transform:scale(1.03); } to{ transform:scale(1.14); } }
+  }
+
+
+  .tile-top{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  .tile-name{
+    font-family:var(--display);
+    font-weight:700; font-size:19px; color:#fff;
+  }
+  .tile-arrow{ flex:none; width:18px; height:18px; color:var(--muted); transition:transform .18s ease; }
+  .tile:hover .tile-arrow, .tile:active .tile-arrow{ transform:translate(2px,-2px); }
+  .tile-tagline{
+    font-family:var(--mono);
+    font-size:12px; letter-spacing:.01em;
+  }
+  .tile.akrd .tile-tagline{ color:var(--cyan); }
+  .tile.mini .tile-tagline{ color:#7fb4c2; }
+  .tile.mp .tile-tagline{ color:var(--coral); }
+  .tile-desc{ font-size:14px; line-height:1.5; color:var(--muted); margin:6px 0 0; }
+  .tile-url{
+    margin-top:8px;
+    font-family:var(--mono);
+    font-size:11.5px; color:var(--muted); opacity:.8;
+  }
+
+  /* ---------- Quick actions ---------- */
+  .actions{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+  }
+  .action{
+    position:relative;
+    display:flex; flex-direction:column; align-items:center; gap:7px;
+    padding:14px 6px 12px;
+    min-height:64px;
+    background:var(--panel);
+    border:1px solid var(--hairline);
+    border-radius:14px;
+    font-size:11.5px;
+    text-align:center;
+    overflow:hidden;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .action:active{ transform:scale(.96); }
+  .action svg{ width:19px; height:19px; color:var(--cyan); }
+  .action.pay svg{ color:var(--coral); }
+  .action.book svg{ color:var(--blue); }
+
+  /* ---------- Save contact ---------- */
+  .save{
+    display:flex; flex-direction:column; align-items:center; gap:16px;
+    padding:26px 22px 24px;
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--hairline);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    text-align:center;
+  }
+  .save-head{ font-family:var(--display); font-weight:700; font-size:19px; color:#fff; }
+  .save-sub{ font-size:13px; color:var(--muted); margin-top:-8px; max-width:30ch; }
+
+  .qr-frame{
+    position:relative;
+    width:196px; height:196px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--paper-bright);
+    border-radius:16px;
+    padding:14px;
+  }
+  .qr-frame::before, .qr-frame::after,
+  .qr-corner-l, .qr-corner-r{
+    content:""; position:absolute; width:20px; height:20px; border:2.5px solid var(--coral);
+  }
+  .qr-frame::before{ top:-6px; left:-6px; border-right:none; border-bottom:none; border-radius:6px 0 0 0;}
+  .qr-frame::after{ bottom:-6px; right:-6px; border-left:none; border-top:none; border-radius:0 0 6px 0;}
+  .qr-corner-l{ bottom:-6px; left:-6px; border-right:none; border-top:none; border-radius:0 0 0 6px;}
+  .qr-corner-r{ top:-6px; right:-6px; border-left:none; border-bottom:none; border-radius:0 6px 0 0;}
+  #qrcode{ width:168px; height:168px; }
+  #qrcode img, #qrcode canvas{ display:block; width:100% !important; height:100% !important; }
+  .qr-fallback{ font-size:11px; font-family:var(--mono); color:var(--ink); text-align:center; line-height:1.4; }
+
+  .qr-caption{
+    font-family:var(--mono); font-size:11px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--muted);
+  }
+
+  .contact-block{
+    width:100%;
+    border-top:1px solid var(--hairline);
+    padding-top:16px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .contact-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    font-family:var(--mono); font-size:13px;
+  }
+  .contact-row span{ color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+  .contact-row strong{ font-weight:500; color:#fff; }
+
+  .copy-btn{
+    position:relative;
+    display:inline-flex; align-items:center; gap:8px; justify-content:center;
+    margin-top:4px;
+    padding:13px 18px;
+    min-height:46px;
+    background:var(--blue);
+    color:#fff;
+    font-weight:600; font-size:13.5px;
+    border:none; border-radius:100px;
+    cursor:pointer;
+    overflow:hidden;
+    transition:filter .15s ease, transform .15s ease;
+  }
+  .copy-btn:active{ transform:scale(.97); }
+  .copy-btn:hover{ filter:brightness(1.12); }
+  .copy-btn svg{ width:15px; height:15px; }
+  .copy-btn.done{ background:var(--sage); }
+  .copy-btn:focus-visible, .action:focus-visible, .tile:focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:2px;
+  }
+
+  /* Tap ripple */
+  .ripple{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(233,237,241,0.35);
+    transform:scale(0);
+    pointer-events:none;
+    animation:rippleAnim .55s ease-out forwards;
+  }
+  @keyframes rippleAnim{ to{ transform:scale(2.6); opacity:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .ripple{ display:none; }
+  }
+
+  footer{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11px; letter-spacing:.05em;
+    color:var(--muted); opacity:.85;
+    padding-top:4px;
+    margin:0;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="hero rise d1">
+    <div class="logo-wrap">
+      <div class="logo-glow" aria-hidden="true"></div>
+      <img class="logo-mark" src="akrandall_logo_pack_transparent/logo-mark-512.png" width="56" height="56" alt="AK Randall Digital" fetchpriority="high" decoding="async">
+    </div>
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7.5 12a4.5 4.5 0 0 1 9 0"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+      Thanks for tapping in
+    </span>
+    <h1 class="name">Andrew&nbsp;Randall</h1>
+    <div class="title">Founder, AK Randall Digital</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="tiles">
+    <a class="tile akrd reveal" href="https://akrandall.com" target="_blank" rel="noopener">
+      <div class="tile-media" aria-hidden="true">
+        <img src="assets/images/andrew-tile-photo.webp" width="900" height="264" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="tile-top">
+        <span class="tile-name">AK Randall Digital</span>
+        <svg class="tile-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </div>
+      <div class="tile-tagline">Need a website or a business strategy fixed?</div>
+      <p class="tile-desc">My consulting company — strategy, websites, and digital systems for growing businesses.</p>
+      <div class="tile-url">akrandall.com</div>
+    </a>
+
+    <a class="tile mini reveal d1" href="https://akrandall.com/mini-tap.html" target="_blank" rel="noopener">
+      <div class="tile-media" aria-hidden="true">
+        <img src="assets/print-lab/photos/mini-tap-card.webp" width="900" height="264" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="tile-top">
+        <span class="tile-name">Mini Tap</span>
+        <svg class="tile-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </div>
+      <div class="tile-tagline">Want a card like this one for your business?</div>
+      <p class="tile-desc">Reusable NFC tap cards for booking, reviews, and menus — reprogram it yourself anytime, no app or fee.</p>
+      <div class="tile-url">akrandall.com/mini-tap.html</div>
+    </a>
+
+    <a class="tile mp reveal d2" href="https://akrandall91.github.io/AKR-Works/index.html" target="_blank" rel="noopener">
+      <div class="tile-media" aria-hidden="true">
+        <img src="assets/print-lab/photos/memory-light-card.webp" width="720" height="507" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="tile-top">
+        <span class="tile-name">MadeParticular</span>
+        <svg class="tile-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </div>
+      <div class="tile-tagline">Want a custom photo gift?</div>
+      <p class="tile-desc">My print shop — order lithophanes, LED displays, and NFC keepsakes like this card.</p>
+      <div class="tile-url">akrandall91.github.io/AKR-Works</div>
+    </a>
+  </div>
+
+  <div class="actions reveal d3">
+    <a class="action" href="tel:+13364374484" data-ripple>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5c0-1 .8-1.5 1.5-1.5h2c.6 0 1.1.4 1.3 1l1 3c.2.6 0 1.2-.5 1.6l-1.4 1.1a12 12 0 0 0 5.9 5.9l1.1-1.4c.4-.5 1-.7 1.6-.5l3 1c.6.2 1 .7 1 1.3v2c0 .7-.5 1.5-1.5 1.5C11.5 21 3 12.5 4.5 5.5Z"/></svg>
+      Call
+    </a>
+    <a class="action" href="mailto:Andrew@AKRandall.com" data-ripple>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7 7.5 6 7.5-6"/></svg>
+      Email
+    </a>
+    <a class="action book" href="https://akrandall.com/connect.html#schedule" target="_blank" rel="noopener" data-ripple>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17"/><path d="M8 3v4M16 3v4"/><path d="M8.5 13.5h2M8.5 16.5h2"/></svg>
+      Book
+    </a>
+    <a class="action pay" href="https://checkout.square.site/merchant/MLW60MKV8MZRA/checkout/WCSCE3CVRWZP4P4IUPO7ANKM" target="_blank" rel="noopener" data-ripple>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.2"/><path d="M3 10.5h18"/><path d="M6.5 14.5h4"/></svg>
+      Pay
+    </a>
+  </div>
+
+  <div class="save reveal d4">
+    <div class="save-head">Save my contact</div>
+    <p class="save-sub">Point your camera at the code to add me instantly.</p>
+
+    <div class="qr-frame">
+      <div class="qr-corner-l"></div>
+      <div class="qr-corner-r"></div>
+      <div id="qrcode">
+        <span class="qr-fallback">QR loading…<br>use the details below</span>
+      </div>
+    </div>
+    <div class="qr-caption">Scan · no app needed</div>
+
+    <div class="contact-block">
+      <div class="contact-row"><span>Name</span><strong>Andrew Randall</strong></div>
+      <div class="contact-row"><span>Phone</span><strong>336 437 4484</strong></div>
+      <div class="contact-row"><span>Email</span><strong>Andrew@AKRandall.com</strong></div>
+      <button class="copy-btn" id="copyBtn" type="button" data-ripple>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2"/><path d="M15 8.5V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.5"/></svg>
+        <span id="copyLabel">Copy details</span>
+      </button>
+    </div>
+  </div>
+
+  <footer>AK Randall Digital &nbsp;·&nbsp; Systems, strategy &amp; light</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  (function(){
+    var vcard = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "N:Randall;Andrew;;;",
+      "FN:Andrew Randall",
+      "ORG:AK Randall Digital",
+      "TITLE:Founder",
+      "TEL;TYPE=CELL,VOICE:+13364374484",
+      "EMAIL;TYPE=INTERNET:Andrew@AKRandall.com",
+      "URL:https://akrandall.com",
+      "END:VCARD"
+    ].join("\n");
+
+    try{
+      if (window.QRCode) {
+        var target = document.getElementById("qrcode");
+        target.innerHTML = "";
+        new QRCode(target, {
+          text: vcard,
+          width: 168,
+          height: 168,
+          colorDark: "#06101c",
+          colorLight: "#f8fafc",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+    }catch(e){
+      // leave the fallback text in place
+    }
+
+    var btn = document.getElementById("copyBtn");
+    var label = document.getElementById("copyLabel");
+    var plain = "Andrew Randall\nFounder, AK Randall Digital\n336 437 4484\nAndrew@AKRandall.com";
+
+    btn.addEventListener("click", function(){
+      function done(ok){
+        label.textContent = ok ? "Copied ✓" : "Select text above";
+        btn.classList.toggle("done", ok);
+        setTimeout(function(){
+          label.textContent = "Copy details";
+          btn.classList.remove("done");
+        }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(plain).then(function(){ done(true); }).catch(function(){
+          try{
+            var ta = document.createElement("textarea");
+            ta.value = plain;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            done(ok);
+          }catch(e){ done(false); }
+        });
+      } else {
+        try{
+          var ta2 = document.createElement("textarea");
+          ta2.value = plain;
+          ta2.style.position = "fixed";
+          ta2.style.opacity = "0";
+          document.body.appendChild(ta2);
+          ta2.select();
+          var ok2 = document.execCommand("copy");
+          document.body.removeChild(ta2);
+          done(ok2);
+        }catch(e){ done(false); }
+      }
+    });
+
+    // Scroll-reveal for below-the-fold sections
+    var revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && revealEls.length){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+      revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+      revealEls.forEach(function(el){ el.classList.add("in"); });
+    }
+
+    // Tap ripple on interactive elements
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion){
+      document.querySelectorAll("[data-ripple], .tile").forEach(function(el){
+        el.style.position = el.style.position || "relative";
+        el.addEventListener("pointerdown", function(e){
+          var rect = el.getBoundingClientRect();
+          var size = Math.max(rect.width, rect.height) * 1.2;
+          var span = document.createElement("span");
+          span.className = "ripple";
+          span.style.width = span.style.height = size + "px";
+          span.style.left = (e.clientX - rect.left - size / 2) + "px";
+          span.style.top = (e.clientY - rect.top - size / 2) + "px";
+          el.appendChild(span);
+          setTimeout(function(){ span.remove(); }, 600);
+        }, { passive: true });
+      });
+    }
+  })();
+</script>
+</body>
+</html>
