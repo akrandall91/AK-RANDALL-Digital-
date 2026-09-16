@@ -332,6 +332,25 @@
     outline-offset:2px;
   }
 
+  .save-btn{
+    position:relative;
+    display:inline-flex; align-items:center; gap:9px; justify-content:center;
+    width:100%;
+    padding:15px 22px;
+    min-height:52px;
+    background:linear-gradient(90deg, var(--coral), var(--sage));
+    color:#fff;
+    font-weight:700; font-size:15px;
+    border-radius:100px;
+    overflow:hidden;
+    box-shadow:0 14px 30px -12px rgba(181,80,46,0.55);
+    transition:filter .15s ease, transform .15s ease;
+  }
+  .save-btn:active{ transform:scale(.97); }
+  .save-btn:hover{ filter:brightness(1.08); }
+  .save-btn svg{ width:17px; height:17px; flex:none; }
+  .save-btn:focus-visible{ outline:2px solid var(--cyan); outline-offset:2px; }
+
   /* Tap ripple */
   .ripple{
     position:absolute;
@@ -436,7 +455,12 @@
 
   <div class="save reveal d4">
     <div class="save-head">Save my contact</div>
-    <p class="save-sub">Point your camera at the code to add me instantly.</p>
+    <p class="save-sub">Tap below to add me directly, or scan the code with another phone.</p>
+
+    <a class="save-btn" href="assets/andrew-randall.vcf" data-ripple>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v13"/><path d="m6 12 6 6 6-6"/><path d="M5 20h14"/></svg>
+      Save Contact
+    </a>
 
     <div class="qr-frame">
       <div class="qr-corner-l"></div>

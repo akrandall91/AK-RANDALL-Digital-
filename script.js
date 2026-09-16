@@ -265,6 +265,18 @@
     caseCards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; });
   }));
 
+  document.querySelectorAll('.quick-jump-links a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      const detail = target.querySelector('.evidence-detail');
+      if (detail) detail.open = true;
+      document.querySelectorAll('[data-jump-flash]').forEach(el => el.removeAttribute('data-jump-flash'));
+      requestAnimationFrame(() => target.setAttribute('data-jump-flash', ''));
+      setTimeout(() => target.removeAttribute('data-jump-flash'), 1800);
+    });
+  });
+
   const form = document.querySelector('[data-inquiry-form]');
   const requestedFocus = new URLSearchParams(window.location.search).get('focus');
   const focusSelect = form?.querySelector('[name="focus"]');
