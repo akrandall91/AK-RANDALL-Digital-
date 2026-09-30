@@ -9,5 +9,9 @@ window.AKRD_LEAD_CONFIG = Object.freeze({
   // the emailed performance reports and never include form contents or PII.
   firstPartyAnalytics: true,
   calendarEmbedUrl: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1XsRQ0EtADHMMeh6PnIpS88ugVvqKEvpq7ntA2BtI2yiCVTt4CtfilWru2aL7dayDcakPbKiWB?gv=true',
+  // Optional Square payment links for the Google Review Kit. Paste a link
+  // here and the kit buttons go straight to checkout; left blank, they open
+  // the contact form with the kit preselected.
+  reviewKitCheckout: { starter: '', counter: '' },
   calendarFallbackUrl: 'https://calendar.app.google/tWsJafs8VUD5V4Wr7'
 });

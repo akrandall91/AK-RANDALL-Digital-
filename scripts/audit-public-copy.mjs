@@ -4,25 +4,13 @@ import path from 'node:path';
 const publicPages = [
   'index.html',
   'services.html',
+  'review-kit.html',
   'work.html',
   'case-story-redeemer.html',
   'case-story-business-command-center.html',
-  'case-story-sep-tracker.html',
-  'case-story-lighting-engine.html',
-  'resources.html',
-  'tools.html',
-  'government-contracting-readiness.html',
-  'ai-workflow-readiness.html',
-  'website-build-readiness.html',
   'about.html',
-  'assessment.html',
-  'connect.html',
-  'privacy.html',
-  'assessment-tool.html',
-  'government-contracting-readiness-tool.html',
-  'ai-workflow-readiness-tool.html',
-  'website-build-readiness-tool.html',
-  'print-lab.html'
+  'contact.html',
+  'privacy.html'
 ];
 
 const forbidden = [

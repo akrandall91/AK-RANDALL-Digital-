@@ -1,29 +1,21 @@
 # AK Randall Digital
 
-Static GitHub Pages site for AK Randall Digital, plus a separate owner-only business console workflow.
+Static GitHub Pages site for AK Randall Digital (AKRD): websites, Google review systems, automation and smart-tech setup for small businesses across North Carolina. Physical products live on the separate ARXI Systems site (arxisystems.com).
 
 ## Public site
 
-Run:
+Pages: `index.html`, `services.html`, `review-kit.html`, `work.html`, two case studies, `about.html`, `contact.html`, `privacy.html`. Styles are in `akrd.css`; page behavior (menu, booking calendar, contact form) is in `site.js`.
+
+Retired pages (tools, resources, assessment, readiness tools, Print Lab, Memory Light, Mini Tap, old case studies) are kept as small redirect pages so old links still land somewhere useful.
+
+Run the checks before publishing:
 
 ```powershell
 npm install
 npm run build
 ```
 
-`npm run build` minifies `styles.css` into the versioned `styles.min.css` used by every public page, then checks navigation order, duplicate IDs, local file references, script versions, and the canonical proof metrics.
-
-The public site sends lead and first-party analytics records to the deployed Google Apps Script endpoint in `lead-config.js`. First-party Google Sheet reporting and emailed digests are the reporting source of truth. GA4 is intentionally disabled until a verified Measurement ID is added.
-
-Account setup and redeployment steps are in `integrations/google-apps-script/README.md`.
-
-## Proof metric definitions
-
-- `$7.5M+`: total confirmed customer project value supported by accepted or fulfilled work.
-- `$5.75M`: public-record subset of that confirmed-project total.
-- `$31.5M`: evaluated opportunity value; not revenue, awarded value, or part of the confirmed-project total.
-
-The display values and definitions live in `assets/data/site-metrics.js`.
+The contact form sends to the Google Apps Script endpoint in `lead-config.js`. Setup steps are in `integrations/google-apps-script/README.md`. To sell the Google Review Kit with a Square payment link, paste the links into `reviewKitCheckout` in `lead-config.js`.
 
 ## Owner-only business console
 

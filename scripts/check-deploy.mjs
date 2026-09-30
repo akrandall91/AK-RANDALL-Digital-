@@ -5,31 +5,20 @@ const root = process.cwd();
 const publicPages = [
   'index.html',
   'services.html',
+  'review-kit.html',
   'work.html',
   'case-story-redeemer.html',
   'case-story-business-command-center.html',
-  'case-story-sep-tracker.html',
-  'case-story-lighting-engine.html',
-  'resources.html',
-  'tools.html',
-  'government-contracting-readiness.html',
-  'ai-workflow-readiness.html',
-  'website-build-readiness.html',
   'about.html',
-  'assessment.html',
-  'connect.html',
-  'privacy.html',
-  'print-lab.html'
+  'contact.html',
+  'privacy.html'
 ];
 const expectedNav = [
   ['services.html', 'Services'],
-  ['work.html', 'Proof'],
-  ['resources.html', 'Resources'],
-  ['tools.html', 'Tools'],
-  ['about.html', 'About'],
-  ['assessment.html', 'Free assessment'],
-  ['connect.html', 'Connect']
+  ['work.html', 'Work'],
+  ['about.html', 'About']
 ];
+const version = '20260930a';
 const errors = [];
 
 for (const file of publicPages) {
@@ -40,18 +29,13 @@ for (const file of publicPages) {
   }
   const html = fs.readFileSync(fullPath, 'utf8');
 
-  const stylesheet = html.match(/<link rel="stylesheet" href="(styles\.min\.css\?v=[^"]+)">/);
-  if (!stylesheet || stylesheet[1] !== 'styles.min.css?v=20260804a') {
-    errors.push(`${file}: expected styles.min.css?v=20260804a`);
-  }
-
-  for (const asset of ['lead-config.js?v=20260729e', 'analytics.js?v=20260729e', 'script.js?v=20260804a']) {
+  for (const asset of [`akrd.css?v=${version}`, `lead-config.js?v=${version}`, `analytics.js?v=${version}`, `site.js?v=${version}`]) {
     if (!html.includes(asset)) errors.push(`${file}: missing ${asset}`);
   }
 
-  const nav = html.match(/<nav class="site-nav"[\s\S]*?<\/nav>/)?.[0] || '';
+  const nav = html.match(/<nav class="nav"[\s\S]*?<\/nav>/)?.[0] || '';
   const navLinks = [...nav.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/g)]
-    .filter(match => !match[0].includes('nav-cta'))
+    .filter(match => !match[0].includes('class="button"'))
     .map(match => [match[1], match[2].trim()]);
   expectedNav.forEach((expected, index) => {
     const actual = navLinks[index];
@@ -59,6 +43,7 @@ for (const file of publicPages) {
       errors.push(`${file}: navigation item ${index + 1} should be ${expected[1]}`);
     }
   });
+  if (!nav.includes('contact.html#schedule')) errors.push(`${file}: missing Book a free call button`);
 
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
@@ -71,21 +56,8 @@ for (const file of publicPages) {
   }
 }
 
-for (const required of [
-  'styles.css',
-  'styles.min.css',
-  'assets/data/site-metrics.js',
-  'integrations/google-apps-script/Code.gs'
-]) {
+for (const required of ['akrd.css', 'site.js', 'lead-config.js', 'analytics.js', 'integrations/google-apps-script/Code.gs']) {
   if (!fs.existsSync(path.join(root, required))) errors.push(`missing required file ${required}`);
-}
-
-const work = fs.readFileSync(path.join(root, 'work.html'), 'utf8');
-for (const metric of ['confirmedCustomerProjectValue', 'confirmedPublicRecordValue', 'evaluatedOpportunityValue']) {
-  if (!work.includes(`data-proof-metric="${metric}"`)) errors.push(`work.html: missing canonical metric ${metric}`);
-}
-if (!work.includes('not revenue, an award total')) {
-  errors.push('work.html: evaluated opportunity disclaimer is missing');
 }
 
 if (errors.length) {
